@@ -2,7 +2,13 @@
 \usepackage{csquotes}
 \usepackage{fancyhdr}
 \usepackage{marginnote}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
+\usepackage{subfiles}
 
 \MakeOuterQuote{"}
 
@@ -19,4 +25,8 @@
 
 \reversemarginpar
 
-\usepackage{subfiles}
+\setitemize[3]{label={\scriptsize$\blacksquare$}}
+
+\sisetup{range-phrase={-},range-units=single}
+
+\graphicspath{{../ExtFiles/}}
