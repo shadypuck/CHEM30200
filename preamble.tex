@@ -4,8 +4,11 @@
 \usepackage{marginnote}
 \usepackage{enumitem}
 \usepackage{siunitx}
+\usepackage[style=apa]{biblatex}
 \usepackage{graphicx}
+\usepackage{subcaption,float}
 \usepackage{amsmath,amssymb}
+\usepackage{physics,bm}
 \usepackage{mhchem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{subfiles}
@@ -28,5 +31,10 @@
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
 
 \sisetup{range-phrase={-},range-units=single}
+\DeclareSIUnit{\atmosphere}{atm}
+\DeclareSIUnit{\revolutionsperminute}{rpm}
+\DeclareSIUnit{\angstrom}{\textup{\AA}}
+
+\addbibresource{\subfix{../main.bib}}
 
 \graphicspath{{../ExtFiles/}}
