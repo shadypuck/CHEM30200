@@ -1,0 +1,1075 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\stepcounter{chapter}
+
+\begin{document}
+
+
+
+
+\chapter{???}
+\section{XRD Analysis 2}
+\begin{itemize}
+    \item \marginnote{1/10:}Dealing with broadening of the XRD beam.
+    \begin{itemize}
+        \item Synchrotron radiation gets you better resolution.
+    \end{itemize}
+    \item How do you get a cleaner spectra, given this one?
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \draw (0,2) -- (0,0) -- (5,0);
+    
+            \draw [rex,thick] (0.1,0.7)
+                to[out=-50,in=180,looseness=0.7] (0.7,0.5)
+                to[out=0,in=180,out looseness=0.3,in looseness=0.05] (0.9,1.8)
+                to[out=0,in=180,out looseness=0.05,in looseness=0.3] (1.1,0.45)
+                to[bend right=15,looseness=0.4] (1.5,0.4)
+                to[out=0,in=180,out looseness=0.3,in looseness=0.05] (1.6,1)
+                to[out=0,in=180,out looseness=0.05,in looseness=0.3] (1.7,0.38)
+                to[bend right=15,looseness=0.4] (2.5,0.35)
+                to[out=0,in=180,out looseness=0.3,in looseness=0.05] (2.6,1.2)
+                to[out=0,in=180,out looseness=0.05,in looseness=0.3] (2.7,0.35)
+                to[out=0,in=180,out looseness=1.5,in looseness=0.3] (2.9,0.2)
+                to (4.9,0.2)
+            ;
+        \end{tikzpicture}
+        \caption{Enhancing XRD results.}
+        \label{fig:enhanceXRD}
+    \end{figure}
+    \begin{itemize}
+        \item In general:
+        \begin{itemize}
+            \item You can change divergence slits, filter, and masks.
+            \item You can't change the monochromator, however, because it's built into the machine.
+        \end{itemize}
+        \item In this particular case:
+        \begin{itemize}
+            \item The issue is the high background which may be covering up smaller peaks.
+            \item Solution: Use a smaller divergence slit and more masks.
+            \item Another problem that could be causing high background is X-ray fluorescence, so check to make sure that your sample doesn't have iron or other similar things contaminating it.
+        \end{itemize}
+    \end{itemize}
+    \item The principle of Bragg's law.
+    \begin{itemize}
+        \item The Braggs proposed that crystals can be described in terms of layers or planes of atoms.
+        \item Their theoretical planes behave like \textbf{reflecting planes}.
+        \item Strong "reflected" beams are produced when the path differences between reflections from successive planes in a family is equal to a whole number of wavelengths.
+        \begin{itemize}
+            \item If we want to see something, neighboring planes' waves must be in phase, interfering constructively to amplify their intensity rather than dampening it with destructive interference.
+        \end{itemize}
+        \item This approach is not correct in a physical sense --- planes do not reflect X-rays. However, it is correct in a geometrical sense and provides us with a very simple expression for the analysis of crystal structure.
+    \end{itemize}
+    \item \textbf{Reflecting plane}: A plane for which the angle of incidence equals the angle of reflection.
+    \item Conditions that are necessary to make the phases of the beams coincide.
+    \begin{itemize}
+        \item Refer to Figure \ref{fig:BraggDeriv} throughout the following.
+        \item The angles of the incident and "reflected" photons are equal.
+        \item The rays of the incident are always in phase and are parallel up to the point at which the top beam reaches the top layer at atom $O$.
+        \item The second beam continues to the next layer where it is scattered at atom $B$. If the two beams travel in adjacent and parallel fashion, the beam scattered at atom $B$ travels an extra distance $AB+BC$. This extra distance should be equal to a whole number of wavelengths.
+        \item Again, a diffracted beam \emph{looks} reflected, but what it really is is scattered radiation. Drill home that planes are not physically accurate!
+    \end{itemize}
+    \item How to derive the Bragg's Law formula.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \footnotesize
+            \draw (0,-3.5) -- (0,2.5);
+            \draw [dash pattern=on 2pt off 1pt]
+                foreach \y in {0,-1.5,-3} {
+                    (-2.5,\y) -- (2.5,\y)
+                }
+            ;
+    
+            \coordinate (1) at (-1,0);
+            \coordinate (B) at (0,-1.5);
+            \coordinate (2) at (1,0);
+            \coordinate (O) at (0,0);
+            \draw [help lines] ($(1)!-0.9!(B)$) -- (B) -- ($(B)!1.9!(2)$);
+            \draw [help lines] ($(O)!-1.4!(1,-1.5)$) -- (O) -- ($(O)!1.4!(1,1.5)$);
+            \draw [blx,very thick,-latex] ($(1)!-0.9!(B)$) -- ($(1)!-0.4!(B)$);
+            \draw [blx,very thick,-latex] ($(O)!-1.4!(1,-1.5)$) -- ($(O)!-0.9!(1,-1.5)$);
+            \draw [blx,very thick,-latex] ($(B)!1.4!(2)$) -- ($(B)!1.9!(2)$);
+            \draw [blx,very thick,-latex] ($(O)!0.9!(1,1.5)$) -- ($(O)!1.4!(1,1.5)$);
+            \draw [blx,semithick,<->,shorten <=1pt,shorten >=1pt] (2.3,0) -- node[left]{$d$} (2.3,-1.5);
+    
+            \coordinate (A) at ({-9/13},{-6/13});
+            \coordinate (C) at ({9/13},{-6/13});
+            \draw [rex,very thick] (A) node[left]{$A$} -- (B) node[below=1.5mm,fill=white,inner sep=2pt]{$B$} -- (C) node[right]{$C$};
+            \draw [rex,very thick,dashed] (A) -- (O) -- (C);
+    
+            \coordinate (3) at (-2,0);
+            \coordinate (3a) at ($(1)!-0.9!(B)$);
+            \coordinate (Oa) at ($(O)!-1.4!(1,-1.5)$);
+            \pic [draw=grx,semithick,pic text={$\alpha$},angle radius=4mm,angle eccentricity=0.7] {angle=1--O--A};
+            \pic [draw=blx,semithick,pic text={$\theta$},angle radius=4mm,angle eccentricity=0.7] {angle=A--1--O};
+            \pic [draw=blx,semithick,pic text={$\theta$},angle radius=4mm,angle eccentricity=0.7] {angle=3a--1--3};
+            \pic [draw=blx,semithick,pic text={$\theta$},angle radius=4mm,angle eccentricity=0.7] {angle=Oa--O--1};
+            \pic [draw=rex,semithick,pic text={$x$},angle radius=4mm,angle eccentricity=0.7] {angle=A--O--B};
+    
+            \foreach \x in {-2,...,2} {
+                \foreach \y in {-3,-1.5,0} {
+                    \fill [orx] (\x,\y) circle (1.5mm);
+                }
+            }
+        \end{tikzpicture}
+        \caption{Bragg's Law derivation.}
+        \label{fig:BraggDeriv}
+    \end{figure}
+    \begin{itemize}
+        \item Since $\theta+\alpha=\ang{90}$ and $\theta+x=\ang{90}$, we know that
+        \begin{equation*}
+            x = \theta
+        \end{equation*}
+        \item This combined with the observation that $\sin(x)=AB/d$ implies that
+        \begin{align*}
+            \sin\theta &= \frac{AB}{d}\\
+            AB &= d\sin\theta
+        \end{align*}
+        \item Lastly, we may observe that $AB=BC$. Therefore, the total phase shift is
+        \begin{equation*}
+            2AB = 2d\sin\theta
+        \end{equation*}
+        \item Since we require that this is a whole number of wavelengths, our final condition is
+        \begin{equation*}
+            n\lambda = 2d\sin\theta
+        \end{equation*}
+        where $n$ is an integer determined by the order given, $\lambda$ is the wavelength of the X-rays, $d$ is the spacing between the planes in the atomic lattice, and $\theta$ is the angle between the incident ray and the scattering planes.
+        \begin{itemize}
+            \item This condition is called \textbf{Bragg's Law}.
+        \end{itemize}
+        \item Note that copper's $\lambda=\SI{1.54}{\angstrom}$ is the most common wavelength with which to work.
+    \end{itemize}
+    \item Mineralogy --- Inspiration for crystallography.
+    \begin{itemize}
+        \item Happened way before all of this math, when scientists had far fewer tools.
+        \item Researchers could only observe a crystal's \textbf{habit} and cleavage planes, and measure interfacial angles with a \textbf{goniometer}.
+        \item Ren\'{e} Just Ha\"{u}y postulates in 1801: Crystal structures are made up of orderly arrangements of integrant molecules in successive layers, according to geometrical laws of crystallization.
+        \item Ha\"{u}y formulated the \textbf{theory of the rational indices} of the faces of a crystal, which is important for crystallographic calculations.
+        \item By 1792, he had identified several parallelepipeds to explain shapes of a few crystals.
+        \item This work, which may now seem elementary, is extremely impressive since he had so few tools.
+    \end{itemize}
+    \item \textbf{Habit}: The tendency for specimens of a mineral to repeatedly grow into characteristic shapes.
+    \item \textbf{Goniometer}: An instrument that either measures an angle or allows an object to be rotated to a precise angular position.
+    \item \textbf{Theory of rational indices}: The theory that the intercepts of a crystal face with the crystallographic axes can be expressed as $a/h$, $b/k$, and $c/l$, where $1/h$, $1/k$, and $1/l$ are three simple rational numbers.
+    \item Type of Lattice Systems.
+    \begin{itemize}
+        \item Ha\"{u}y (1784): The periodicity of crystalline materials involves the basic repetition of a basic unit called the \textbf{unit cell}.
+        \item Crystalline materials are formed by the repetition in (2D, 3D, etc.) space of cells (or \textbf{crystallites}).
+        \item In 3D space, cells are defined by three non-coplanar vectors (called \textbf{fundamental translations}).
+        \item There are 7 types of cells that together cover all possible point lattices.
+        \item Important: Crystal structures are defined by a \textbf{basis} and a \textbf{lattice}.
+    \end{itemize}
+    \item \textbf{Basis}: \emph{What} gets repeated in the crystal structure.
+    \item \textbf{Lattice}: \emph{How} it gets repeated.
+    \item Bravais lattices.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.45\linewidth]{BravaisTF.png}
+        \caption{Decomposition of a crystal into its Bravais lattice.}
+        \label{fig:BravaisTF}
+    \end{figure}
+    \begin{itemize}
+        \item Auguste Bravais (1848) found mathematically that the number of crystalline lattices is finite.
+        \item It is a fully geometrical concept and has nothing to do with atoms or crystalline planes.
+        \item Bravais lattices are the basic lattice arrangements. All other lattices can simplify into one of the Bravais lattices. Bravais lattices move a \emph{specific} basis by a translation.
+        \item There are 14 3D Bravais lattices.
+        \item Bravais lattices only take into account \emph{translational} symmetry (this is important!).
+        \item If you can exactly repeat the entire structure by a set of translations, that is the Bravais lattice.
+        \item Other symmetries, like reflection or inversion, are captured in point groups and space groups, not by Bravais lattices.
+    \end{itemize}
+    \item 1D Bravais lattice.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \draw [dashed]
+                (-5.25,0) -- (-6.5,0)
+                (5.25,0) -- (6.5,0)
+            ;
+            \draw (-5.25,0) -- (5.25,0);
+    
+            \fill [fill=grx] ({-2.8-2.45},0) circle (1.5mm);
+            \fill [fill=blx] ({-2.8-2.15},0) circle (0.7mm);
+            \fill [fill=rex] ({-2.8-1.8},0) circle (1mm);
+            % 
+            \fill [fill=rex] ({-2.8-1.05},0) circle (1mm);
+            \fill [fill=blx] ({-2.8-0.75},0) circle (0.7mm);
+            \fill [fill=grx] ({-2.8-0.4},0) circle (1.5mm);
+            % 
+            \fill [fill=grx] (-2.45,0) circle (1.5mm);
+            \fill [fill=blx] (-2.15,0) circle (0.7mm);
+            \fill [fill=rex] (-1.8,0) circle (1mm);
+            % 
+            \fill [fill=rex] (-1.05,0) circle (1mm);
+            \fill [fill=blx] (-0.75,0) circle (0.7mm);
+            \fill [fill=grx] (-0.4,0) circle (1.5mm);
+            % 
+            \fill [fill=grx] (0.4,0) circle (1.5mm);
+            \fill [fill=blx] (0.75,0) circle (0.7mm);
+            \fill [fill=rex] (1.05,0) circle (1mm);
+            % 
+            \fill [fill=rex] (1.8,0) circle (1mm);
+            \fill [fill=blx] (2.15,0) circle (0.7mm);
+            \fill [fill=grx] (2.45,0) circle (1.5mm);
+            % 
+            \fill [fill=grx] ({2.85+0.4},0) circle (1.5mm);
+            \fill [fill=blx] ({2.85+0.75},0) circle (0.7mm);
+            \fill [fill=rex] ({2.85+1.05},0) circle (1mm);
+            % 
+            \fill [fill=rex] ({2.85+1.8},0) circle (1mm);
+            \fill [fill=blx] ({2.85+2.15},0) circle (0.7mm);
+            \fill [fill=grx] ({2.85+2.45},0) circle (1.5mm);
+    
+            \draw [|-|] (-5.65,0.5) -- node[above]{${\color{rex}X}$} (-4.25,0.5);
+            \draw [|-|] (-5.65,-0.5) -- node[below]{${\color{grx}\checkmark}$} (-2.8,-0.5);
+        \end{tikzpicture}
+        \caption{1D Bravais lattices.}
+        \label{fig:Bravais1D}
+    \end{figure}
+    \begin{itemize}
+        \item Only one vector, hence only one possible Bravais lattice.
+        \item Bravais lattices do not allow mirror symmetry, only translation. Thus, we must choose as our basis the smallest structure that repeats \emph{translationally}.
+    \end{itemize}
+    \item 2D Bravais lattice.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{Bravais2Da.png}
+            \caption{Centered cubic?}
+            \label{fig:Bravais2Da}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=0.7\linewidth]{Bravais2Db.png}
+            \caption{Hexagonal?}
+            \label{fig:Bravais2Db}
+        \end{subfigure}
+        \caption{2D Bravais lattices.}
+        \label{fig:Bravais2D}
+    \end{figure}
+    \begin{itemize}
+        \item There are five 2D Bravais lattices.
+        \begin{enumerate}
+            \item Square ($a=b$, $\theta=\ang{90}$).
+            \item Hexagonal ($a=b$, $\theta=\ang{120}$).
+            \item Rectangular ($a\neq b$, $\theta=\ang{90}$).
+            \item Centered rectangular (see below).
+            \item Rhomboidal ($a\neq b$, $\theta\neq\ang{90}$).
+        \end{enumerate}
+        \item There does exist centered rectangular (a rectangular lattice with an additional vertex in the center of each rectangle), but there does not exist "centered cubic" because a smaller, rotated square can represent the entire lattice, so "centered cubic" is really just square. See Figure \ref{fig:Bravais2Da}.
+        \item The "hexagonal" Bravais lattice can be simplified into a rhombus, but hexagon shows "true" symmetry (i.e., rotation, inversion, etc.). See Figure \ref{fig:Bravais2Db}.
+        \item The honeycomb is not a Bravais lattice. Why??
+        \begin{itemize}
+            \item Ask in OH.
+        \end{itemize}
+    \end{itemize}
+    \item 3D Bravais lattice.
+    % \item Triclinic systems.
+    % \begin{itemize}
+    %     \item $a\neq b\neq c$, $\alpha\neq\beta\neq\gamma\neq\ang{90}$.
+    %     \item 1 possible type of Bravais lattice.
+    % \end{itemize}
+    % \item Monoclinic system.
+    % \begin{itemize}
+    %     \item ...
+    % \end{itemize}
+    % \item Orthorhobmic system.
+    % \begin{itemize}
+    %     \item ...
+    % \end{itemize}
+    % \item Tetragonal system.
+    % \begin{itemize}
+    %     \item ...
+    % \end{itemize}
+    % \item Rhombohedral system.
+    % \begin{itemize}
+    %     \item ...
+    % \end{itemize}
+    % \item Hexagonal system.
+    % \begin{itemize}
+    %     \item ...
+    % \end{itemize}
+    % \item Cubic system.
+    % \begin{itemize}
+    %     \item ...
+    % \end{itemize}
+    \begin{table}[H]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.4}
+        \begin{tabular}{ccccc}
+             & P & I & C & F\\
+            \begin{tabular}{@{}c@{}}
+                Triclinic\\[-2mm]
+                \footnotesize
+                $a\neq b\neq c$\\[-2mm]
+                \footnotesize
+                $\alpha\neq\beta\neq\gamma\neq\ang{90}$
+            \end{tabular}
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.3);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.38,0) coordinate (a) circle (1.5pt)
+                        (0.64,0.26) coordinate (b) circle (1.5pt)
+                        (-0.22,1.6) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                &  &  & \\
+            \begin{tabular}{@{}c@{}}
+                Monoclinic\\[-2mm]
+                \footnotesize
+                $a\neq b\neq c$\\[-2mm]
+                \footnotesize
+                $\beta=\gamma=\ang{90}$\\[-2mm]
+                \footnotesize
+                $\alpha\neq\ang{90}$
+            \end{tabular}
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.3);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.3,0) coordinate (a) circle (1.5pt)
+                        (0.62,0.24) coordinate (b) circle (1.5pt)
+                        (0,1.65) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.3);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.3,0) coordinate (a) circle (1.5pt)
+                        (0.62,0.24) coordinate (b) circle (1.5pt)
+                        (0,1.65) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                        ($0.5*($(a)+(b)+(c)$)$)circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                        \draw [dash pattern=on 2pt off 2pt] (bc) -- (a);
+                    \end{scope}
+                }
+                &  & \\
+            \begin{tabular}{@{}c@{}}
+                Orthorhombic\\[-2mm]
+                \footnotesize
+                $a\neq b\neq c$\\[-2mm]
+                \footnotesize
+                $\alpha=\beta=\gamma=\ang{90}$
+            \end{tabular}
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.38,0) coordinate (a) circle (1.5pt)
+                        (0.27,0.21) coordinate (b) circle (1.5pt)
+                        (0,1.78) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.38,0) coordinate (a) circle (1.5pt)
+                        (0.27,0.21) coordinate (b) circle (1.5pt)
+                        (0,1.78) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                        ($0.5*($(a)+(b)+(c)$)$)circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                        \draw [dash pattern=on 2pt off 2pt] (bc) -- (a);
+                    \end{scope}
+                }
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.38,0) coordinate (a) circle (1.5pt)
+                        (0.27,0.21) coordinate (b) circle (1.5pt)
+                        (0,1.78) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                        ($0.5*($(a)+(b)$)$)circle (1.5pt)
+                        ($0.5*($(a)+(b)$)+(c)$)circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.38,0) coordinate (a) circle (1.5pt)
+                        (0.27,0.21) coordinate (b) circle (1.5pt)
+                        (0,1.78) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                        ($0.5*($(a)+(b)$)$)circle (1.5pt)
+                        ($0.5*($(a)+(b)$)+(c)$)circle (1.5pt)
+                        ($0.5*($(a)+(c)$)$)circle (1.5pt)
+                        ($0.5*($(a)+(c)$)+(b)$)circle (1.5pt)
+                        ($0.5*($(b)+(c)$)$)circle (1.5pt)
+                        ($0.5*($(b)+(c)$)+(a)$)circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                \\
+            \begin{tabular}{@{}c@{}}
+                Tetragonal\\[-2mm]
+                \footnotesize
+                $a=b\neq c$\\[-2mm]
+                \footnotesize
+                $\alpha=\beta=\gamma=\ang{90}$
+            \end{tabular}
+            & \tikz[baseline={(0,0.6)},scale=0.7]{
+                \path (0,-0.4) -- (0,2.4);
+                \filldraw [fill=white]
+                    (0,0) coordinate (O) circle (1.5pt)
+                    (1.38,0) coordinate (a) circle (1.5pt)
+                    (0.37,0.21) coordinate (b) circle (1.5pt)
+                    (0,1.78) coordinate (c) circle (1.5pt)
+                    ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                    ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                    ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                    ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                ;
+                \begin{scope}[on background layer]
+                    \draw [line join=bevel]
+                        (O) -- (a) -- (ab) -- (b) -- cycle
+                        (c) -- (ac) -- (abc) -- (bc) -- cycle
+                        (O) -- (c)
+                        (a) -- (ac)
+                        (b) -- (bc)
+                        (ab) -- (abc)
+                    ;
+                \end{scope}
+            }
+            & \tikz[baseline={(0,0.6)},scale=0.7]{
+                \path (0,-0.4) -- (0,2.4);
+                \filldraw [fill=white]
+                    (0,0) coordinate (O) circle (1.5pt)
+                    (1.38,0) coordinate (a) circle (1.5pt)
+                    (0.37,0.21) coordinate (b) circle (1.5pt)
+                    (0,1.78) coordinate (c) circle (1.5pt)
+                    ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                    ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                    ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                    ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ($0.5*($(a)+(b)+(c)$)$)circle (1.5pt)
+                ;
+                \begin{scope}[on background layer]
+                    \draw [line join=bevel]
+                        (O) -- (a) -- (ab) -- (b) -- cycle
+                        (c) -- (ac) -- (abc) -- (bc) -- cycle
+                        (O) -- (c)
+                        (a) -- (ac)
+                        (b) -- (bc)
+                        (ab) -- (abc)
+                    ;
+                    \draw [dash pattern=on 2pt off 2pt] (bc) -- (a);
+                \end{scope}
+            }
+                &  & \\
+            \begin{tabular}{@{}c@{}}
+                Rhombohedral\\[-2mm]
+                \footnotesize
+                $a=b=c$\\[-2mm]
+                \footnotesize
+                $\alpha=\beta=\gamma\neq\ang{90}$
+            \end{tabular}
+                & \tikz[baseline={(0,0.9)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.3,0.23) coordinate (a) circle (1.5pt)
+                        (0.62,0.41) coordinate (b) circle (1.5pt)
+                        (0.79,1.33) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                &  &  & \\
+            \begin{tabular}{@{}c@{}}
+                Hexagonal\\[-2mm]
+                \footnotesize
+                $a=b\neq c$\\[-2mm]
+                \footnotesize
+                $\alpha=\beta=\ang{90}$\\[-2mm]
+                \footnotesize
+                $\gamma=\ang{120}$
+            \end{tabular}
+                & \tikz[baseline={(0,0.7)},scale=0.7]{
+                    \path (0,-0.4) -- (0,2.5);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.1,0) coordinate (a) circle (1.5pt)
+                        (-0.79,0.23) coordinate (b) circle (1.5pt)
+                        (0,1.81) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                &  &  & \\
+            \begin{tabular}{@{}c@{}}
+                Cubic\\[-2mm]
+                \footnotesize
+                $a=b=c$\\[-2mm]
+                \footnotesize
+                $\alpha=\beta=\gamma=\ang{90}$
+            \end{tabular}
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.5) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.46,-0.06) coordinate (a) circle (1.5pt)
+                        (0.42,0.34) coordinate (b) circle (1.5pt)
+                        (0,1.63) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.5) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.46,-0.06) coordinate (a) circle (1.5pt)
+                        (0.42,0.34) coordinate (b) circle (1.5pt)
+                        (0,1.63) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                        ($0.5*($(a)+(b)+(c)$)$)circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                        \draw [dash pattern=on 2pt off 2pt] (bc) -- (a);
+                    \end{scope}
+                }
+                & 
+                & \tikz[baseline={(0,0.6)},scale=0.7]{
+                    \path (0,-0.5) -- (0,2.4);
+                    \filldraw [fill=white]
+                        (0,0) coordinate (O) circle (1.5pt)
+                        (1.46,-0.06) coordinate (a) circle (1.5pt)
+                        (0.42,0.34) coordinate (b) circle (1.5pt)
+                        (0,1.63) coordinate (c) circle (1.5pt)
+                        ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                        ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                        ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                        ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                        ($0.5*($(a)+(b)$)$)circle (1.5pt)
+                        ($0.5*($(a)+(b)$)+(c)$)circle (1.5pt)
+                        ($0.5*($(a)+(c)$)$)circle (1.5pt)
+                        ($0.5*($(a)+(c)$)+(b)$)circle (1.5pt)
+                        ($0.5*($(b)+(c)$)$)circle (1.5pt)
+                        ($0.5*($(b)+(c)$)+(a)$)circle (1.5pt)
+                    ;
+                    \begin{scope}[on background layer]
+                        \draw [line join=bevel]
+                            (O) -- (a) -- (ab) -- (b) -- cycle
+                            (c) -- (ac) -- (abc) -- (bc) -- cycle
+                            (O) -- (c)
+                            (a) -- (ac)
+                            (b) -- (bc)
+                            (ab) -- (abc)
+                        ;
+                    \end{scope}
+                }
+                \\
+        \end{tabular}
+        \caption{Bravais lattices.}
+        \label{tab:bravaisLattices}
+    \end{table}
+    \begin{itemize}
+        \item Each lattice is a polyhedron.
+        \begin{itemize}
+            \item The polyhedrons can be described using three different vectors.
+        \end{itemize}
+        \item Some of the Bravais lattices can be expressed by other simple lattices: In 3D, the FCC lattice is also described by a rhombohedral lattice.
+        \item There is no base-centered cubic Bravais lattice because what might be that is actually simple tetragonal.
+    \end{itemize}
+    \item There are 4 types of Bravais lattices.
+    \begin{itemize}
+        \item P - Primitive.
+        \item I - Body centered.
+        \item C - Base-centered.
+        \item F - Face centered.
+        \item More on these and how they correspond to space groups later.
+    \end{itemize}
+    \item \textbf{Unit cell}: The smallest group of atoms which has the overall symmetry of a crystal.
+    \begin{itemize}
+        \item Can be used to build the entire lattice by repetition in three dimensions.
+        \item A 3D structure.
+    \end{itemize}
+    \item \textbf{Primitive cell}: The smallest possible element of a lattice.
+    \begin{itemize}
+        \item May or may not include all symmetry elements.
+        \item Can have 2D or 3D structure.
+    \end{itemize}
+    \item Conventional and primitive cells.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{primitiveNonHexa.png}
+            \caption{Primitive vs. non-primitive.}
+            \label{fig:primitiveNonHexa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.32\linewidth}
+            \centering
+            \includegraphics[width=0.75\linewidth]{primitiveNonHexb.png}
+            \caption{Simple hexagonal.}
+            \label{fig:primitiveNonHexb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.72\linewidth]{primitiveNonHexc.png}
+            \caption{HCP.}
+            \label{fig:primitiveNonHexc}
+        \end{subfigure}
+        \caption{Conventional vs. primitive cells.}
+        \label{fig:primitiveNonHex}
+    \end{figure}
+    \begin{itemize}
+        \item The hexagonal 2D Bravais lattice (the conventional cell) might also be described as rhombic (the primitive cell). See Figure \ref{fig:Bravais2Db}.
+        \item The hexagonal 3D Bravais lattice is a hexagonal prism that can also be constructed from a primitive cell which is a parallelepiped.
+        \item Know simple hexagonal vs. hexagonal close-packed (HCP). See Figures \ref{fig:primitiveNonHexb}-\ref{fig:primitiveNonHexc}.
+        \item Clarification on primitive vs. non-primitive?? See Figure \ref{fig:primitiveNonHexa}.
+        \item What is a lattice point??
+    \end{itemize}
+    \item Miller indices.
+    \begin{itemize}
+        \item In 1839, the British mineralogist William H. Miller used \emph{reciprocal quantities} --- namely, the integer numbers $h,k,l$ --- to describe crystal faces.
+        \item Miller indices are used to specify directions and planes.
+        \item These directions and planes could be in lattices or in crystals.
+        \item Notation (important information!):
+        \begin{itemize}
+            \item $(h,k,l)$ represents a \textbf{point} (commas are used).
+            \item $[hkl]$ represents a \textbf{direction}.
+            \item $<hkl>$ represents a \textbf{family of directions}.
+            \item $(hkl)$ represents a \textbf{plane}.
+            \item $\{hkl\}$ represents a \textbf{family of planes}.
+        \end{itemize}
+        \item Be careful when writing/reading research literature to use/interpret the write notation.
+        \item Negative numbers and directions are depicted with a bar on top of the number.
+    \end{itemize}
+    \item Miller indices for directions.
+    \begin{itemize}
+        \item Let's consider a 2D lattice with Miller indices $(4,-2)$.
+        \begin{itemize}
+            \item Defines a vector pointing in the direction $4\vec{a}-2\vec{b}$. It is parallel to many other vectors.
+            \item The index $(4,-2)$ [notational issue here??] represents the set of all such parallel vectors.
+        \end{itemize}
+        \item The number of indices matches the dimension of lattice (e.g., 1D lattice has 1 Miller index, 2D lattice has 2 Miller indices, etc.).
+        \item Fractions in $(r_1r_2r_3)$ are eliminated by multiplying all components by their common denominator. Example: $(1,3/4,1/2)$ will be expressed as $(4,3,2)$.
+    \end{itemize}
+    \item Miller indices: $hkl$ review.
+    \begin{itemize}
+        \item See \textcite{bib:CHEM26300Notes} for more.
+        \item You just have to remember that Miller indices represent the reciprocals of the fractional intercepts which the plane makes with crystallographic axes.
+        \item Notice how $(421)$ [i.e., parentheses] is used to denote a plane!
+    \end{itemize}
+    \item How to find Miller indices for planes.
+    \begin{itemize}
+        \item Great slide in the slideshow; one stop shop for Miller indices.
+        \item The planes we will most commonly study are $(100)$, $(001)$, and $(010)$ planes.
+        \item Algorithm.
+        \begin{itemize}
+            \item Identity the plane intercepts on the $x$-, $y$-, and $z$-axes.
+            \item Define intercepts in fractional coordinates.
+            \item Take the reciprocals of the fractional intercepts.
+        \end{itemize}
+    \end{itemize}
+    \item Miller indices.
+    \begin{itemize}
+        \item Continuation of the previous slide but for slanted planes.
+        \item Keep in mind that different planes have different chemical distributions. One plane in an oxide may be mostly oxygen; another may be mostly copper.
+    \end{itemize}
+    \item Crystal structure, lattice, etc.
+    \begin{itemize}
+        \item Crystal structure combines \textbf{lattice} with the \textbf{basis} again.
+        \item A lattice is not a crystal. However, if the basis consists of one atom, crystal structures look exactly like the Bravais lattice.
+        \item Common metallic crystal structures: BCC, FCC, hexagonal close-packed (HCP).
+    \end{itemize}
+    \item Example 1: Diamond.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.2\linewidth]{structDiamond.png}
+        \caption{Diamond crystal structure.}
+        \label{fig:structDiamond}
+    \end{figure}
+    \begin{itemize}
+        \item Bravais lattice: FCC with a two-atom basis.
+        \item Crystal structure: Cubic diamond.
+        \item Two atom basis at $(0,0,0)$ and $(1/4,1/4,1/4)$.
+    \end{itemize}
+    \item Example 2: \ce{NaCl}.
+    \begin{itemize}
+        \item Bravais lattice: FCC.
+        \item Crystal structure: FCC.
+        \item Both atoms make FCC lattices and you get the overall structure by inserting one lattice into the other.
+    \end{itemize}
+    \item Example 3: Primitive cubic substances.
+    \begin{itemize}
+        \item Examples: \ce{Fe}, \ce{CsCl}, and \ce{NiAl}.
+        \item Bravais lattice: Primitive cubic with a two-atom basis (\ce{Cs} at $(0,0,0)$ and \ce{Cl} at $(1/2,1/2,1/2)$).
+        \item Crystal structure: Primitive.
+    \end{itemize}
+    \item From Bravais lattices to a full description of crystalline structure.
+    \begin{itemize}
+        \item Bravais lattices: There are 14 and they account for translational symmetry. But there are also additional symmetry elements (rotation, inversion, reflection).
+        \begin{itemize}
+            \item We discount additional potential translation symmetry operations for now.
+        \end{itemize}
+        \item If you apply all of these other operations to the Bravais lattices, you get 32 crystal classes/point groups.
+        \item If you add in \textbf{screw} and \textbf{glide} operations, you get 230 total space groups. This number does depend on the dimension of the space, though, i.e., fewer space groups exist in 2D (to a significant extent).
+    \end{itemize}
+    \item \textbf{Screw}: Rotation followed by a translation.
+    \item \textbf{Glide}: Reflection followed by a translation.
+    \item Screw and glide operations.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.35\linewidth}
+            \centering
+            \includegraphics[width=0.53\linewidth]{screwGlidea.png}
+            \caption{Screw.}
+            \label{fig:screwGlidea}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.35\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{screwGlideb.png}
+            \caption{Glide.}
+            \label{fig:screwGlideb}
+        \end{subfigure}
+        \caption{Screw and glide operations.}
+        \label{fig:screwGlide}
+    \end{figure}
+    \begin{itemize}
+        \item These are essentially just combinations of the rotation axes and the mirror planes with the characteristic translations of the crystals.
+    \end{itemize}
+    \item Discovery of the space groups.
+    \begin{itemize}
+        \item Retrat de Arthur Schoenflies (Germany) and Evgraf Fedorov (Russia) proposed space groups while in correspondence via mail.
+        \item The triumph of their studies was only after the discovery of the utilization of X-rays in structural studies of minerals.
+        \item Developed 1890-92.
+    \end{itemize}
+    \item Symmetry operator notation (Hermann-Mauguin).
+    \begin{table}[H]
+        \centering
+        \includegraphics[width=0.6\linewidth]{HermannMauguin.png}
+        \caption{Hermann-Mauguin notation.}
+        \label{fig:HermannMauguin}
+    \end{table}
+    \begin{itemize}
+        \item Shevchenko won't go into too much depth; she doesn't even remember that much herself, but it's good to know how to read one.
+    \end{itemize}
+    \item How to "read" space groups.
+    \begin{itemize}
+        \item In the notation for a space group, the first letter is the Bravais lattice and then there are three symmetry elements with respect to 3 viewing directions.
+        \item Example: \ce{NiAsS} is orthorhombic with space group $Pca2_1$.
+        \begin{itemize}
+            \item $P$ refers to the Bravais lattice.
+            \item $c$ refers to a glide plane $c\perp a$.
+            \item $a$ refers to a glide plane $a\perp b$. What do these mean??
+            \item $2_1$ refers to a screw axis parallel to $c$.
+        \end{itemize}
+        \item In screw axis notation, "the big number is how many stops you make??"
+        \item Can 3 symmetry elements describe the full symmetry?
+        \begin{itemize}
+            \item There are structures with more symmetry elements (e.g., 8, 16, etc.).
+            \item Their symmetries can be derived from generators, though. So yes??
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Space group}: The symmetry group of an object in space.
+    \begin{itemize}
+        \item Alternate definition: A set of symmetry elements and respective operations that completely describes the spatial arrangements of a given 3D periodic system.
+        \item In crystals, space is three dimensional.
+    \end{itemize}
+    \item Viewing directions.
+    \begin{itemize}
+        \item The position of the symmetry element depends on the type of lattice.
+        \item If it is triclinic, the symmetry elements are always "around" the center of inversion.
+        \item If it's monoclinic, there is one viewing direction besides the inversion center (mathematicians have arbitrarily chosen $b$ to be said direction).
+        \item Shevchenko doesn't think many people memorize this unless they're really into it, but it's worth understanding once. How much do we need to know??
+        \item Consider building models.
+    \end{itemize}
+    \item XRD databases.
+    \begin{itemize}
+        \item This is probably the most important/relevant information in this lecture for our research.
+        \item In the 1940s, the best crystallographers in the world analyzed a bunch of materials and started to build a database.
+        \item Started by Hanawalt and associates while he was at Dow chemicals. They built a database and used it for chemical analogies.
+        \item The principal of the analysis is based on the $d$ spacings of the strongest reflections.
+        \item \$50 per set was very expensive at the time, but worth it because it saved so much work.
+        \item In 1941, the JCPDS (Joint Committee on Powder Diffraction Standards) was founded.
+        \begin{itemize}
+            \item 1978: Became the ICDD (International Center for Diffraction Data).
+            \item Still have a ton of scientists working on diffraction analysis (around 300 in 1978).
+        \end{itemize}
+    \end{itemize}
+    \item Data analysis.
+    \begin{itemize}
+        \item The slides list databases that contain powder diffraction data (line positions and their intensities).
+        \item We have access as UChicago students.
+        \item Different databases have different specialties.
+        \item Programs for search and match are available, too.
+        \item Website for visualization, coordinates, and finding primitive and basis vectors (\href{https://www.atomic-scale-physics.de/lattice/struk/a4.html}{link})
+    \end{itemize}
+    \item XRD analysis can help you with\dots
+    \begin{itemize}
+        \item Phase identification;
+        \item Crystallite size measurements.
+        \item Texture analysis.
+        \item Etc.
+        \item We can also study processes (this is very useful).
+        \item Examples:
+        \begin{itemize}
+            \item Phase transitions.
+            \item Crystallite growth.
+            \item Thermal expansion.
+            \item Ion intercalation.
+            \item Decomposition.
+            \item Oxidation.
+            \begin{itemize}
+                \item We can observe a flattening/broadening of curves. The oxidized material may be crystalline, but it may well be amorphous, too, leading to said broadening.
+            \end{itemize}
+            \item Stability of the catalysts.
+        \end{itemize}
+    \end{itemize}
+    \item Diffractograms.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{diffractogramsa.png}
+            \caption{Peaks.}
+            \label{fig:diffractogramsa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.32\linewidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{diffractogramsb.png}
+            \caption{2D average.}
+            \label{fig:diffractogramsb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.85\linewidth]{diffractogramsc.png}
+            \caption{Dots (single crystal).}
+            \label{fig:diffractogramsc}
+        \end{subfigure}
+        \caption{Diffractogram types.}
+        \label{fig:diffractograms}
+    \end{figure}
+    \begin{itemize}
+        \item Our diffractograms will largely look like peaks (see Figure \ref{fig:diffractogramsa}).
+        \item 2D detectors (as with synchrotrons) yield circular patterns or circular dot patterns.
+        \item Dots (see Figure \ref{fig:diffractogramsc}) are generated by single crystals.
+        \begin{itemize}
+            \item Myoglobin is a protein in muscles. It stores oxygen to bind and release oxygen depending on the oxygen concentrations in the cell, has functions in the hemostasis of nitric oxide and in the detoxification of reactive oxygen species. Myoglobin is the reason for the red color of the muscle of most vertebrates.
+        \end{itemize}
+        \item Averaged rings (see Figure \ref{fig:diffractogramsb}) are generated by polycrystalline materials.
+        \begin{itemize}
+            \item What is pictured is actually the first X-ray diffraction pattern of Martian soil (from the Curiosity rover at "Rocknest" on October 17, 2012).
+            \item \textbf{Feldspar}, \textbf{pyroxenes}, \textbf{olivine}, etc. were identified (this kind of identification and confirmation can take experts years since the data is so cluttered).
+            \item We read these with software in general. Calculate distances, work with the parameters of our instrument, etc.
+            \begin{itemize}
+                \item 2D is better because gaps in the circles provide information, too??
+                \item Decades of experience and the help of your peers helps you decipher these images.
+            \end{itemize}
+        \end{itemize}
+        \item Most of us will work with the APS at Argonne (shut down in April 2023 and will be back online a year later).
+    \end{itemize}
+    \item \textbf{Feldspar}: Aluminum tectosilicate minerals, e.g., \ce{KAlSi3O8}, \ce{NaAlSi3O8}, and \ce{CaAl2Si2O8}.
+    \item \textbf{Pyroxenes}: General form \ce{XY(Si,Al)2O6}, where \ce{X} can be \ce{Ca}, \ce{Na}, \ce{Fe^II}, \ce{Mg}, etc. and \ce{Y} can be \ce{Cr}, \ce{Al}, \ce{Mg}, \ce{Co}, \ce{Mn}, \ce{Sc}, \ce{V}, etc.
+    \item \textbf{Olivine}: General form \ce{(Mg^2+,Fe^2+)2SiO4}.
+    \item Sample preparation.
+    \begin{itemize}
+        \item Methods:
+        \begin{itemize}
+            \item Drop and dry: Make a suspension of nanoparticles or a colloidal solution, drop it onto the plate, and wait for it to dry.
+            \item Grinding: Powder gets grinded and then compacted.
+            \item Crystallization: Proteins get crystallized, for example.
+        \end{itemize}
+        \item Diffractogram depends on:
+        \begin{itemize}
+            \item Graininess.
+            \item Micro-absorption.
+            \item Texture.
+            \item Sample height displacement/adjustments.
+            \item Surface roughness.
+            \item Sample transparency.
+        \end{itemize}
+    \end{itemize}
+    \item Diffractograms.
+    \begin{itemize}
+        \item Peak positions are determined by tje size and shape of the unit cell.
+        \item Peak intensities are determined by the atomic number and position of the various atoms within the unit cell.
+        \item Peak widths determined by instrument parameters (and other factors, discussed later).
+        \item Temperature, crystal size, strain, and other imperfections in the material.
+    \end{itemize}
+    \item Sample's graininess.
+    \begin{itemize}
+        \item Single crystals should generate "spotty diffracted rays." Powder samples should generate continuous rings.
+        \item Grainy samples lead to variation in the intensity of the peaks, missing peaks, etc.
+        \item If you work with grainy samples, grind first and adjust the divergence slits second. You can also spin the sample and/or open the divergence slits to increase the probability of something getting hit.
+    \end{itemize}
+    \item Micro-absorption.
+    \begin{itemize}
+        \item There are materials and elements with high and low absorption of X-rays. Your spectrum will depend on the high absorption ones??
+        \item In XRD, we don't care about elements, but we do care about their Z-number.
+        \item \ce{CsCl} and \ce{CsI} are interesting examples. They have the same structure but different numbers of lines in the X-ray pattern.
+        \item \ce{Cs} and \ce{Cl} are not isoelectronic but \ce{Cs} and \ce{I} are. X-rays are scattered by electrons, so to X-rays, these atoms look the same. Leads to systematic peak absences.
+    \end{itemize}
+    \item Size-effect.
+    \begin{itemize}
+        \item Thicker films have more peaks in general.
+    \end{itemize}
+    \item Texture/preferred orientation.
+    \begin{itemize}
+        \item Nanoparticles vs. short rods vs. long rods.
+        \item It looks a lot better when you have more nanoparticles aligned in particular directions.
+        \item At 75\%, we're pretty good.
+        \item Same story with the types of rods.
+        \item There are various creative solutions found on the internet (including Vaseline, hair spray, etc.) to get the particles to line up the way you want.
+        \begin{itemize}
+            \item The underlying tactic is always providing some medium in which the particles can interact/rearrange.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}

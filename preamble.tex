@@ -5,7 +5,7 @@
 \usepackage{enumitem}
 \usepackage{siunitx}
 \usepackage[style=apa]{biblatex}
-\usepackage{graphicx}
+\usepackage{graphicx,tikz}
 \usepackage{subcaption,float}
 \usepackage{amsmath,amssymb}
 \usepackage{physics,bm}
@@ -29,6 +29,10 @@
 \reversemarginpar
 
 \setitemize[3]{label={\scriptsize$\blacksquare$}}
+\setitemize[4]{label={\tikz[scale=0.06,baseline={(0,-0.14)}]{
+    \draw [line width=0.3pt] (0,1) -- (1.2,0) -- (0,-1) -- (3.5,0) -- cycle;
+    \fill (1.2,0) -- (0,-1) -- (3.5,0);
+}}}
 
 \sisetup{range-phrase={-},range-units=single}
 \DeclareSIUnit{\atmosphere}{atm}
@@ -36,5 +40,12 @@
 \DeclareSIUnit{\angstrom}{\textup{\AA}}
 
 \addbibresource{\subfix{../main.bib}}
+\DefineBibliographyStrings{english}{bibliography={References}}
 
 \graphicspath{{../ExtFiles/}}
+
+\usetikzlibrary{calc,angles,backgrounds}
+\colorlet{rex}{red!80!black!90!orange!80}
+\colorlet{blx}{blue!70!green!77}
+\colorlet{grx}{green!50!black!90!yellow!80}
+\colorlet{orx}{orange!90!black!90!red!80}
