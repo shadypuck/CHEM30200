@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{X-Ray Diffraction}
 \section{XRD Analysis 2}
 \begin{itemize}
     \item \marginnote{1/10:}Dealing with broadening of the XRD beam.
@@ -1060,13 +1060,553 @@
     \begin{itemize}
         \item Nanoparticles vs. short rods vs. long rods.
         \item It looks a lot better when you have more nanoparticles aligned in particular directions.
-        \item At 75\%, we're pretty good.
+        \item You can just set them down, but more often than not you have to align them after the fact.
+        \item At 75\% particle alignment, we're pretty good (fewer peaks; more emphasis on the actual peaks of importance).
         \item Same story with the types of rods.
         \item There are various creative solutions found on the internet (including Vaseline, hair spray, etc.) to get the particles to line up the way you want.
         \begin{itemize}
             \item The underlying tactic is always providing some medium in which the particles can interact/rearrange.
         \end{itemize}
     \end{itemize}
+\end{itemize}
+
+
+
+\section{XRD Analysis 3 + Diamond Anvil Cell}
+\begin{itemize}
+    \item \marginnote{1/12:}HW will be posted today (mostly XRD questions).
+    \item Today: Finishing up XRD and moving on to diamond anvil cells.
+    \item We pick up from last time with texture/preferred orientations.
+    \item Examples of effective preparation strategies.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.4\linewidth]{preparationStrategies}
+        \caption{Preparation strategies vs. XRD clarity.}
+        \label{fig:preparationStrategies}
+    \end{figure}
+    \begin{itemize}
+        \item Consider \ce{GeS} NPs.
+        \begin{itemize}
+            \item 2D semiconductor with \SI{1.65}{\electronvolt} band gap in the bulk form.
+            \item They exhibit strong in-plane crystalline anisotropy.
+        \end{itemize}
+        \item Effect of structure on properties: Highly anisotropic excitons, high carrier mobility channels, and thermal conduction pathways.
+        \item If you look at the set X-ray diffractograms in Figure \ref{fig:preparationStrategies}, you will see that certain synthetic techniques give better results.
+        \begin{itemize}
+            \item Here, for instance, drop-cast is the best --- PXRD shows a significant preferred orientation in the $[100]$ direction when \ce{GeS} nanosheets are drop-cast (green) and only minimal preferred orientation when prepared as a powder (blue).
+        \end{itemize}
+    \end{itemize}
+    \item Sample height displacement.
+    \begin{itemize}
+        \item Having to adjust the height of your sample.
+        \begin{itemize}
+            \item This is not a super common issue, but it's more common than we'd like.
+        \end{itemize}
+        \item Many diffractometers (not synchrotron ones) have sample holders made of silicon or plastic with either no broad spectrum XRD peaks or one massive peak that can be used as a reference.
+        \item These sample holders have indentations made to be filled with powder. However, we need the powder surface to lie at the level of the sample holder, not above or below.
+        \begin{itemize}
+            \item You can also fill the gap with silicon, place a drop of your sample, and then wait for it to dry, leaving behind a thin film.
+        \end{itemize}
+        \item Negative consequences of not correctly adjusting height.
+        \begin{itemize}
+            \item $2\theta$ shift of the peaks (too low = shift to lower angles; too high = shift to higher angles).
+            \item Broader peaks.
+            \item Loss of intensity of the X-ray peaks.
+            \item Distorted peak profiles as a result of partial blocking of the beam.
+        \end{itemize}
+    \end{itemize}
+    \item Rough sample surface.
+    \begin{itemize}
+        \item Same negative consequences as with height displacement issues.
+    \end{itemize}
+    \item Sample transparency.
+    \begin{itemize}
+        \item Absorption of X-rays is unwanted.
+        \item Solution.
+        \begin{itemize}
+            \item Use very thin samples.
+            \item Use a transmission Debye-Scherrer instrument with capillaries (instead of the Bragg-Brentano reflection geometry).
+            \begin{itemize}
+                \item It's not very common to use this setup, but it does happen.
+            \end{itemize}
+        \end{itemize}
+        \item Similar negative consequences to the last two, except that loss of intensity is no longer an issue.
+    \end{itemize}
+    \item The effect of the size of the crystalline domain.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{NPsize.png}
+        \caption{Resolution increases with larger crystal size.}
+        \label{fig:NPsize}
+    \end{figure}
+    \begin{itemize}
+        \item Increasing particle size leads to thinner, higher, and more well-defined peaks.
+        \item Blurring effects due to small particle size can also be observed in larger polycrystalline samples.
+        \begin{itemize}
+            \item Indeed, SEM-observable micro-scale structures may not be single crystals; they may be polycrystalline, themselves.
+        \end{itemize}
+        \item The relation between particle size and peak broadening is formalized by the \textbf{Scherrer equation}.
+    \end{itemize}
+    \item \textbf{Scherrer equation}: The following equation, where $D$ is the crystallite thickness / mean size of the ordered crystalline domains, $\lambda$ is the X-ray wavelength, $K$ is the shape factor ($\sim 0.9$ for spherical grains), $B$ is the \textbf{FHWM}, and $\theta$ is the Bragg angle. \emph{Given by}
+    \begin{equation*}
+        D = \frac{K\lambda}{B\cos\theta}
+    \end{equation*}
+    \begin{itemize}
+        \item Accurate size analysis requires correction for instrument broadening via
+        \begin{equation*}
+            B^2 = B_m^2-B_\text{ref}^2
+        \end{equation*}
+        where $B_m$ is the measured FWHM and $B_\text{ref}$ is the corresponding FWHM of the \textbf{bulk reference}.
+        \item Readily applicable for crystal size of \SIrange{2}{100}{\nano\meter}.
+        \begin{itemize}
+            \item Applicable up to \SI{500}{\nano\meter} if a synchrotron light source is used.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Bulk reference}: A reference crystalline material with large grain size ($>\SI{200}{\nano\meter}$).
+    \item \textbf{Full width at half maximum}: The width of a peak in an XRD spectrum at half of the maximum height. \emph{Also known as} \textbf{FWHM}.
+    \begin{itemize}
+        \item Normalize the baseline, then take the width of the peak at half of the maximum height.
+        \item Can be fit with Gaussian, Lorentzian, Gaussian-Lorentzian, etc.
+        \item Important for particle or grain size (as discussed above) and residual strain (discussed later).
+    \end{itemize}
+    \item Mixture of sizes and phases.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=0.85\linewidth]{sizePhasea.png}
+            \caption{Mixture of sizes.}
+            \label{fig:sizePhasea}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \includegraphics[width=0.85\linewidth]{sizePhaseb.png}
+            \caption{Mixture of phases.}
+            \label{fig:sizePhaseb}
+        \end{subfigure}
+        \caption{Mixtures of sizes and phases.}
+        \label{fig:sizePhase}
+    \end{figure}
+    \begin{itemize}
+        \item Sizes: Leads to peak broadening at the bottom but not the peaks.
+        \item Phases: Materials that have the same chemical composition can have different crystal structures (e.g., \ce{CdS} can be both wurtzite and zinc blende).
+        \begin{itemize}
+            \item The peak positions don't coincide, leading to both extra peaks than either individual spectrum would have and some loss of information.
+            \item Loss of information: When peaks coincide (see, for example, the second peak from the left in the bottom spectrum in Figure \ref{fig:sizePhaseb}, which adds into the one right above it), the two original peaks can no longer be separated.
+            \item Implication: When you analyze your data, you have to be aware that your material can exist in several forms.
+            \item This is especially important for those of us who work with MOFs; we need to check the database for all possible structures of what we might have!
+        \end{itemize}
+        \item How do we know what the percent composition of our material is?
+        \begin{itemize}
+            \item We have to play with conditions experimentally, get a bunch of spectrums, and then reverse engineer.
+            \item Check the database and if you see enhancement of a particular peak.
+            \item You can be like, "Yes it's wurtzite but there are other things I don't recognize; what's going on?"
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Vegard's law}: Suggests a linear relationship between the lattice constants of an alloy and its composition. (See Figure \ref{fig:vegardsLaw}, which is highly exaggerated and not to scale.)
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw (0,4.5) -- node[rotate=90,above]{Intensity} (0,0) -- node[below]{$2\theta$} (7,0);
+            \draw [dashed]
+                (1,0) -- ++(0,4.5)
+                (4,0) -- ++(0,4.5)
+            ;
+    
+            \footnotesize
+            \draw [rex,thick,yshift=2.2cm] plot[domain=0:7,samples=500,smooth] (\x,{0.1/(18*((\x-0.6)^2+1/324))+0.1/(9*((\x-3.6)^2+1/81))}) node[above left]{Metal 2};
+            \draw [rex,thick,yshift=1.2cm] plot[domain=0:7,samples=500,smooth] (\x,{0.1/(18*((\x-0.8)^2+1/324))+0.1/(9*((\x-3.8)^2+1/81))}) node[above left]{Amalgam};
+            \draw [rex,thick,yshift=0.2cm] plot[domain=0:7,samples=500,smooth] (\x,{0.1/(18*((\x-1)^2+1/324))+0.1/(9*((\x-4)^2+1/81))}) node[above left]{Metal 1};
+        \end{tikzpicture}
+        \caption{Vegard's law.}
+        \label{fig:vegardsLaw}
+    \end{figure}
+    \begin{itemize}
+        \item An empirical observation (a useful estimate, but it is \emph{not} a physical law).
+        \item If you have an alloy of silver and gold, your peak position will be somewhere in the middle; can help you determine the fractional composition of your alloy.
+        \begin{itemize}
+            \item Could be another good midterm question.
+        \end{itemize}
+        \item The effect can be very small (e.g., gold and silver are very close, so the shift is pretty small).
+    \end{itemize}
+    \item Effect of \textbf{strains}.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \draw [dashed] (0,0) -- ++(0,4.5);
+    
+            \footnotesize
+            \draw [rex,thick,yshift=3.2cm] plot[domain=-1:1,samples=100,smooth] (\x,{0.05/(18*((\x)^2+1/324))}) node[above right]{No strain};
+            \draw [rex,thick,yshift=1.7cm] plot[domain=-1:1,samples=100,smooth] (\x,{0.05/(18*((\x+0.4)^2+1/324))}) node[above right]{Uniform strain};
+            \draw [rex,thick,yshift=0.2cm] plot[domain=-1:1,samples=100,smooth] (\x,{0.05/(6*((\x)^2+1/36))}) node[above right]{Non-uniform strain};
+        \end{tikzpicture}
+        \caption{Strains.}
+        \label{fig:strains}
+    \end{figure}
+    \begin{itemize}
+        \item A common problem for those working in battery materials, and also NPs.
+    \end{itemize}
+    \item \textbf{Strain}: The "amount" of deformation experienced by the material in the direction of force applied, divided by the initial dimension of the body. \emph{Denoted by} $\bm{\varepsilon}$. \emph{Given by}
+    \begin{equation*}
+        \varepsilon = \frac{\Delta L}{L}
+        = \frac{\Delta d}{d}
+    \end{equation*}
+    \begin{itemize}
+        \item What is $L$??
+    \end{itemize}
+    \item \textbf{Uniform} (strain): Strain that affects lattice planes or all planes to the same extent.
+    \item Example: Compressive strain.
+    \begin{equation*}
+        \varepsilon = \frac{d_1-d_0}{d_0}
+    \end{equation*}
+    \begin{itemize}
+        \item This is uniform strain along one Cartesian axis.
+        \item Causes peak \emph{shifts}. Peak shape is preserved.
+    \end{itemize}
+    \item \textbf{Non-uniform} (strain): Strain that affects different parts of the sample to a different extent.
+    \item Example: Bending a material such that the edges flex more than the middle.
+    \begin{equation*}
+        \text{Varies -- }d_1\text{ not constant}
+    \end{equation*}
+    \begin{itemize}
+        \item Causes peak \emph{broadening}.
+    \end{itemize}
+    \item Strain comes from Bragg's law.
+    \begin{itemize}
+        \item Throughout this derivation, we will assume uniform compressive strain.
+        \item Let $\Delta d$ be the change in the interplanar distance $d$ induced by the compression, and let $\beta$ be the change in the Bragg angle.
+        \begin{itemize}
+            \item Since $\varepsilon=\Delta d/d$, $\Delta d=\varepsilon d$. Thus, the new interplanar distance is $d-\varepsilon d$.
+            \item Similarly, the new Bragg angle is $\theta+\beta$.
+        \end{itemize}
+        \item Thus, Bragg's law for the compressed system is
+        \begin{equation*}
+            n\lambda = 2(d-\varepsilon d)\sin(\theta+\beta)
+        \end{equation*}
+        \item Therefore,
+        \begin{align*}
+            n\lambda &= 2(d-\varepsilon d)(\sin\theta\cos\beta+\cos\theta\sin\beta)\\
+            &= (2d-2\varepsilon d)(\sin\theta+\beta\cos\theta)\\
+            &= 2d\sin\theta-2\varepsilon d\sin\theta+2\beta d\cos\theta-2\beta\varepsilon d\cos\theta\\
+            0 &= -2\varepsilon d\sin\theta+2\beta d\cos\theta-2\beta\varepsilon d\cos\theta\\
+            &= -\varepsilon\sin\theta+\beta\cos\theta-\beta\varepsilon\cos\theta\\
+            &= -2\varepsilon\tan\theta+2\beta-2\beta\varepsilon\\
+            &= -2\varepsilon\tan\theta+2\beta\\
+            \beta &= \varepsilon\tan\theta
+        \end{align*}
+        \item Justifications of some of the above equalities.
+        \begin{itemize}
+            \item Second equality: Note that $\beta$ is very small, hence $\cos\beta\approx 1$ and $\sin\beta\approx\beta$.
+            \item Fourth equality: Originally, $n\lambda=2d\sin\theta$.
+            \item Seventh equality: $\beta$ is very small permits neglecting the $-2\beta\varepsilon$ term in the sixth line.
+        \end{itemize}
+    \end{itemize}
+    \item Origin of strains in materials.
+    \begin{itemize}
+        \item Dislocations, stacking faults, long range stresses, grain boundaries, sub-boundaries, internal stresses, chemical heterogeneities, etc.
+        \item Some are natural (those at the beginning??), some are induced (those at the end??).
+    \end{itemize}
+    \item Phase identification.
+    \begin{itemize}
+        \item Symmetry has an effect on the XRD pattern.
+        \item In particular, structures with higher symmetries have fewer peaks.
+        \item The fundamentals of this were covered in a different class.
+        \begin{itemize}
+            \item How much do I need to know about these fundamentals??
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Isomorphism}: Property of some substances which have different chemical composition but crystallize with a similar external shape because of their similar crystal structure.
+    \item \textbf{Polymorphism}: Property of certain substances with the same chemical composition but different external shapes because they can crystallize with more than one crystal structure.
+    \item \textbf{Allotropism}: The property of some chemical elements to exist in two or more different forms in the same physical state.
+    \begin{itemize}
+        \item Relevance to crystallography: Allotropic crystals, when heated, can expand unequally in the direction of dissimilar axes.
+    \end{itemize}
+    \item \textbf{Allotrope}: One of the forms defined by allotropism.
+    \item We now move on to diamond anvil cell (DAC) experiments.
+    \begin{itemize}
+        \item You're not limited only to XRD here, but this is a common application.
+        \item Shevchenko chose to present this because there's a lot of expertise on the technique at UChicago and especially at the APS.
+    \end{itemize}
+    \item Advanced synchrotron for characterization and synthesis of materials.
+    \begin{itemize}
+        \item Questions about this or want to do it? Contact Vitali Prakapenka at APS, Sector 13.
+        \item This can be high pressure, or really really high pressure.
+        \item Most of what we know about the structure of the Earth's deep interior comes from the study of seismic wave velocities.
+        \item In order to interpret such measurements in terms of mineralogical/compositional models of the Earth's interior, data on the physical and chemical properties of minerals at high pressures and temperatures are essential.
+        \item Knowledge of thermodynamics, phase equilibria, crystal chemistry, crystallography, rheology, diffusion, and heat transport are required to characterize the structure and dynamics of the Earth's deep interior.
+    \end{itemize}
+    \item Understanding the universe.
+    \begin{itemize}
+        \item What certain planets' cores are made of. Dependence on temperature, presence of oxygen, etc.
+        \item We hypothesize about other planets' cores by studying Earth's.
+        \begin{itemize}
+            \item Recall the first X-ray diffraction pattern of Martian soil (Figure \ref{fig:diffractogramsb}). Based on what happens on Earth, we can make assumptions about what happens elsewhere.
+        \end{itemize}
+        \item Research on what's underground on Earth is done with things like the Kola Superdeep Borehole (just 9 inches in diameter, but at 12,000+ meters; half the distance or less to the mantle). Operational between 1970-1989; close to Shevchenko's birthplace (Belarus).
+        \item Bertha Rogers hole in Washita county, Oklahoma (9,000+ meters).
+        \item May 2008: Curved borehole BD-04A in the Al Shaheen Oil Field of Qatar is being actively investigated.
+    \end{itemize}
+    \item \textbf{Diamond anvil cell}. \emph{Also known as} \textbf{DAC}.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.3\linewidth]{DAC.png}
+        \caption{Diamond anvil cell.}
+        \label{fig:DAC}
+    \end{figure}
+    \begin{itemize}
+        \item Working principle:
+        \begin{equation*}
+            P = \frac{F}{A}
+        \end{equation*}
+        \begin{itemize}
+            \item Thus, if we want to achieve high pressure, one way to do this is to decrease the surface area.
+        \end{itemize}
+        \item Sample placed on the \textbf{cullets} of the diamond.
+        \item Reasons to use diamond.
+        \begin{itemize}
+            \item It's a very hard material (rated 10/10 on the Mohs scale of mineral hardness).
+            \item It is also a transparent perfect crystal, so we can do spectroscopic studies (in the case of XRD, we get one characteristic peak).
+            \item There is no phase transition upon compression.
+            \item High thermal stability.
+        \end{itemize}
+        \item One problem: Crushing of diamonds.
+    \end{itemize}
+    \item \textbf{Cullet}: The surface area at the top of the diamond.
+    \begin{itemize}
+        \item \SIrange{2}{500}{\micro\meter} in size, depending on the type of DAC.
+    \end{itemize}
+    \item Ultra-high-pressure experiments to beyond \SI{1}{\tera\pascal}.
+    \begin{itemize}
+        \item We can be smart and load another smaller diamond into onto the cullet.
+        \item Beamline 30 is the world's best source for this stuff.
+        \item It is common to study the different phases of water.
+    \end{itemize}
+    \item Types of diamond anvil cells.
+    \begin{itemize}
+        \item Many pictures of real-life ones plus a GIF of the different components (see Excess Class Pictures).
+        \item Change the pressure via the screws, which determine how close the diamonds are.
+        \item The cell casing is usually made of materials that are functional at extremely high and extremely low temperatures because these are often conditions of interest.
+        \item Contains a \textbf{gasket}.
+        \item The \textbf{pressure medium} transmits force to your material.
+        \item We monitor the pressure using spectroscopy.
+        \begin{itemize}
+            \item Typically either ruby balls or gold flakes are included in the pressure medium.
+            \item Ruby balls are good; gold flakes can be monitored using XRD.
+            \item Gold is superior because it does not have any phase transitions and all lattices move, i.e., are isotropically contracted. In fact, it is required at very high pressure.
+        \end{itemize}
+        \item Important parameters.
+        \begin{itemize}
+            \item Size of the cullet. If larger, you need more pressure, but at too high pressure, you get some cracks. Usually around \SIrange{200}{250}{\micro\meter}??
+            \item Beam size.
+            \item One or many samples. If many, consider movement of the samples upon compression and pressure release.
+            \item Pressure medium (isotropic/anisotropic).
+        \end{itemize}
+        \item You need to make sure that no part of your sample is too close to the edge.
+        \item You can get help with sample loading at a beamline.
+    \end{itemize}
+    \item \textbf{Gasket}: The wedge that encloses the pressure-transmitting medium.
+    \item Pressure transmitting medium.
+    \begin{itemize}
+        \item Gas, solid, or liquid.
+        \item Gas is great because it applies the same pressure in every direction (it is isotropic).
+        \item \ce{He} and \ce{Ne} are the best gases; lightweight, very small, not high-Z enough to interfere with XRD.
+        \item If you study the same sample but use different pressure transmitting media, the result can be totally different.
+    \end{itemize}
+    \item Argonne's APS.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{ArgonneAPS.png}
+        \caption{APS at Argonne.}
+        \label{fig:ArgonneAPS}
+    \end{figure}
+    \begin{itemize}
+        \item It's a relatively large circular building.
+        \item Different numbers correspond to the sectors; each sector has different beamlines.
+        \item Along the ring, electrons are traveling.
+        \item Electrons are generated in the same way that they're generated in electron microscopes. Then there is an inner circle in which they are traveling. Then they are extracted using magnets and go to the larger circle.
+        \item The quality of synchrotron facilities is determined by a few parameters. One of them is the uniformity of the X-rays.
+    \end{itemize}
+    \item Uniformity of the X-rays.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.85\linewidth]{uniformXraysa.png}
+            \caption{X-ray tube.}
+            \label{fig:uniformXraysa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.32\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{uniformXraysb.png}
+            \caption{Bending magnet.}
+            \label{fig:uniformXraysb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{uniformXraysc.png}
+            \caption{Wiggler.}
+            \label{fig:uniformXraysc}
+        \end{subfigure}\\[2em]
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{uniformXraysd.png}
+            \caption{Undulator.}
+            \label{fig:uniformXraysd}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.33\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{uniformXrayse.png}
+            \caption{Free electron laser.}
+            \label{fig:uniformXrayse}
+        \end{subfigure}
+        \caption{Making uniform X-rays.}
+        \label{fig:uniformXrays}
+    \end{figure}
+    \begin{itemize}
+        \item Methods of achieving uniform, collimated X-rays.
+        \begin{itemize}
+            \item Bending magnets (BMs).
+            \begin{itemize}
+                \item Aren't super precise.
+            \end{itemize}
+            \item Insertion devices (IDs).
+            \begin{itemize}
+                \item E.g., \textbf{wigglers} and \textbf{undulators}.
+            \end{itemize}
+            \item Free electron lasers.
+            \item See Figure \ref{fig:uniformXrays} for schematics of all of these.
+        \end{itemize}
+        \item Look for BMs and IDs in Figure \ref{fig:ArgonneAPS}.
+        \item Dipole magnets are used to get \textbf{bends} in the \textbf{design trajectory} (or \textbf{orbit}) of the particles.
+        \begin{itemize}
+            \item This is what the APS currently uses.
+        \end{itemize}
+        \item The wavelength of the radiation emitted can be readily tuned by adjusting the energy of the electron beam or the magnetic-field strength.
+    \end{itemize}
+    \item Undulator/Wiggler I.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{undulatorWiggler.png}
+        \caption{Undulator/wiggler structure.}
+        \label{fig:undulatorWiggler}
+    \end{figure}
+    \begin{itemize}
+        \item Undulators/wigglers are insertion devices consisting of a periodic structure of dipole magnets.
+        \item History.
+        \begin{itemize}
+            \item Vitali Ginsburg (1947): Theoretical prediction of undulators.
+            \item Hanz Motz (Stanford, 1952): First experimental use to get coherent radiation (IR waves).
+        \end{itemize}
+        \item The magnets can be permanent or superconducting.
+        \begin{itemize}
+            \item Synchrotrons use the latter.
+        \end{itemize}
+        \item The static magnetic field alternates along the length of the undulator with a wavelength $\lambda_u$.
+        \begin{itemize}
+            \item So we use super small magnets?? How do we get significant enough changes in the magnetic field??
+        \end{itemize}
+        \item Electrons going through the periodic magnet structure are forced to oscillate, emitting radiation.
+        \item The direction of the beam is called the \textbf{longitudinal direction}.
+        \item The direction of the beam path is called \textbf{transverse}.
+        \item Electromagnetic Lorentz force from the magnetic field causes the electrons in the beam to wiggle transversely.
+    \end{itemize}
+    \item Undulator/Wiggler II.
+    \begin{itemize}
+        \item Undulator and wiggler are similar (can be the same device): By increasing or decreasing magnetic field strength or moving permanent magnets closer or farther apart, the device can be setup as a wiggler or undulator.
+        \item Determining if a device is an undulator or a wiggler:
+        \begin{equation*}
+            K = \frac{eB\lambda_u}{2\pi m_ec}
+        \end{equation*}
+        \item Variable definitions.
+        \begin{itemize}
+            \item $K$ is an undulator strength parameter (characterizes the nature of electron motion).
+            \item $e$ is the electron charge.
+            \item $B$ is the magnetic field.
+            \item $\lambda_u$ is the spatial period of the undulator magnets.
+            \item $m_e$ is the electron rest mass.
+            \item $c$ is the speed of light.
+        \end{itemize}
+        \item We cannot change $e,m_e,c$.
+        \item If $K\leq 1$, the oscillation amplitude of the electron motion is small and we get a narrow energy distribution of X-rays.
+        \begin{itemize}
+            \item The radiation produced is very intense, concentrated in narrow energy bands in the spectrum, and collimated.
+            \item This yields an undulator.
+        \end{itemize}
+        \item If $K\geq 1$, then the oscillation amplitude of the electron motion is big.
+        \begin{itemize}
+            \item The radiation produced lies in a broad energy distribution of X-rays.
+            \item This yields a wiggler.
+        \end{itemize}
+    \end{itemize}
+    \item APS.
+    \begin{itemize}
+        \item 35 sectors with 68 beamlines (22 BM and 46 undulators; no FEL).
+    \end{itemize}
+    \item APS upgrade timeline.
+    \begin{itemize}
+        \item Starts April 17, 2023.
+        \item Ends April 2024.
+        \begin{itemize}
+            \item A similar upgrade at the Advanced Light Source (ALS) at the Lawrence Berkeley National Laboratory is scheduled to begin in 2025.
+        \end{itemize}
+        \item Shevchenko predicts most of us will get a chance to experience it before it closes.
+        \begin{itemize}
+            \item I should ask Yingjie about this!
+        \end{itemize}
+    \end{itemize}
+    \item APS upgrade details.
+    \begin{itemize}
+        \item Upgrade of the storage ring to a Multi-Bend Achromat (MBA) lattice (APS-U).
+        \begin{itemize}
+            \item Will lead to dramatic improvements in the brightness of the X-rays in both ID and BM beamlines at the APS.
+        \end{itemize}
+        \item More on the major changes to the storage ring.
+        \begin{itemize}
+            \item The number of photons will remain the same, but electrons will be really concentrated.
+            \item The energy of the electrons will be lowered from 7 to \SI{6}{\giga\electronvolt}.
+        \end{itemize}
+        \item Don't just memorize this info, but also think about why these changes are needed.
+        \begin{itemize}
+            \item For example, lowering the energy is necessary because it easier to keep the electrons in the ring (think $mv^2/r$); if we didn't lower energy, we'd need either a whole new facility with a larger radius or stronger magnets (but neither of these are really reasonable).
+        \end{itemize}
+        \item Major changes to the beamlines.
+        \begin{itemize}
+            \item New optimized undulators for all the beamlines (ID lines) since the energy of the electrons is changing.
+            \item Possibly some BM upgrades?
+        \end{itemize}
+        \item Reduction of the horizontal emittance of the machine by a factor of about 40 (the number may actually be much higher).
+        \begin{itemize}
+            \item Leads to a much smaller electron beam source size.
+        \end{itemize}
+    \end{itemize}
+    \item Free-electron laser.
+    \begin{itemize}
+        \item The principle is the same as for the undulator/wiggler: Indeed, the beam passes through a periodic arrangement of magnets with alternating poles across the beam pass.
+        \begin{itemize}
+            \item However, the beam of electrons (a lot of them) is accelerated to almost the speed of light (thus, these facilities are huge).
+        \end{itemize}
+        \item The released photons from an undulator are monochromatic but still incoherent because the electromagnetic waves from randomly distributed electrons can interfere constructively and destructively.
+        \begin{itemize}
+            \item To solve this problem, FELs send electrons in a bunch --- the radiation emitted by the bunched electrons can be in phase and hence is coherent.
+            \item Implies great time resolution (useful for studying \ce{CdSe}, etc. by sending pulses).
+        \end{itemize}
+        \item The credit for these machines should be given to John Madley (Stanford, 1971). He built on Motz's work on the undulator.
+        \item The released photons are captured by mirrors in the laser cavity, inducing more electrons to emit light, resulting in amplification of the light.
+        \item It is very difficult to get time at these facilities.
+    \end{itemize}
+    \item We now talk about some examples of high-pressure studies at APS.
+    \item Diamond anvil cell program at GSECARRs (Sector 13).
+    \begin{itemize}
+        \item Raman, infrared, visible, XRD, heat, etc. All kinds!
+        \item If you're planning an experiment, talk to someone at the beamline.
+        \item I should read that XAFS basic book more!
+    \end{itemize}
+    \item A few examples will be wrapped up next time.
 \end{itemize}
 
 
