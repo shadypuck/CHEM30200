@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{Electron Microscopy}
 \section{Diamond Anvil Cell + Scanning Electron Microscopy}
 \begin{itemize}
     \item \marginnote{1/17:}There will be a demonstration class with Dr. Filatov some afternoon. He will show us how to run some experiments, both sample-wise and data-wise.
@@ -433,6 +433,338 @@
     \end{figure}
     \begin{itemize}
         \item It is really important to have good focus.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Scanning and Transmission Electron Microscopy}
+\begin{itemize}
+    \item \marginnote{1/19:}Image focusing.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\linewidth]{imageFocusing.png}
+        \caption{Image focusing.}
+        \label{fig:imageFocusing}
+    \end{figure}
+    \begin{itemize}
+        \item In optical microscopy, the focus is adjusted by moving the sample up and down.
+        \item In SEM, we "move" the beam.
+        \item In particular, we can adjust the magnetic field strength (and hence the focal length) of the OL by changing the current in it.
+    \end{itemize}
+    \item SEM vs. TEM.
+    \begin{itemize}
+        \item Example SEM vs. TEM images.
+    \end{itemize}
+    \item Design of the SEM instruments.
+    \begin{itemize}
+        \item Front-loading systems and sample transferring protocol.
+    \end{itemize}
+    \item Low vacuum SEM.
+    \begin{itemize}
+        \item Examples: Tabletop microscopes, environmental SEM.
+        \item The pressure can be adjusted in the sample chamber until the "electron charging" is removed from images.
+        \item Images without conductive coatings have lower resolutions.
+        \item Example problem you can address with LV-SEM: Whether face masks are effective in preventing the spread of COVID-19.
+        \begin{itemize}
+            \item A \SI{1}{\micro\meter} polymer was used to mimic the virus.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Cryo-SEM}: A special method using a deep-cooled stage that allows imaging of \emph{hydrated} specimens by freezing the samples to very low temperatures (below \SI{-100}{\celsius}) where solid water is stable even in vacuum.
+    \begin{itemize}
+        \item Examples: Pictures of termites and collagen fibers.
+    \end{itemize}
+    \item Is it possible to do imaging using SEM?
+    \begin{itemize}
+        \item Yes??
+    \end{itemize}
+    \item Review of Figure \ref{fig:eInteractionVolume}.
+    \begin{itemize}
+        \item What was said here??
+    \end{itemize}
+    \item We now move onto transmission electron microscopy (TEM).
+    \item Early TEM.
+    \begin{itemize}
+        \item In 1964, Dr. June Almeda took the first image of a coronavirus.
+        \begin{itemize}
+            \item Dr. Almeda attempted to report particles like this before while investigating infectious bronchitis in chickens.
+            \item However, her paper was rejected because the reviewers said that the images could just be bad pictures of influenza virus particles.
+        \end{itemize}
+        \item More bio background on the development of TEM.
+    \end{itemize}
+    \item Size comparison.
+    \begin{itemize}
+        \item Light microscopes can resolve down to about \SI{100}{\nano\meter} (about the size of the flu virus).
+        \item Electron microscopes can resolve from \SI{1}{\micro\meter} (about the size of a bacterium) down to about \SI{0.5}{\nano\meter} (about the size of a buckyball).
+        \item Picture with more examples of objects in these size ranges.
+    \end{itemize}
+    \item Discovery of electrons.
+    \begin{itemize}
+        \item William Crookes of Crookes tubes returns!
+        \item In 1879, he found that \textbf{cathode rays} can be bent by a magnetic field and the direction of the deflection indicated that there were negatively charged particles (different metals or gases inside??).
+        \begin{itemize}
+            \item However, these experiments did not settle the question of whether cathode rays were particles or radiation similar to light.
+        \end{itemize}
+        \item J. J. Thomson (1897): Studies cathode rays (in Crookes tubes with a good vacuum) between two parallel aluminum plates.
+        \begin{itemize}
+            \item If the top \ce{Al} electrode was negative, the rays moved down.
+            \item If the top \ce{Al} electrode was positve, the rays moved up.
+            \item Furthermore, the deflection was proportional to the difference in potential between the plates.
+        \end{itemize}
+        \item These two sets of experiments established that cathode rays could be deflected, and that this deflection behavior could be induced by magnetic and electric fields.
+        \item Conclusion: Cathode rays have negatively charged particles (electrons).
+        \item Impact:
+        \begin{itemize}
+            \item Shed light on the nature of electricity.
+            \item Determined the ratio of mass-to-charge for the electron (very small, explaining why electrons can "flow" through metals).
+        \end{itemize}
+    \end{itemize}
+    \item Charge of the electron.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\linewidth]{oilDropExp.png}
+        \caption{Oil-drop experiment.}
+        \label{fig:oilDropExp}
+    \end{figure}
+    \begin{itemize}
+        \item Robert Millikan (1910 at UChicago): Oil-drop experiment.
+        \item X-rays interact with the oil and produce (a) charge(s) that is/are confined within a droplet.
+        \item No charge applied: The fall of the droplet is determined by its mass and the medium's viscosity.
+        \item Charge applied: The droplets stopped falling or even rose (depending on the number of charges).
+        \item The position of droplets was dependent on the applied voltage.
+        \item Millikan measured the electronic charge to two sig figs: \SI{1.6e-19}{\coulomb}.
+    \end{itemize}
+    \item Electrons as waves.
+    \begin{itemize}
+        \item Louis de Broglie (1924): Particles, such as electrons, could be described not only as particles but also as waves.
+        \item Derivation of the de Broglie wavelength $\lambda_B$:
+        \begin{equation*}
+            \lambda_B = \frac{h}{p}
+        \end{equation*}
+        \item Photons always move at the same velocity (the speed of light).
+        \item Particles, on the other hand, have mass and momentum. If $v\ll c$, then
+        \begin{equation*}
+            \lambda_B = \frac{h}{mv}
+        \end{equation*}
+        \item Keep in mind the difference between speed and velocity.
+    \end{itemize}
+    \item Early days of TEM.
+    \begin{itemize}
+        \item Max Knoll and Ernst Ruska (1931): The first transmission microscope.
+        \begin{itemize}
+            \item Ruska won the 1986 Nobel prize in physics for his many achievements in electron optics.
+        \end{itemize}
+        \item 1939: First commercial TEM.
+        \item Working principle of TEM.
+        \begin{itemize}
+            \item Similar to that of light microscopes: Light rays used to focus and produce an image vs. a beam of electrons used to focus on the sample to produce an image.
+            \item Electrons have much shorter wavelengths than light.
+        \end{itemize}
+    \end{itemize}
+    \item Building blocks of the TEM.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{TEMBuildingBlocksa.png}
+            \caption{3D picture.}
+            \label{fig:TEMBuildingBlocksa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=0.55\linewidth]{TEMBuildingBlocksb.png}
+            \caption{2D picture.}
+            \label{fig:TEMBuildingBlocksb}
+        \end{subfigure}
+        \caption{TEM building blocks.}
+        \label{fig:TEMBuildingBlocks}
+    \end{figure}
+    \begin{itemize}
+        \item \textbf{Electron source}, \textbf{electron beam}, \textbf{condenser lenses}, \textbf{sample}, \textbf{objective lens}, \textbf{objective aperture}, \textbf{projector lenses}, \textbf{viewing screen}.
+    \end{itemize}
+    \pagebreak
+    \item Electron source.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{TEMSourcea.png}
+            \caption{Thermionic source.}
+            \label{fig:TEMSourcea}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \includegraphics[width=0.45\linewidth]{TEMSourceb.png}
+            \caption{Field Emission Gun.}
+            \label{fig:TEMSourceb}
+        \end{subfigure}
+        \caption{TEM electron sources.}
+        \label{fig:TEMSource}
+    \end{figure}
+    \begin{itemize}
+        \item \textbf{Thermionic source} and \textbf{field emission gun}.
+        \item A high voltage ($\sim\SIrange{60}{300}{\kilo\volt}$) is applied.
+    \end{itemize}
+    \item \textbf{Thermionic emission}: Emission of electrons into a vacuum achieved by applying a current (e.g., to single crystal of \ce{LaB6}, \ce{CeB6}, or \ce{W}) and heating.
+    \begin{itemize}
+        \item \ce{W} is cheap and easy to replace, but evaporates and breaks; lower brightness, broad beam, and hence reduced image resolution.
+        \item \ce{LaB6} and \ce{CeB6}: Lower temperatures, lower beam spread, higher brightness, less volatile than tungsten (longer life time). But requires a higher vacuum (more expensive).
+    \end{itemize}
+    \item \textbf{Field Emission Gun}: A strong electrostatic field is applied to a sharply pointed tip of \ce{W}, leading to the release of high-energy electrons. \emph{Also known as} \textbf{FEG}.
+    \begin{itemize}
+        \item Developed by Albert Victor Crewe and Hittachi (1964 at UChicago).
+        \item The emission area is small and hence brightness is high; enhanced image quality (high spatial resolution and increased signal-to-noise ratio); last long; but expensive (require very high vacuum).
+    \end{itemize}
+    \item \textbf{Schottky FEG}: A FEG that combines the thermionic and FEG sources (\ce{W} coated with \ce{ZrO2}).
+    \item \textbf{Cold FEG}: Another type of FEG. \emph{Also known as} \textbf{CFEG}.
+    \begin{itemize}
+        \item Schottky FEGs have shorter lifetimes than CFEGs and worse image quality because of a larger energy spread, but better stability.
+    \end{itemize}
+    \item Relativistic and non-relativistic electron KE vs. wavelength curves.
+    \begin{itemize}
+        \item Also data on the accelerating voltage vs. frequency and wavelength.
+        \item Significance??
+    \end{itemize}
+    \item Voltage: $\lambda$ correlations.
+    \begin{itemize}
+        \item Electrons are accelerated by the applied voltage $V$ and thus gain kinetic energy $mv^2/2$ (or, equivalently, $eV$ where $e$ is the charge of the electron).
+        \item Since $\lambda_B=h/mv$, increasing $v=(eV/m)^{1/2}$ decreases the wavelength.
+        \item Combining these two equations and plugging in values for $h,m,e$, we learn that
+        \begin{equation*}
+            \lambda_B = \frac{h}{(2meV)^{1/2}}
+            = \frac{12.3}{V^{1/2}}
+        \end{equation*}
+        \item The $A$??
+    \end{itemize}
+    \item \textbf{Condenser lens}: An electromagnetic or electrostatic lens that is used in an electron microscope to guide and focus the electrons.
+    \begin{itemize}
+        \item The first lens through which the electrons pass (C1) determines the \textbf{spot size}.
+        \item The second lens through which the electrons pass (C2) varies the \textbf{brightness}.
+    \end{itemize}
+    \item \textbf{Spot size}: The illumination spot on the sample.
+    \item \textbf{Brightness}: The amount of illumination of the specimen.
+    \item Aperture.
+    \begin{itemize}
+        \item The origin of spherical aberration.
+        \begin{itemize}
+            \item Electrons pas through the lens.
+            \item Those at the periphery of the lens are refracted more than those in the middle.
+            \item All the electrons will therefore not reach a common focal point.
+        \end{itemize}
+        \item Solution: An aperture is used to eliminate some of the peripheral electrons.
+        \item The aperture also helps control the amount of illumination reaching the specimen.
+        \item The origin of chromatic aberration.
+        \begin{itemize}
+            \item High energy electrons get deflected more??
+            \item Ask more about this??
+        \end{itemize}
+    \end{itemize}
+    \item Specimen area.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\linewidth]{TEMSampleHolder.png}
+        \caption{Sample holder for TEM.}
+        \label{fig:TEMSampleHolder}
+    \end{figure}
+    \begin{itemize}
+        \item The sample is inserted using a sample holder.
+        \begin{itemize}
+            \item Sample holders come in many shapes and sizes. There are regular \textbf{JEOLs}, JEOL high tilt retainers, multiple sample models, etc.
+            \item They can be further specialized for sample rotation (single tilt, double tilt, etc.), sample heating, or \emph{in situ} experiments.
+        \end{itemize}
+        \item The basic design is a long arm that extends to a gap between the objective lenses.
+    \end{itemize}
+    \item Objective lenses.
+    \begin{itemize}
+        \item \textbf{Objective lenses} and \textbf{objective apertures}.
+    \end{itemize}
+    \item \textbf{Objective lens}: A lens that forms, magnifies, and focuses the first image. \emph{Also known as} \textbf{OL}.
+    \item \textbf{Objective aperture}: A lens that cuts off peripheral electrons to control contrast and spherical aberration. \emph{Also known as} \textbf{OA}.
+    \begin{itemize}
+        \item The OA consists of two \textbf{polepieces}, an upper and a lower one, surrounding the specimen holder from above and below. They are oppositely charged and create an appropriate field.
+    \end{itemize}
+    \item Intermediate lenses.
+    \begin{itemize}
+        \item These magnify the image from the OL and focus the diffraction pattern.
+        \item There is also an \textbf{intermediate aperture} that is a diffraction aperture responsible for choosing the diffracted area.
+    \end{itemize}
+    \item Projective lenses.
+    \begin{itemize}
+        \item Magnify the image/control magnification.
+    \end{itemize}
+    \item Imaging systems.
+    \begin{itemize}
+        \item A fluorescent screen or a \textbf{CCD} (\textbf{charge coupled device}) camera.
+        \item The CCD records in a digital format.
+    \end{itemize}
+    \item Astigmation.
+    \begin{itemize}
+        \item Reviews astigmation (see Figure \ref{fig:astigmation} and the above discussion).
+        \item Stigmators are located in the condenser and objective lenses.
+    \end{itemize}
+    \item Origin of image contrast in TEM.
+    \begin{itemize}
+        \item Mass contrast: Absorption differences for different materials.
+        \begin{itemize}
+            \item Dark contrast refers to the heavy element/large atom number/thick sample.
+            \item In other words, the darker regions of the image depict thicker or heavier samples.
+        \end{itemize}
+        \item Diffraction contrast: Contrast depends critically on diffraction conditions.
+        \item Phase contrast: Contrast that depends on the phase shift of electrons passing through the sample.
+        \begin{itemize}
+            \item Lorentz microscopy and electron holography.
+        \end{itemize}
+        \item High-angle annular dark field (HAADF) imaging.
+        \begin{itemize}
+            \item Also known as scanning TEM (STEM) contrast.
+            \item A function of atomic number.
+        \end{itemize}
+    \end{itemize}
+    \item Mass contrast.
+    \begin{itemize}
+        \item Same as above.
+    \end{itemize}
+    \item Sample preparation.
+    \begin{itemize}
+        \item We use special TEM grids.
+        \item There is often some polishing involved, also with polishing paper.
+        \item \textbf{Ion milling} can be used.
+    \end{itemize}
+    \item \textbf{Ion milling}: Removal of the top layer of atoms.
+    \begin{itemize}
+        \item A \ce{Ga} ion source is often used.
+        \item This is composed of \ce{Ga} in contact with a sharp \ce{W} tip.
+        \item The electric field induces ionization and field emission of \ce{Ga+}.
+        \item Focusing is done by an electrostatic lens.
+    \end{itemize}
+    \item Typical TEM images of nanoparticles and nanowires.
+    \begin{itemize}
+        \item Many examples shown, including \ce{CdSe}, \ce{CdS}, \ce{Fe_xO_y}, etc.
+    \end{itemize}
+    \item \ce{Ag}/\ce{AgCl} dimer.
+    \begin{itemize}
+        \item Mass contrast differentiates \ce{Ag} and \ce{AgCl}.
+    \end{itemize}
+    \item Structural rearrangements in \ce{Au} nanoparticles at high temperatures.
+    \begin{itemize}
+        \item Beam heating, laser heating, and thermal heating (i.e., in a small furnace holder) can all be used to observe phase changes, structural changes, etc.
+    \end{itemize}
+    \item TEM images of carbon nanomaterials.
+    \begin{itemize}
+        \item Several examples.
+    \end{itemize}
+    \item Dislocation upon nucleation (2D-to-3D transition).
+    \begin{itemize}
+        \item Strained 2D layers become strain-free 3D islands.
+        \item Significance??
+    \end{itemize}
+    \item Electronic devices with nanoparticle superstructures.
+    \begin{itemize}
+        \item Pictures of computer-y stuff.
+    \end{itemize}
+    \item More nanoparticle pictures.
+    \begin{itemize}
+        \item Significance??
     \end{itemize}
 \end{itemize}
 
