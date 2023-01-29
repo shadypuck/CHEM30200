@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{Spectroscopy Wrap-Up}
 \section{XPS and Misc. Spectroscopic Techniques}
 \begin{itemize}
     \item \marginnote{1/24:}If it looks like there will be snow on exam day, we'll do a virtual exam.
@@ -601,6 +601,111 @@
         \item These provide great overviews of what we've talked out and what can be used to provide answers about various types of nanomaterials.
     \end{itemize}
     \item Shevchenko will share last year's exam and this year's will be simpler; solve all questions.
+\end{itemize}
+
+
+
+\section{Hands-On Class}
+\begin{itemize}
+    \item \marginnote{1/26:}XPS at this school never works.
+    \item Taught by Sophie Anferov (formerly Whitmeyer).
+    \item Sophie runs a lot of samples for a lot of people. Dong and Levin group have trained crystallographers, but most people go through her.
+    \item Sophie is a 4th year and will be thinking about passing the job along soon, so if we're interested, we should reach out.
+    \item If we ever have crystals (we're not organic, so probably not many of us), we can email Alex and CC her; they have a crystallography form that you can submit and then they'll schedule you.
+    \item First, we have to crystallize them.
+    \begin{itemize}
+        \item Use a solvent that your substance isn't readily soluble in and pull your crystal out or add another solvent to kick it out; you want to promote slow growth.
+    \end{itemize}
+    \item Crystals are special because of their periodicity.
+    \item Most crystals are run cold ($\sim\SI{100}{\kelvin}$ here and in a \ce{N2} stream).
+    \begin{itemize}
+        \item It shouldn't ice, but if you ever do see icing, let them know; it will affect your results since ice is a crystal, itself!
+    \end{itemize}
+    \item Crystals are run overnight (4PM-next morning) to get as much data as possible.
+    \item This instrument has a molybdenum source for most crystals (90\% of the time; goes out further, better bond resolution, and bright enough) and a copper source for some (you need brighter, but will not "go out as far"). If you get a chiral space group, switching to copper may make sense.
+    \item This diffractometer model is 8-10 years old, but Sophie thinks its one of the best ones since some newer ones have problems.
+    \item The copper and molybdenum X-ray tubes are on the right.
+    \item This facility is mainly single crystal (the only one on campus), but can also do some PXRD.
+    \item The doors need to shut for the X-ray to turn on; make sure they're shut if you're having errors!
+    \item There is an emergency eject switch on the inside, but obviously don't get trapped inside.
+    \item Lights on the left side mean that both beams are ready to go.
+    \item \textbf{Twin spectra}: The dual spectra of two crystals overlaid on top of each other; complicates your results.
+    \item Crystals with lines in them are not good (inspect in dark mode on the microscope); this probably means they have a crack or an impurity.
+    \item "It's nice to have something you know diffracts in case something weird is happening."
+    \item We put the crystals in mineral oil to get them here, and then get them into the machine with a \textbf{crystal loop}.
+    \begin{itemize}
+        \item Our loops are made of plastic (amorphous and thus don't show up) and glass.
+        \item There's a lot of loop history, but Sophie isn't familiar.
+    \end{itemize}
+    \item Your goal in mounting a crystal is to get the crystal onto the tip of the loop; it needs to be well-centered.
+    \begin{itemize}
+        \item This is a bit of an acquired skill.
+        \item If you don't center it properly, it may move out of the field during a rotation in the experiment.
+        \item The beam lies in the top-right quadrant, not the center, so you have to put it there.
+    \end{itemize}
+    \item Make sure that the distance is about twice the length of your longest plane; if you have 10,10,20, then use 40??
+    \item Mineral oil helps it adhere to the loop, helps with air sensitivity, and prevents things from skittering away if you...
+    \item If your compound is soluble in Pet ether, it will probably dissolve in the mineral oil, in which case you need to use very small quantities of oil and move quickly. There aren't really many alternatives to oil, so you just have to be fast.
+    \item An intense ring indicates a powder structure; we need to watch out for this.
+    \item You can take sample scans.
+    \begin{itemize}
+        \item Here, our first step is determining the unit cell; this is an important check to make sure that our compound looks right. Prevents us from wasting our money and time on an XRD experiment.
+        \item This is not necessary at Argonne (or other synchrotrons), though.
+    \end{itemize}
+    \item Most analysis is done on the new computer in the room.
+    \begin{itemize}
+        \item Has a nice Cambridge database downloaded.
+        \begin{itemize}
+            \item The CCDC.
+            \item Nicer than what you can get online.
+        \end{itemize}
+        \item Unit cell search to start.
+        \item It's best policy to submit structure to the database before/after publishing. All of the information you need to upload should be in your crystal file. Questions? Ask Alex or Sophie.
+    \end{itemize}
+    \item They \emph{can} collect \textbf{connectivity structures} (lower res), but usually they only collect publication-quality structures.
+    \begin{itemize}
+        \item Certain organic professors like publishing low-res structures, but this makes the department look bad.
+    \end{itemize}
+    \item You need to make sure that every frame in a rotation video has spots in it.
+    \item Sensitivity around 5 to collect lots of spots, but not spurious ones. Then click harvest. 51 distinct spots is usually enough to get a unit cell.
+    \item Some people don't use least squares, but Sophie thinks its fine. Least squares and other mathematical techniques help you solve the structure.
+    \item Any time you see "rhombohedral" or "cubic," you may well be running a salt.
+    \begin{itemize}
+        \item They always run in triclinic.
+    \end{itemize}
+    \item They charge for a more expensive first hour and much less expensive consecutive hours to encourage collecting good data.
+    \item To confirm the unit cell, you want to make sure that the dots show up as a grid.
+    \item The database allows us to make sure that our crystal isn't something common.
+    \item We size the crystal from a video that we take.
+    \begin{itemize}
+        \item Nice to take the video before collection in case something happens to your crystal during the experiment.
+    \end{itemize}
+    \item Molybdenum's quality cutoff is \SI{0.84}{\angstrom}; if you have a lot of difficulties, you can sometimes get results up to \SI{0.9}{\angstrom} published. Above that is a connectivity structure.
+    \item Quick solve from connectivity data is about 100 frames; if it's not what you want, then adjust.
+    \item There are a bunch of strategy parameters to adjust.
+    \item Hang out for the first 10 frames and then leave, come back the next morning and do your data analysis.
+    \item Data workup is done in Apex.
+    \begin{itemize}
+        \item Sophie goes through a worked example.
+    \end{itemize}
+    \item Any correlation above 0.5 is good, 0.3-0.4 may be solvable, below that leads to issues.
+    \item Twin solves can be done, but it's a lot more work. You may not always be able to grow distinct crystals.
+    \item Look for clean spots, no rings, and no twins.
+    \item Scaling is different in different places (Argonne doesn't use an absorbance correction for instance).
+    \item Cut the data around 30-50.
+    \item After Apex, use Xprep.
+    \item The software's suggestions are usually fine, even though we don't have to take them.
+    \item Make sure your minimum $I/\sigma$ stays above 2. Completion shouldn't go below 90\% if you want to publish.
+    \item The worse your data is, the better your guess must be.
+    \item If fixing really isn't working, you may need to do \emph{something more}.
+    \item "Never trust someone who says they know where protons are."
+    \begin{itemize}
+        \item They're too low $Z$.
+    \end{itemize}
+    \item If your research ever really depends on an \ce{OH} or \ce{NH}, you need alternate data.
+    \item \ce{CH3}'s and \ce{CF3}'s have free rotation.
+    \item Crystal data is almost always a solid-state analysis; we can't make claims about how our molecule behaves in solution based on the crystal data.
+    \item A cool application of symmetry things from group theory, very puzzley, and you get to work with actual molecules instead of powders.
 \end{itemize}
 
 
