@@ -11,13 +11,177 @@
 \section{Spectroscopy}
 \begin{enumerate}
     \item \marginnote{1/31:}Does the wavelength of the characteristic radiation caused by bombarding of the anode material with electrons depend on voltage? Please, explain.
+    \begin{proof}[Answer]
+        \fbox{No} it does not.\par
+        Characteristic radiation is generated when an incident electron knocks an orbital electron out of the inner shell of an atom in the anode, and then an outer shell electron loses energy (in the form of characteristic radiation) to fall down and fill the core hole. Thus, the wavelength of characteristic radiation is determined by the energy level gaps in the anode material, not the voltage of the incident electrons. Indeed, the only way that voltage affects characteristic radiation is by turning it on and off: We just need it to be high enough so that the incident electrons \emph{can} kick out an inner shell electron.
+    \end{proof}
     \item Please, explain which effects take place in the X-ray tube upon increasing the current and voltage.
+    \begin{proof}[Answer]
+        We address the effects one at a time.\par\smallskip
+        \underline{Increasing the current}: The intensity of both bremsstrahlung and characteristic radiation increases. This is because higher current means that more electrons are emitted, which means that more electrons deflect and/or are knocked out.\par
+        \underline{Increasing the voltage}: The intensity of both bremsstrahlung and characteristic radiation increases. The frequency of the characteristic radiation will not change (see Q1), but both the maximum frequency and general distribution of the bremsstrahlung radiation will shift higher. This is because the bremsstrahlung radiation that an electron can emit is capped by its translational kinetic energy as an incoming particle, and increasing the voltage increases the translational kinetic energy of the incoming electrons.
+    \end{proof}
     \item Determine the maximum wavelength of the X-ray emission caused by electrons traveling with \SI{35}{\kilo\electronvolt} of energy.
+    \begin{proof}[Answer]
+        From the Duane-Hunt law, we know that the frequency $f$ at which the most X-rays are emitted is given by $f=Ve/h$. Additionally, we know that $c=\lambda f$. Therefore,
+        \begin{align*}
+            \lambda &= \frac{c}{f}\\
+            &= \frac{ch}{Ve}\\
+            &= \frac{(\SI{2.998e8}{\meter\per\second})(\SI{6.626e-34}{\joule\second})}{(\SI{3.5e4}{\electronvolt})(\SI{1.602e-19}{\coulomb})}\\
+            \Aboxed{\lambda &= \SI{35}{\pico\meter}}
+        \end{align*}
+        meaning that these are hard X-rays.
+    \end{proof}
     \item Which material will work better for X-ray absorption: \ce{Fe} or \ce{Pb}? Note: \ce{Fe} has atomic number and atomic weight equal to 26 and 55.8, respectively; \ce{Pb} has atomic number and atomic weight equal to 82 and 207.2, respectively. Please, explain.
+    \begin{proof}[Answer]
+        % Anything else??
+
+        \fbox{\ce{Pb}} will work better for X-ray absorption.\par
+        Absorption depends on \emph{contact}, a quantity proportional to the atomic number $Z$ of the target element. Thus, elements with higher $Z$-numbers will have greater contact and hence greater absorption. It follows since $Z(\ce{Pb})>Z(\ce{Fe})$ that \ce{Pb} has greater X-ray absorption.
+    \end{proof}
+    \pagebreak
     \item List three types of interactions of X-rays with matter.
+    \begin{proof}[Answer]
+        Three ways X-rays can interact with matter are\dots
+        \begin{equation*}
+            \boxed{\text{Absorption/fluorescence, elastic scattering, and inelastic scattering.}}
+        \end{equation*}
+    \end{proof}
     \item Define the Bravais lattice for graphene.
+    \begin{proof}[Answer]
+        Graphene has a \fbox{hexagonal} 2D Bravais lattice.\par
+        It is a honeycomb, and hence has a nonobvious rhombus-shaped unit cell, as pictured below.
+        \begin{center}
+            \begin{tikzpicture}[scale=0.70292]
+                \draw
+                    (0,0)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(90:1)
+                        -- ++(30:1)
+                        -- ++(90:1)
+                        -- ++(30:1)
+                        -- ++(90:1)
+                        -- ++(150:1)
+                        -- ++(-150:1)
+                        -- ++(150:1)
+                        -- ++(-150:1)
+                        -- ++(150:1)
+                        -- ++(-150:1)
+                        -- ++(-90:1)
+                        -- ++(-150:1)
+                        -- ++(-90:1)
+                        -- ++(-150:1)
+                        -- ++(-90:1)
+                    (90:1) ++(30:1)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(-30:1)
+                    (90:1) ++(30:1) ++(90:1) ++(30:1)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(-30:1)
+                        -- ++(30:1)
+                        -- ++(-30:1)
+                    (-30:1) ++(30:1)
+                        -- ++(90:1)
+                    (-30:1) ++(30:1) ++(-30:1) ++(30:1)
+                        -- ++(90:1)
+                    (90:1) ++(30:1) ++(-30:1) ++(30:1)
+                        -- ++(90:1)
+                    (90:1) ++(30:1) ++(-30:1) ++(30:1) ++(-30:1) ++(30:1)
+                        -- ++(90:1)
+                    (90:1) ++(30:1) ++(90:1) ++(30:1) ++(-30:1) ++(30:1)
+                        -- ++(90:1)
+                    (90:1) ++(30:1) ++(90:1) ++(30:1) ++(-30:1) ++(30:1) ++(-30:1) ++(30:1)
+                        -- ++(90:1)
+                ;
+        
+                \draw [rex,ultra thick]
+                    (-30:1) ++(30:1)
+                    ++(90:0.5) -- ++(90:0.5) -- ++(150:0.5)
+                    ++(150:-0.5) -- ++(30:1) -- ++(90:0.5)
+                    ++(90:-0.5) -- ++(-30:0.5)
+                ;
+                \draw [rex!50,ultra thick]
+                    (-30:1) ++(30:1) ++(-30:1) ++(30:1)
+                    ++(90:0.5) -- ++(90:0.5) -- ++(150:0.5)
+                    ++(150:-0.5) -- ++(30:1) -- ++(90:0.5)
+                    ++(90:-0.5) -- ++(-30:0.5)
+                ;
+                \draw [rex!50,ultra thick]
+                    (-30:1) ++(30:1) ++(90:1) ++(30:1)
+                    ++(90:0.5) -- ++(90:0.5) -- ++(150:0.5)
+                    ++(150:-0.5) -- ++(30:1) -- ++(90:0.5)
+                    ++(90:-0.5) -- ++(-30:0.5)
+                ;
+        
+                \footnotesize
+                \fill [rex,opacity=0.2] (30:1) -- ++(0:{3^0.5}) -- ++(60:{3^0.5}) -- ++(180:{3^0.5}) -- cycle;
+                \fill [rex,opacity=0.1] (30:1) ++(0:{3^0.5}) -- ++(0:{3^0.5}) -- ++(60:{3^0.5}) -- ++(180:{3^0.5}) -- cycle;
+                \fill [rex,opacity=0.1] (30:1) ++(60:{3^0.5}) -- ++(0:{3^0.5}) -- ++(60:{3^0.5}) -- ++(180:{3^0.5}) -- cycle;
+                \draw [thick,latex-latex]
+                    (30:1) ++(60:{3^0.5}) node[left,yshift=-1mm,xshift=-1mm]{$\vec{b}$}
+                    -- ++(-120:{3^0.5})
+                    -- ++(0:{3^0.5}) node[below left]{$\vec{a}$}
+                ;
+            \end{tikzpicture}
+        \end{center}
+    \end{proof}
     \item \ce{Pt} has a structure where \ce{Pt} atoms occupy the positions at the vertices of the cube and in the middle of the facets. Please, draw the Bravais lattice for \ce{Pt}. How many atoms are in the basis for the lattice? If the \ce{Pt} atoms at the facets of the cube will be replaced with something else (e.g., \ce{Au}), will it affect the Bravais lattice?
+    \begin{proof}[Answer]
+        The Bravais lattice for \ce{Pt} is face-centered cubic, as depicted below.
+        \begin{center}
+            \begin{tikzpicture}
+                \path (0,-0.5) -- (0,2.4);
+                \filldraw [fill=white]
+                    (0,0) coordinate (O) circle (1.5pt)
+                    (1.46,-0.06) coordinate (a) circle (1.5pt)
+                    (0.42,0.34) coordinate (b) circle (1.5pt)
+                    (0,1.63) coordinate (c) circle (1.5pt)
+                    ($(a)+(b)$) coordinate (ab) circle (1.5pt)
+                    ($(a)+(c)$) coordinate (ac) circle (1.5pt)
+                    ($(b)+(c)$) coordinate (bc) circle (1.5pt)
+                    ($(a)+(b)+(c)$) coordinate (abc) circle (1.5pt)
+                    ($0.5*($(a)+(b)$)$)circle (1.5pt)
+                    ($0.5*($(a)+(b)$)+(c)$)circle (1.5pt)
+                    ($0.5*($(a)+(c)$)$)circle (1.5pt)
+                    ($0.5*($(a)+(c)$)+(b)$)circle (1.5pt)
+                    ($0.5*($(b)+(c)$)$)circle (1.5pt)
+                    ($0.5*($(b)+(c)$)+(a)$)circle (1.5pt)
+                ;
+                \begin{scope}[on background layer]
+                    \draw [line join=bevel]
+                        (O) -- (a) -- (ab) -- (b) -- cycle
+                        (c) -- (ac) -- (abc) -- (bc) -- cycle
+                        (O) -- (c)
+                        (a) -- (ac)
+                        (b) -- (bc)
+                        (ab) -- (abc)
+                    ;
+                \end{scope}
+            \end{tikzpicture}
+        \end{center}
+        There is $\boxed{1}$ atom in the basis.\par
+        Effects on the Bravais lattice: We have a new simplest repeating unit. Indeed, instead of repeating one \ce{Pt} atom, we repeat one \ce{Pt} atom and three \ce{Au} atoms as follows. Consider any of the corner \ce{Pt} atoms in the above unit cell (for example, the one in the front, bottom, right). Choose the three \ce{Au} atoms closest to it in the above unit cell (continuing with our example, this would be the ones in the front, bottom, and right faces). This little tetrahedron of one \ce{Pt} and three \ce{Au} atoms forms the full crystal by replicating along the preexisting crystal axes. Thus, this \ce{PtAu3} unit is our basis, and the new Bravais lattice is primitive cubic.
+    \end{proof}
     \item What are the types of Bravais lattices?
+    \begin{proof}[Answer]
+        % 2D and 3D, or just 3D?? Look up my table :)
+        % Ask in Shevchenko email; request OH, but if not, just include 1-2 quick q's.
+        % Just looking for PICF or different names, too...??
+
+        There are four types:
+        \begin{equation*}
+            \boxed{\text{Primitive, body-centered, base-centered, and face-centered.}}
+        \end{equation*}
+    \end{proof}
     \item \ce{Pt} was alloyed with \ce{Co} and a \ce{PtCo} alloy was formed. Please, analyze the peak positions measured for the \ce{Pt} and \ce{PtCo} alloy, and make a conclusion about the trend of peak positions in the XRD diffractogram of \ce{CoPt3} if it has the same lattice.
     \begin{center}
         \small
@@ -26,15 +190,36 @@
             \hline
              & \ce{Pt} & \ce{PtCo} & \ce{CoPt3}\\
             \hline
-            $(111)$ & \num{39.036} & \num{40.252} & \\ \hline
-            $(200)$ & \num{45.876} & \num{46.425} & \\ \hline
-            $(220)$ & \num{66.905} & \num{68.117} & \\ \hline
-            $(311)$ & \num{80.624} & \num{81.662} & \\
+            $(111)$ & \num{39.036} & \num{40.252} & {\color{blx}\num{39.645}}\\ \hline
+            $(200)$ & \num{45.876} & \num{46.425} & {\color{blx}\num{46.151}}\\ \hline
+            $(220)$ & \num{66.905} & \num{68.117} & {\color{blx}\num{67.511}}\\ \hline
+            $(311)$ & \num{80.624} & \num{81.662} & {\color{blx}\num{81.143}}\\
             \hline
         \end{tabular}
     \end{center}
+    \begin{proof}[Answer]
+        Per Vegard's law, there is an approximately linear relationship between the lattice constants of an alloy and its composition. The left metal above is 100\% platinum, the middle alloy is 50\% platinum, and the right alloy is 75\% platinum: Thus, the values in the right column should be averages of the respective values in the left two columns, as 75\% is an average of 100\% and 50\%: See above.
+    \end{proof}
     \item The shell of an unknown material was grown around \ce{Pt} nanoparticles. As a result, the peak positions of \ce{Pt} were shifted by $\sim 1.5\%$ toward the higher $2\theta$. Please, calculate the strain.
+    \begin{proof}[Answer]
+        % I have this relation in my slides!
+        % Am I approaching this correctly?
+
+        The strain $\varepsilon$ will depend on $\theta$ via the following relationship.
+        \begin{align*}
+            n\lambda &= 2(d-\varepsilon d)\sin(1.015\theta)\\
+            2d\sin(\theta) &= 2d\sin(1.015\theta)-\varepsilon\cdot 2d\sin(1.015\theta)\\
+            \Aboxed{\varepsilon &= \frac{\sin(1.015\theta)-\sin(\theta)}{\sin(1.015\theta)}}
+        \end{align*}
+        Plugging in $2\theta=39.036$ from Q9, for example, we get
+        \begin{equation*}
+            \boxed{\varepsilon = 0.014}
+        \end{equation*}
+    \end{proof}
     \item Please, think about your project and come up with an experiment that involves X-ray diffraction. If this method is not relevant to the scope of your research, explain your reasoning.
+    \begin{proof}[Answer]
+        We actually use PXRD all the time in our research! Most recently, we investigated the catalytic potential of a photosensitizing covalent organic framework\supercite{bib:COFProject}. The COF's theoretical photosensitizing ability comes from its crystalline, completely $\pi$-conjugated chromaphores, so to confirm that it was absorbing light as per our mechanistic prediction, we needed to confirm that it was crystalline. To do so, we ran a PXRD and compared it to the simulated profile via a Rietveld refinement.
+    \end{proof}
 \end{enumerate}
 
 
