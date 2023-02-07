@@ -1,0 +1,331 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{5}
+
+\begin{document}
+
+
+
+
+\chapter{???}
+\section{Magnetochemistry I}
+\begin{itemize}
+    \item \marginnote{2/7:}Extension of last time's material: The derivation of the relationship for the between spring harmonic oscillator frequencies and the oscillators' reduced masses.
+    \begin{itemize}
+        \item Suppose you have two homonuclear diatomic molecules \ce{A-A} and \ce{B-B}, and you wish to relate their vibrational frequencies.
+        \item Reduced masses of the molecules.
+        \begin{align*}
+            \mu_{\ce{AA}} &= \frac{m_{\ce{A}}m_{\ce{A}}}{m_{\ce{A}}+m_{\ce{B}}}&
+            \mu_{\ce{BB}} &= \frac{m_{\ce{B}}m_{\ce{B}}}{m_{\ce{B}}+m_{\ce{B}}}
+        \end{align*}
+        \item Vibrational frequencies of the molecules in terms of the reduced masses.
+        \begin{align*}
+            \nu_{\ce{AA}} &= k\sqrt{\frac{F}{\mu_{\ce{AA}}}}&
+            \nu_{\ce{BB}} &= k\sqrt{\frac{F}{\mu_{\ce{BB}}}}
+        \end{align*}
+        \item Take the ratio of the above two quantities to relate them.
+        \begin{equation*}
+            \frac{\nu_{\ce{AA}}}{\nu_{\ce{BB}}} = \frac{k\sqrt{\frac{F}{\mu_{\ce{AA}}}}}{k\sqrt{\frac{F}{\mu_{\ce{BB}}}}}
+            = \frac{\sqrt{\mu_{\ce{BB}}}}{\sqrt{\mu_{\ce{AA}}}}
+        \end{equation*}
+    \end{itemize}
+    \item Anything else I missed??
+    \item Today: Magnetochemistry.
+    \begin{itemize}
+        \item 1-2 lectures on this.
+        \item \textcite{bib:CHEM20100Notes} has a good write-up of the derivation at the beginning of today's lecture (see Module 34: Magnetic Properties of Transition Metal Complexes), and \textcite{bib:CHEM20200Notes} has more on the content at the end of the lecture (see Lecture 3: TM Magnetism).
+    \end{itemize}
+    \item Magnetism really is the province of inorganic chemistry since it's here that we find the compounds with unpaired electrons.
+    \begin{itemize}
+        \item Organic compounds don't have these outside of free radicals.
+    \end{itemize}
+    \item The nuclei interact with...??
+    \item \textbf{Magnetic field}. \emph{Denoted by} $\bm{H}$, $\bm{\vec{H}}$.
+    \begin{itemize}
+        \item $H$ denotes the magnitude of $\vec{H}$.
+    \end{itemize}
+    \item \textbf{Magnetization}: The response of a material to a magnetic field. \emph{Denoted by} $\bm{M}$.
+    \begin{itemize}
+        \item Alternatively: The magnetic moment per unit volume.
+        \item Everything with electrons has \emph{some} degree of a response to a magnetic field.
+    \end{itemize}
+    \item \textbf{Magnetic induction}: The density of magnetic field lines within a substance. \emph{Denoted by} $\bm{B}$. \emph{Units} Teslas or Gauss.
+    \begin{itemize}
+        \item $\SI{1}{\tesla}=\SI{10000}{\gauss}$.
+        \item The scale of these units.
+        \begin{itemize}
+            \item The Earth's magnetic field is about \SI{3e-5}{\tesla}.
+            \item A \SI{900}{\mega\hertz} NMR spectrometer is about \SI{21}{\tesla}.
+            \item An MRI is about \SIrange{1.3}{3}{\tesla}.
+        \end{itemize}
+        \item Additionally, $B=F/Qv$ where $F$ is in Newtons, $Q$ is in Coulombs, and $v$ is in meters per second.
+    \end{itemize}
+    \item Placing a sample with magnetization $M$ in a magnetic field $\vec{H}$ alters the magnetic induction via
+    \begin{equation*}
+        B = \vec{H}+4\pi\vec{M}
+    \end{equation*}
+    \item The force that an object in a magnetic fields feels is
+    \begin{equation*}
+        \vec{f} = \vec{M}\cdot\dv{H}{z}
+    \end{equation*}
+    \item \textbf{Magnetic susceptibility}. \emph{Denoted by} $\bm{\chi}$. \emph{Given by}
+    \begin{equation*}
+        \chi = \frac{\vec{M}}{\vec{H}}
+    \end{equation*}
+    \begin{itemize}
+        \item A tensor of rank 2.
+        \item It follows that $\vec{M}=\vec{\chi}\vec{H}$.
+    \end{itemize}
+    \item \textbf{Volume susceptibility}: \emph{Denoted by} $\bm{\chi_V}$. \emph{Units} \si{\electromagneticunits\per\cubic\centi\meter}.
+    \item \textbf{Gram susceptibility}: \emph{Denoted by} $\bm{\chi_g}$. \emph{Units} \si{\cubic\centi\meter\per\gram}. \emph{Given by}
+    \begin{equation*}
+        \chi_g = \frac{\chi_V}{d}
+    \end{equation*}
+    \item \textbf{Molar susceptibility}: \emph{Denoted by} $\bm{\chi_M}$. \emph{Units} \si{\cubic\centi\meter\per\mole}. \emph{Given by}
+    \begin{equation*}
+        \chi_m = \chi_g\cdot\text{MW}
+    \end{equation*}
+    \item $\chi>0$ indicates unpaired electrons. $\chi<0$ indicates paired electrons.
+    \item Diamagnetism
+    \item Most matter is diamagnetic.
+    \item \textbf{Gouy balance}: An instrument that measures the change in mass of a sample as it is attracted ore repelled by a powerful magnetic field.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw (-1.5,0) -- ++(1,0) -- node[left]{$N$} ++(0,0.5) -- ++(-1,0);
+            \draw (1.5,0) -- ++(-1,0) -- node[right]{$S$} ++(0,0.5) -- ++(1,0);
+            \draw [dashed] (-0.5,0.25) -- ++(1,0);
+    
+            \draw [semithick,-latex] (0,0.8) -- ++(0,-1);
+            \fill [blx!20] (-0.1,1) -- (-0.1,0.8) to[out=-90,in=-90,looseness=2] (0.1,0.8) -- (0.1,1) -- cycle;
+            \draw [gray,thick] (-0.1,1.5) -- (-0.1,0.8) to[out=-90,in=-90,looseness=2] (0.1,0.8) -- (0.1,1.5) -- cycle;
+            \draw (0,1.5) -- ++(0,0.5) -- ++(1,0) -- ++(0,-0.3) node[below]{scale};
+        \end{tikzpicture}
+        \caption{Gouy balance.}
+        \label{fig:Gouy}
+    \end{figure}
+    \begin{itemize}
+        \item Historically, varying a magnetic field precisely has been very difficult (we didn't always have electromagnets into which we could just dial any field).
+        \begin{itemize}
+            \item In fact, even today, varying a magnetic field super precisely is difficult. This is why NMR machines vary the frequency domain over a constant magnetic field.
+        \end{itemize}
+        \item Under this constant magnetic field, we linked a sample to a scale. As we move our sample through that field, we have a changing magnetic field.
+        \item How the mass of the sample changes at different points in the field gives information on the magnetic susceptibility.
+    \end{itemize}
+    \item Modern update to the Gouy balance: The superconducting quantum interference device, or SQUID.
+    \begin{itemize}
+        \item We still measure the magnetic susceptibility essentially the same way, just with fancier toys.
+        \item Today, we move our sample through an electromagnet-generated magnetic field and then see what kind of current gets induced in a superconducting coil (recall that moving magnets induces currents).
+        \item The underlying physics is well beyond the scope of this course, but also fascinating. It involves \textbf{Josephson junctions}, etc.
+    \end{itemize}
+    \item \textbf{Diamagnetic magnetic susceptibility}. \emph{Denoted by} $\bm{\chi_\textbf{dia}}$.
+    \item Per the above, since all electrons are paired in a diamagnetic compound, $\chi_\text{dia}<0$.
+    \item We have
+    \begin{equation*}
+        \chi_\text{dia} = \sum\lambda+\sum n_i\chi_i
+    \end{equation*}
+    \begin{itemize}
+        \item $\lambda$ is a \textbf{constitutive correction} related to ring currents for bonds.
+        \item $n_i\chi_i$ is contributions from individual atoms.
+    \end{itemize}
+    \item Info on the quantities in the above equations can be found in \textcite{bib:BerryDiamagnetism}.
+    \begin{itemize}
+        \item The paper has a nice introduction and does the derivation that Anderson just did, too.
+        \item Then it contains a bunch of tables of different corrections for various bond types.
+        \item These values are all pretty small, so it doesn't really matter if you just miss one or two things in ambiguous cases, but Anderson tries to sum over all of them.
+        \item You need to do these corrections when you're doing a lot of these calculations.
+        \item These tables give both $\lambda$ and $\chi_i$ values; you need to sum over the individual atom $\chi_i$ values and then constitutive corrections for groups. For example, for a \ce{Cp} group, you have 5 carbons, 5 hydrogens, and a constitutive correction for the whole group (which should be equal to that of 5 carbons, 5 hydrogens, and 5 \ce{C=C} double bonds??).
+        \item These values are field-independent and pretty constant.
+    \end{itemize}
+    \item That's the contribution from paired electrons. What we really care about in general are the unpaired electrons, though.
+    \item Paramagnetism.
+    \item Paramagnets.
+    \begin{itemize}
+        \item Positive $\chi$ values. The substance will be pulled into the magnetic field.
+        \item Inversely proportional relationship between $\chi$ and $T$ so that $1/\chi$ vs. $T$ is linear.
+        \item Implies \textbf{Curie's law}, where $\chi=C/T$ and $C$ is the Curie constant.
+        \begin{equation*}
+            C = \frac{\NA g^2\mB(S(S+1))}{3\kB (in hertz??)}
+        \end{equation*}
+        \item $g$ is the \textbf{gyromagnetic ratio} and, occasionally, some other names for added complexity :)
+        \item $\mB$ is the Bohr magneton.
+        \item $\NA$ is Avogadro's number.
+        \item $S$ is our spin quantum number.
+    \end{itemize}
+    \item \textbf{Gyromagnetic ratio}: The quotient of the magnetic moment by the angular momentum. \emph{Also known as} \textbf{magnetogyric ratio}. \emph{Denoted by} $\bm{g}$.
+    \begin{itemize}
+        \item Any fundamental particle can have one of these.
+        \item Nuclei have them, but we're only worried about electrons here.
+        \item Magnetic moment divided by angular momentum.
+        \item 2.011 for electrons.
+    \end{itemize}
+    \item We want to take this picture and simplify it down now.
+    \item We have
+    \begin{equation*}
+        \mu_\text{eff} = \sqrt{\frac{\kB}{\NA\mB^2}}\sqrt{\chi T}
+        = 2.828\sqrt{\chi T}
+        = \sqrt{g^2(S(S+1))}
+    \end{equation*}
+    \item $\mu_\text{eff}=\sqrt{g^2(S(S+1))}$, $\chi T=g^2/8$ are our big results.
+    \item We also frequently write
+    \begin{equation*}
+        \chi T = \frac{\NA g^2\mB}{3\kB}(S(S+1))
+        = \frac{g^2}{8}(S(S+1))
+    \end{equation*}
+    \item Magnetochemists will almost exclusively use $\chi T$, but you see $\mu_\text{eff}$ reported a lot, especially for room temperature characteriztions.
+    \item Know the two end results below because they're very important for how stuff is computed and talked about in the literature.
+    \begin{align*}
+        \mu_\text{eff} &= \sqrt{g^2(S(S+1))}&
+        \chi T &= \frac{g^2}{8}S(S+1)
+    \end{align*}
+    \item Elements vs. their spin quantum numbers. Find the number of unpaired electrons and go from there.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{c|cccc}
+             & $S$ & $\mu_\text{eff}$ & $\chi T_{SO}$ & $\mu_\text{exp}$\\
+            \hline
+            \ce{Cu^2+} & 1/2 & 1.73 & 0.375 & \numrange{1.7}{2.2}\\
+            \ce{Ni^2+} & 1 & 2.83 & 1 & \numrange{2.8}{3.5}\\
+            \ce{Cr^3+} & 3/2 & 3.87 & 1.875 & \numrange{3.7}{3.9}\\
+            \ce{Fe^2+} HS & 2 & 4.90 & 3 & \numrange{5.1}{5.7}\\
+            \ce{Fe^3+} HS & 5/2 & 5.92 & 4.375 & \numrange{5.7}{6}\\
+        \end{tabular}
+        \caption{Magnetic parameters for example elements.}
+        \label{tab:exampleElementsMagnetism}
+    \end{table}
+    \begin{itemize}
+        \item SO for spin only. HS for high spin. exp for experimental.
+    \end{itemize}
+    \item Spin-orbit coupling: $g>0$ for a more than half-filled shell; $g<0$ for a less than half-filled shell.
+    \item Consider a generic metal \ce{M} with $S=1/2$ and another with $S=1/2$ and a bridging ligand \ce{L} between them.
+    \item Three possibilities to determine magnetism: The spins can be coupled antiferromagnetically (opposite directions) so $S=0$, feromagnetically coupled ($S=1$), and uncoupled (both behave as their own spin center but are chemically/mechanically linked within the molecule).
+    \item Now switch to having \ce{Cu-L-Mn} to have $S=1/2$ and $S=5/2$. Then
+    \begin{equation*}
+        \prb{\mu} = \sqrt{\mu_{\ce{M}_1}^2+\mu_{\ce{M}_2}^2}
+        = \sqrt{3+35}
+        = 6.16\mB
+    \end{equation*}
+    \begin{itemize}
+        \item How does this work?? What is $\prb{\mu}$?
+        \item Alternatively, $\chi T$ can be calculated.
+    \end{itemize}
+    \item Temperature-independent paramagnetism.
+    \begin{itemize}
+        \item If we measure \ce{Cu^{II}} and \ce{Co^{II}}, we get \SI{60e-6}{emu} and \SI{400e-6}{emu}.
+        \item Correcting Curie's law with the \textbf{Curie-Weiss law}
+        \begin{equation*}
+            \chi = \frac{C}{T-\theta}
+        \end{equation*}
+        where $\theta=0$ for a pure paramagnet and $\theta\neq 0$ for a long range magnetic interaction.
+        \item Magnetic measurements are very sensitive; any time you're not fitting the data, 90\% of the time it's that your sample isn't clean.
+    \end{itemize}
+    \item Spin-orbit coupling is up next.
+    \item $S$ is our spin angular momentum quantum number, and $L$ is our orbital angular momentum quantum number.
+    \item We define $J=L+S$ to characterize coupling. $J$ is very important with the lanthanides where our coupling is extremely large. So strong that you have to start with only a $J$ quantum number. For first-row transition metals, we treat $J$ just as a perturbation.
+    \item We know that $L=\sum_i\ell_i$ and $S=\sum_is_i$. Our Hamiltonian is
+    \begin{equation*}
+        H = \hat{H}_0+\hat{H}_\text{elec}+\hat{H}_\text{SO}
+    \end{equation*}
+    where SO denotes spin-orbit here and
+    \begin{equation*}
+        \hat{H}_{SO} = \lambda\hat{L}\cdot\hat{S}+\beta(\hat{L}+g_e\hat{S})-H
+    \end{equation*}
+    \item The energy that we get out of this Hamiltonian is
+    \begin{equation*}
+        E_n = E_n^0+HE_n^1+H^2E_n^2
+    \end{equation*}
+    \begin{itemize}
+        \item The first-order correction is Zeeman; the second-order is 2nd order Zeeman.
+    \end{itemize}
+    \item Consider a perfectly octahedral $d^1$ complex. The electron can migrate through a degenerate set of orbitals, inducing a ring current. This is a useful classical analogy with predictive power; however, it is not quantum mechanically accurate at all.
+    \item In a nutshell, we expect to see SO-coupling when we have unequally occupied degenerate orbitals.
+    \begin{itemize}
+        \item Consider \ce{Ni^2+}. It can be $O_h$ or $T_d$. It's tetrahedral because \ce{Ni^2+} is $d^8$ and thus if you draw out the orbital diagram, we'll have one excess electron in the upper triply degenerate orbital. This unequal occupation will lead to a Jahn-Teller distortion, though.
+    \end{itemize}
+    \item Free atom configurations are not a real thing; in this class, we'll always assume that transition metals are realistic, i.e., elemental, in a compound, etc., and thus any higher-level $s$ electrons fall down to $d$ electrons.
+    \item Lanthanides' bonding orbitals are too deeply buried.
+    \item \textbf{Zero-field splitting}: A difference in energy between "degenerate" electronic energy levels even in the presence of zero magnetic field. \emph{Denoted by} $\bm{D}$.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black}
+            ]
+                \draw (0,3) node[above]{\small$E$} -- (0,0) node[below right]{0} -- (4,0) node[below left]{$\infty$} node[right]{\small$H$};
+    
+                \draw [blx,ultra thick] (0,1.5) node[left]{$M_S=\pm\frac{1}{2}$} -- ++(0.5,0);
+                \draw [blx,semithick]
+                    (0.5,1.5) -- ++(2,0.7)
+                    (0.5,1.5) -- ++(2,-0.7)
+                ;
+    
+                \path (-1.8,0) -- (5.8,0);
+            \end{tikzpicture}
+            \caption{$S=1/2$, $D=0$.}
+            \label{fig:zeroFieldSplita}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black}
+            ]
+                \draw (0,3) node[above]{\small$E$} -- (0,0) node[below right]{0} -- (4,0) node[below left]{$\infty$} node[right]{\small$H$};
+    
+                \draw [blx,ultra thick] (0,1.5) node[left]{$M_S=0,\pm 1$} -- ++(0.5,0);
+                \draw [blx,semithick]
+                    (0.5,1.5) -- ++(2,1.4)
+                    (0.5,1.5) -- ++(2,0)
+                    (0.5,1.5) -- ++(2,-1.4)
+                ;
+    
+                \path (-1.8,0) -- (5.8,0);
+            \end{tikzpicture}
+            \caption{$S=1$, $D=0$.}
+            \label{fig:zeroFieldSplitb}
+        \end{subfigure}\\[1em]
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black}
+            ]
+                \draw (0,3) node[above]{\small$E$} -- (0,0) node[below right]{0} -- (4,0) node[below left]{$\infty$} node[right]{\small$H$};
+    
+                \draw [blx,ultra thick] (0,2) node[left]{$M_S=\pm 1$} -- ++(0.5,0);
+                \draw [blx,ultra thick] (0,1.5) node[left]{$M_S=0$} -- ++(0.5,0);
+                \draw [blx,semithick]
+                    (0.5,2) -- ++(2,0.7)
+                    (0.5,2) -- ++(2,-0.7)
+                    (0.5,1.5) -- ++(2,0)
+                ;
+    
+                \draw [<->,shorten <=1pt,shorten >=1pt] (0.25,1.5) -- node[right]{$D$} ++(0,0.5);
+    
+                \path (-1.8,0) -- (5.8,0);
+            \end{tikzpicture}
+            \caption{$S=1$, $D\neq 0$.}
+            \label{fig:zeroFieldSplitc}
+        \end{subfigure}
+        \caption{Zero field splitting.}
+        \label{fig:zeroFieldSplit}
+    \end{figure}
+    \begin{itemize}
+        \item Important for Qbits or more exotic materials.
+        \item Look at graphs of energy as a function of applied magnetic field $H$ (see Figure \ref{fig:zeroFieldSplit}).
+        \item We get Zeeman splitting as we increase the magnetic field. In the $D=0$ case, our splitting begins from a single point as in Figures \ref{fig:zeroFieldSplita}-\ref{fig:zeroFieldSplitb}.
+        \item In Figure \ref{fig:zeroFieldSplitc}, however, we can observe splitting even at $H=0$.
+        \item $D$ is on the order of single wavenumbers.
+        \item Affects what EPR values you can excite and other important things. The $M_s=0$ state is still a triplet with parallel or antiparallel spins.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
