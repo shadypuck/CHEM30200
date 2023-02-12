@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{Magnetochemistry}
 \section{Magnetochemistry I}
 \begin{itemize}
     \item \marginnote{2/7:}Extension of last time's material: The derivation of the relationship for the between spring harmonic oscillator frequencies and the oscillators' reduced masses.
@@ -323,6 +323,512 @@
         \item $D$ is on the order of single wavenumbers.
         \item Affects what EPR values you can excite and other important things. The $M_s=0$ state is still a triplet with parallel or antiparallel spins.
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Magnetochemistry II}
+\begin{itemize}
+    \item \marginnote{2/9:}We just about wrapped up molecular magnetism last time.
+    \item There are notes posted online for all of the lectures.
+    \item Today: Materials magnetism.
+    \item We start with some review from last time and lead into new content from there.
+    \item Classical example of zero-field splitting for an $S=1$ compound.
+    \begin{itemize}
+        \item We have $M_s=-1,0,1$.
+        \item The magnitude of spin-orbit coupling determines zero-field splitting.
+        \item $D$ can be both positive and negative, so it can vary whether the higher state goes up or the lower state goes down. The short answer is just that splitting occurs.
+        \item Recent example from the literature (unpublished): An aryl-bismuth compound with $S=1$ and massive $D\approx\SI{500}{\per\centi\meter}$. Another one is \ce{Bi-Bi^2-}.
+    \end{itemize}
+    \item Coupling.
+    \begin{itemize}
+        \item Electrons can couple parallel (FM --- ferromagnetic) or antiparallel (AF --- antiferromagnetic).
+        \begin{itemize}
+            \item Relevant Hamiltonian: The \textbf{Heisenberg-Dirac-Van Vleck Hamiltonian}.
+        \end{itemize}
+        \item We measure coupling by measuring $\chi$ vs. $T$.
+        \begin{itemize}
+            \item FM systems: As temperature decreases, $\chi$ slightly increases until the \textbf{Curie/critical temperature} $T_C$. At this point, the curve turns upwards sharply. For a bulk compound, the curve peaks at $T_C$ and then goes down.
+            \item AM systems: As temperature decreases, there is a similar rise to a peak (this time at the \textbf{Neel temperature} $T_N$) and drop.
+            \item As $J$ gets larger, the FM curve increases (i.e., $\chi$ increases). On the other hand, the AF curve decreases and flattens.
+            \item See Figure 1.13 of \textcite{bib:CHEM20200Notes} and the picture from class.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Heisenberg-Dirac-Van Vleck} (Hamiltonian): The Hamiltonian defined as follows. \emph{Given by}
+    \begin{equation*}
+        \hat{H}_\text{HDVV} = -2J\cdot\vec{S}_1\cdot\vec{S}_2
+    \end{equation*}
+    \begin{itemize}
+        \item $J$ is the coupling constant in \si{\per\centi\meter}.
+    \end{itemize}
+    \item \textbf{Bleaney-Bowers equation}: The equation describing the shape of the $\chi$ vs. $T$ plot for two spin centers of $S=1/2$. \emph{Given by}
+    \begin{equation*}
+        \chi = \frac{N\beta^2g^2}{3\kB T}\cdot\frac{3}{3+\e[2J/\kB T]}
+    \end{equation*}
+    \begin{itemize}
+        \item Fitting data to this functional form allows you to pull out a value of $J$.
+        \item Works best for two spin centers of $S=1/2$.
+        \item There are softwares to do this fitting such as Dave (contact Anderson if you need it).
+        \item Which of the previously discussed plots (FM/AM and bulk/molecular) can we fit with this equation?? Also check the functional form --- 2 in the numerator and negative sign in the exponent?
+    \end{itemize}
+    \item Orbital interactions for coupling.
+    \begin{itemize}
+        \item First system: Picture two spin centers $\ce{A},\ce{B}$ coupled with some diamagnetic bridging ligand \ce{X} such that we have \ce{A-X-B}.
+        \item The only structure we assert is an orbital $\phi_{\ce{A}}$ on \ce{A} and likewise on \ce{X} and \ce{B}.
+        \item These three orbitals mix to create a bonding, nonbonding, and antibonding set with zero nodes, one node, and two nodes, respectively. We call these $\phi_0,\phi_1,\phi_2$, respectively. We reexpress them as LCAOs.
+        \begin{align*}
+            \phi_0 &= \phi_{\ce{X}}+\varepsilon(\phi_{\ce{A}}+\phi_{\ce{B}})&
+            \phi_1 &= \phi_{\ce{A}}-\phi_{\ce{B}}&
+            \phi_2 &= (\phi_{\ce{A}}+\phi_{\ce{B}})-\varepsilon\phi_{\ce{X}}
+        \end{align*}
+        \begin{itemize}
+            \item $\varepsilon$ is an overlap parameter dictated by both spatial and energetic overlap.
+        \end{itemize}
+        \item In general TM chemistry, \ce{X} will be more electronegative than \ce{A},\ce{B}. So the more electropositive \ce{X} gets, the greater our coupling??
+    \end{itemize}
+    \item The total coupling constant is given by
+    \begin{equation*}
+        J_\text{tot} = 2K+4\beta S-2S^2(2\alpha+J)
+    \end{equation*}
+    \begin{itemize}
+        \item $S$ is the overlap integral and hence kind of replaces $\varepsilon$.
+        \item The second order term is usually negligible.
+        \item $2K$ is $J_\text{FM}$.
+        \begin{itemize}
+            \item Notice that $J_\text{FM}$ is only related to distance.
+            \item What does $K$ denote?? What are its units?
+        \end{itemize}
+        \item $4\beta S$ is $J_\text{AF}$.
+        \item To maximize FM, we want a short distance and no overlap; to maximize AF, we want a long distance and big overlap.
+        \begin{itemize}
+            \item How does this make sense?? Don't short distances and big overlaps already correlate?
+        \end{itemize}
+    \end{itemize}
+    \item There's a lot of data on compounds like di-copper compounds with bridging ligands.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \chemfig{Cu(-[1]\chemabove{O}{H}(-[2,0.4,,,opacity=0])-[7]Cu?(-[1]@{N1}N)(-[7]@{N2}N))(-[7]\chembelow{O}{H}?(-[6,0.4,,,opacity=0]))(-[3]@{N3}N)(-[5]@{N4}N)}
+        \chemmove{
+            \draw [-,shorten <=3pt,shorten >=3pt] (N1) to[bend left=40] (N2);
+            \draw [-,shorten <=3pt,shorten >=3pt] (N3) to[bend right=40] (N4);
+        }
+        \caption{A di-copper compound with bridging ligands.}
+        \label{fig:dicopperSpin}
+    \end{figure}
+    \begin{itemize}
+        \item See Olivier Kahn's book: \emph{Molecular Magnetism}.
+        \item Anderson presents data showing that $J$ varies quite a bit as a function of the \ce{Cu-O-Cu} angle.
+        \item As the bond becomes more linear, $J$ gets more negative.
+        \item Performing a linear fit on Anderson's data yields
+        \begin{equation*}
+            J = -74\cdot\text{angle}+\SI{7270}{\per\centi\meter}
+        \end{equation*}
+        \begin{itemize}
+            \item It follows by comparison to the $J_\text{tot}$ equation that $2K=7270$ and $4\beta S=-74\cdot\text{angle}$.
+        \end{itemize}
+        \item The above comparison suggests that $J_\text{FM}$ is constant. Is this a good or a bad approximation?
+        \begin{itemize}
+            \item Changing the angles changes the distance, so assuming that $J_\text{FM}$ is constant is a \emph{bad} approximation.
+            \item Indeed, the linear fit is not at all fundamentally correct. However, it's not bad as a first approximation, which is remarkable in its own right.
+        \end{itemize}
+    \end{itemize}
+    \item Two copper orbitals combining.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style=black
+            ]
+                \draw [grx,ultra thick]
+                    (-2.5,2.4) node[left]{\footnotesize$d^{}_{x^2-y^2}$} -- node{\Large$\upharpoonleft$} ++(0.5,0) coordinate (dl)
+                    (-2.5,1.6) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0)
+                    (-2.8,0.8) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0) ++(0.1,0) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0)
+                    (-2.5,0) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0)
+                ;
+                \draw [grx,ultra thick]
+                    (2,2.4) coordinate (dr) -- node{\Large$\upharpoonleft$} ++(0.5,0) node[right]{\footnotesize$d^{}_{x^2-y^2}$}
+                    (2,1.6) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0)
+                    (1.7,0.8) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0) ++(0.1,0) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0)
+                    (2,0) -- node{\Large$\upharpoonleft\hspace{-1mm}\downharpoonright$} ++(0.5,0)
+                ;
+    
+                \draw [ultra thick]
+                    (-0.25,2.9) coordinate (clt) -- node{\Large$\upharpoonleft$} node[below=1mm]{\footnotesize$b_{1u}$} ++(0.5,0) coordinate (crt)
+                    (-0.25,1.9) coordinate (clb) -- node{\Large$\upharpoonleft$} node[below=1mm]{\footnotesize$b_{1g}$} ++(0.5,0) coordinate (crb)
+                ;
+    
+                \draw [grx,thick,densely dashed]
+                    (dl) -- (clt)
+                    (dl) -- (clb)
+                    (dr) -- (crt)
+                    (dr) -- (crb)
+                ;
+            \end{tikzpicture}
+            \caption{MO diagram.}
+            \label{fig:dicopperOrbitalsa}
+        \end{subfigure}\\[1em]
+        \begin{subfigure}[b]{0.35\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \node (CuL) at (-1.5,0) {Cu};
+                \node (CuR) at (1.5,0) {Cu};
+                \node (OT) at (0,0.6) {O};
+                \node (OB) at (0,-0.6) {O};
+    
+                \filldraw [semithick,fill=grz,rotate=45] (CuL.45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=135] (CuL.135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=grz,rotate=-135] (CuL.-135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=-45] (CuL.-45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                
+                \filldraw [semithick,fill=grz,rotate=45] (CuR.45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=135] (CuR.135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=grz,rotate=-135] (CuR.-135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=-45] (CuR.-45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+    
+                \filldraw [semithick,fill=grz,rotate=0] (OT.0)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.65,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=180] (OT.180)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.65,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+    
+                \filldraw [semithick,fill=white,rotate=0] (OB.0)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.65,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=grz,rotate=180] (OB.180)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.65,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+
+                \filldraw [semithick,opacity=0,rotate=-90] (OB.-90)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.3,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+            \end{tikzpicture}
+            \caption{$b_{1g}$ MO.}
+            \label{fig:dicopperOrbitalsb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \node (CuL) at (-1,0) {Cu};
+                \node (CuR) at (1,0) {Cu};
+                \node (OT) at (0,0.6) {O};
+                \node (OB) at (0,-0.6) {O};
+    
+                \filldraw [semithick,fill=grz,rotate=45] (CuL.45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=135] (CuL.135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=grz,rotate=-135] (CuL.-135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=-45] (CuL.-45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                
+                \filldraw [semithick,fill=white,rotate=45] (CuR.45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=grz,rotate=135] (CuR.135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=-135] (CuR.-135)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=grz,rotate=-45] (CuR.-45)
+                    to[out=-90,in=-90,out looseness=0.5,in looseness=1.5] ++(0.65,0)
+                    to[out=90,in=90,out looseness=1.5,in looseness=0.5] cycle
+                ;
+    
+                \filldraw [semithick,fill=grz,rotate=90] (OT.90)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.3,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=-90] (OT.-90)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.3,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+    
+                \filldraw [semithick,fill=grz,rotate=90] (OB.90)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.3,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+                \filldraw [semithick,fill=white,rotate=-90] (OB.-90)
+                    to[out=-90,in=-90,out looseness=0.5] ++(0.3,0)
+                    to[out=90,in=90,in looseness=0.5] cycle
+                ;
+            \end{tikzpicture}
+            \caption{$b_{1u}$ MO.}
+            \label{fig:dicopperOrbitalsc}
+        \end{subfigure}
+        \caption{Molecular orbitals in a di-copper compound.}
+        \label{fig:dicopperOrbitals}
+    \end{figure}
+    \begin{itemize}
+        \item Recall that each copper center will have the orbital structure depicted in Figure \ref{fig:dicopperOrbitalsa} due to the extreme Jahn-Teller distortions commonly associated with the element.
+        \item The $d_{x^2+y^2}$ orbitals are singly occupied. Thus, they couple and split.
+        \begin{itemize}
+            \item The magnitude of the splitting is that of your AF coupling.
+            \item Are you sure you don't mean the $d_{xy}$ orbitals?? That's what it looks like you've drawn.
+        \end{itemize}
+        \item The $b_{1g}$ orbital (Figure \ref{fig:dicopperOrbitalsb}) is antibonding.
+        \item The $b_{1u}$ orbital (Figure \ref{fig:dicopperOrbitalsc}) is nonbonding.
+        \item As we linearize, $b_{1g}$ gets less strong and $b_{1u}$ gets more strong (correct??).
+        \item Linearizing increases AF character.
+        \item Three open-shell states corresponding to $M_s$ values all get rolled into one closed shell state??
+    \end{itemize}
+    \item Goodenough-Kanamori rules.
+    \begin{itemize}
+        \item Started out very empirically and then grew into a more robust theory as our understanding of orbitals grew. 
+        \item John Goodenough won the Nobel prize for lithium ion batteries, made foundational contributions to metal oxides, and was a UChicago physics PhD.
+        \begin{itemize}
+            \item "These people that are super important somewhere tend to crop up everywhere" - Anderson.
+        \end{itemize}
+        \item Unpaired electrons in $d_{z^2}$ orbitals.
+        \item \textbf{Superexchange}, \textbf{direct exchange}, and \textbf{double exchange}.
+        \item Splitting of singly occupied states.
+        \item Linearity maximizes AF exchange.
+        \begin{itemize}
+            \item To obtain molecules of this type, we build in symmetry, linearity, etc. via ligands, etc.
+        \end{itemize}
+        \item \ang{90} maximizes FM exchange.
+        \begin{itemize}
+            \item To obtain molecules of this type, we build in orbital orthogonality by design.
+        \end{itemize}
+        \item In between \num{90} and \num{180} isn't readily experimentally accessible.
+        \item What is all of this??
+    \end{itemize}
+    \item \textbf{Superexchange}: Coupling/virtual electron transfers between atoms with a net spin through a diamagnetic linker.
+    \item \textbf{Direct exchange}: The electrons of magnetic atoms interact with their nearest neighbors.
+    \item \textbf{Double exchange}: A magnetic exchange that arises between ions in different oxidation states.
+    \item An example of orthogonality by design.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \chemleft{[}
+            \chemfig{Cu^{II}([:-36,1.25]*5(-O-\charge{30:3pt=\.}{}(*6(-(-[,0.8]{{}^tBu})=-(-[,0.8]{{}^tBu})=-))-=O-))([4,1.25]*6(-N(**6(-----))--HN-(**6(----?))-N?-))}
+        \chemright{]^+}
+        \caption{Designing a compound with orthogonal electrons.}
+        \label{fig:orthogonalElectrons}
+    \end{figure}
+    \begin{itemize}
+        \item The compound in Figure \ref{fig:orthogonalElectrons} is composed of a dipyridyl and semiquinoid ligand on copper. It is overall a monocation.
+        \item The unpaired electron on the semiquinoid is rigorously orthogonal to the copper one sinc they are in $d_{x^2-y^2}$ vs. $p_z$ orbitals.
+        \item $J>\SI{200}{\per\centi\meter}$ here.
+        \item $\chi T$ vs. temperature.
+        \begin{itemize}
+            \item We see a triplet ground state at super low temperatures.
+            \item The slope fits the Boltzmann population of the spin manifold.
+        \end{itemize}
+    \end{itemize}
+    \item General structure of Prussian blue analogs.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \chemfig{{M_A}(<:[1]C)(-[2]C)(-[4]C)(<[5]C)(-[6]C)-C~N-{M_B}(-N)(<:[1]N)(-[2]N)(<[5]N)(-[6]N)}
+        \caption{Prussian blue analogs.}
+        \label{fig:PrussianBlue}
+    \end{figure}
+    \begin{itemize}
+        \item Metals with ligands linked by a tightly bound cyanide.
+        \item \textcite{bib:PrussianBlue} recognized that if $\ce{M_A}=\ce{Ni^{II}}$ and $\ce{M_B}=\ce{Cr^{III}}$, then \ce{M_A} is $d^8$ and \ce{M_B} is $d^3$. Thus, the two metals are rigorously orthogonal.
+        \begin{itemize}
+            \item What we mean by this is that drawing out the $d$-orbital MO diagrams ($t_{2g}$ and $e_g$ sets), we see that \ce{Ni^{II}} has 2 unpaired electrons in the $e_g$ set, and \ce{Cr^{III}} has 3 unpaired electrons in the $t_{2g}$ set. Thus, the molecule overall has \emph{five} unpaired electrons in MOs.
+        \end{itemize}
+        \item This is one of the highest ordering magnetic materials known. FM coupling is still not great due to the long distance.
+    \end{itemize}
+    \item Prediction of the nature of interaction between differently occupied orbitals table.
+    \begin{itemize}
+        \item Don't memorize the table; in many cases, it's just better to draw our your $d$-orbital diagrams.
+    \end{itemize}
+    \item We \emph{now} start materials.
+    \item Summary of bulk coupling in materials.
+    \begin{table}[h!]
+        \centering
+        \includegraphics[width=0.65\linewidth]{bulkCoupling.png}
+        \caption{Bulk magnetic coupling.}
+        \label{fig:bulkCoupling}
+    \end{table}
+    \begin{itemize}
+        \item Paramagnets have a bunch of spins with no preference for alignment. Note that $1/\chi$ is linear as discussed last lecture!
+        \item Ferromagnet: We would need thermal energy to break the paired spins. This is an unstable equilibrium.
+        \item Ferrimagnet: Closer to an antiferromagnet theoretically. Treats alloys where we have oppositely aligned differing spin populations. Behavior is almost exactly ferromagnetic.
+    \end{itemize}
+    \item \textbf{Pauli paramagnetism}: A metal that's a pool of electrons which are sloshing around in a band structure. Pool of positive and negative spins. Treat it as an electron gas. Applying a magnetic field changes the relative energies of the pool or electrons.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}
+                \draw [blx,thick,name path=well]
+                    (0,0) parabola (-1,1.8)
+                    (0,-1) -- (0,2)
+                    (0,0) parabola (1,1.8)
+                ;
+    
+                \path [name path=int] (-1,1.3) -- ++(2,0);
+                \begin{scope}[on background layer]
+                    \fill [blz,name intersections={of=int and well}]
+                        (0,0) parabola (intersection-1) -- (intersection-2) -- cycle
+                        (0,0) parabola (intersection-3) -- (intersection-2) -- cycle
+                    ;
+                \end{scope}
+                \node at (-0.48,1.6) {\Large$\upharpoonleft$};
+                \node at (0.48,1.6) {\Large$\downharpoonright$};
+            \end{scope}
+            \draw [very thick,-latex] (1.5,0.5) -- ++(2,0);
+            \begin{scope}[xshift=5cm]
+                \draw [blx,thick,name path=well]
+                    (0,0) parabola (-1,1.8)
+                    (0,-1) -- (0,2)
+                    (0,-0.2) parabola (1,1.8)
+                ;
+    
+                \path [name path=int] (-1,1.3) -- ++(2,0);
+                \begin{scope}[on background layer]
+                    \fill [blz,name intersections={of=int and well}]
+                        (0,0) parabola (intersection-1) -- (intersection-2) -- cycle
+                        (0,-0.2) parabola (intersection-3) -- (intersection-2) -- cycle
+                    ;
+                \end{scope}
+                \node at (-0.48,1.6) {\Large$\upharpoonleft$};
+                \node at (0.48,1.6) {\Large$\downharpoonright$};
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Pauli paramagnetism.}
+        \label{fig:pauliParamag}
+    \end{figure}
+    \begin{itemize}
+        \item We now have more spin down, creating a net magnetic field that will be very small. \emph{This} is Pauli paramagnetism.
+    \end{itemize}
+    \item \ce{NdFeB} is the strongest \textbf{hard} ferromagnet.
+    \item The most classic case of a ferrimagnet is magnetite (mixed \ce{Fe^2+} and \ce{Fe^3+}).
+    \item Ferromagnets ideally have only one magnetic domain.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \begin{scope}
+                \filldraw [draw=orx,fill=orz,thick] (-0.5,-0.7) rectangle node{\Large$\uparrow$} ++(1,1.4);
+            \end{scope}
+            \draw [very thick,-latex] (0.9,0) -- ++(1.2,0);
+            \begin{scope}[xshift=3cm]
+                \filldraw [draw=orx,fill=orz,thick] (-0.5,-0.7) rectangle node{\Large$\uparrow$} ++(0.5,1.4);
+                \filldraw [draw=orx,fill=rez,thick] (0,-0.7) rectangle node{\Large$\downarrow$} ++(0.5,1.4);
+            \end{scope}
+            \draw [very thick,-latex] (3.9,0) -- ++(1.2,0);
+            \begin{scope}[xshift=6cm]
+                \filldraw [draw=orx,fill=orz,thick] (-0.5,-0.7) rectangle node{\Large$\uparrow$} ++(0.5,1.4);
+                \filldraw [draw=orx,fill=rez,thick] (0,-0.7) rectangle node{\Large$\downarrow$} ++(0.5,1.4);
+                \filldraw [draw=orx,fill=ylz,thick] (-0.5,-0.7) -- node[above=-1.5pt]{$\leftarrow$} ++(1,0) -- ++(-0.5,0.4) -- cycle;
+                \filldraw [draw=orx,fill=ylt,thick] (-0.5,0.7) -- node[below=-1.5pt]{$\rightarrow$} ++(1,0) -- ++(-0.5,-0.4) -- cycle;
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Ferromagnetic domains.}
+        \label{fig:FMdomains}
+    \end{figure}
+    \begin{itemize}
+        \item Over time, under different magnetic fields, you'll get fracturing domains. These may align antiparallel.
+        \item Applying a strong external magnetic field can anneal the domain walls and get you back to a single domain.
+    \end{itemize}
+    \item \textbf{Saturation magnetization}: The maximal magnetization of a material. \emph{Denoted by} $\bm{M_\textbf{sat}}$.
+    \item \textbf{Remnant magnetization}: The magnetization of a magnetized material after the external field is dialed back. \emph{Denoted by} $\bm{M_\textbf{rem}}$.
+    \item \textbf{Coercive field}: The amount of external field required to flip a magnet. \emph{Denoted by} $\bm{H_C}$.
+    \item Visualizing $M_\text{sat}$, $M_\text{rem}$, and $H_C$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \small
+            \draw
+                (-2,0) -- (2,0) node[right]{$H$}
+                (0,-2) -- (0,2) node[above]{$M$}
+            ;
+    
+            \footnotesize
+            \draw [rex,thick] (1.6,1.6) node[circle,fill,inner sep=1.5pt,label={above right:${\color{black}M_\text{sat}}$}]{}
+                to[out=180,in=10,looseness=0.5] (0,1.5) node[circle,fill,inner sep=1.5pt,label={below right:${\color{black}M_\text{rem}}$}]{}
+                to[out=-170,in=90] (-0.9,0) node[circle,fill,inner sep=1.5pt,label={below left:${\color{black}H_C}$}]{}
+                to[out=-90,in=0] (-1.6,-1.6)
+                to[out=0,in=-170,looseness=0.5] (0,-1.5)
+                to[out=10,in=-90] (0.9,0)
+                to[out=90,in=180] cycle
+            ;
+        \end{tikzpicture}
+        \caption{Hysteresis loop.}
+        \label{fig:hysteresis}
+    \end{figure}
+    \begin{itemize}
+        \item $H_C\propto\text{SOC}$, i.e., spin-orbit coupling.
+        \item Things like \ce{Fe^3+} HS $d^5$ with equally (singly) occupied $d$ orbitals have no preferred orientation.
+        \begin{itemize}
+            \item \ce{Ti^3+} with $d^1$ can generate "ring currents," giving it a preferred orientation.
+        \end{itemize}
+        \item The wider the curve, the \textbf{harder} the ferromagnet.
+        \item \textbf{Soft} is much skinnier (good for things like transformers that you want to be able to switch).
+        \item To mediate coupling between $f$ orbitals in lanthanides, we mix in a bit of iron to use its free electrons.
+    \end{itemize}
+    \item Exotic things just to be aware of.
+    \begin{itemize}
+        \item Ferrometals: Iron is an example.
+        \begin{itemize}
+            \item Metallic band structure even in the absence of a magnetic field.
+        \end{itemize}
+        \item Ferro half metal.
+        \begin{itemize}
+            \item Charge carriers are spin-polarized.
+            \item Important in spin-tronic type applications, P/N junctions, etc.
+        \end{itemize}
+        \item Metals have a continuous set of bands at the Fermi level regardless.
+        \item Ferro insulator.
+        \begin{itemize}
+            \item Filled band with no density of states. A magnet that is not conductive, essentially.
+        \end{itemize}
+        \item Weak coupling or frustration. AF exchange with spins that get frozen in. Frustration: Triangular lattice with up/down/what's the third.
+        \item Spin glass: Freeze-in spin orientations such that when you get back to a certain magnetization, you auto-drop.
+    \end{itemize}
+    \item Magnetic properties of some anonymized commercial polycrystalline hard magnets.
+    \item Next week: EPR.
 \end{itemize}
 
 

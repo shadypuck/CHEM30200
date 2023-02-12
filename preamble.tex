@@ -49,16 +49,23 @@
 
 \graphicspath{{../ExtFiles/}}
 
-\usetikzlibrary{calc,angles,backgrounds}
+\usetikzlibrary{calc,angles,backgrounds,intersections}
 \colorlet{rex}{red!80!black!90!orange!80}
+\colorlet{rez}{red!80!black!90!orange!20}
 \colorlet{blx}{blue!70!green!77}
+\colorlet{blz}{blue!70!green!20}
 \colorlet{grx}{green!50!black!90!yellow!80}
+\colorlet{grz}{green!50!black!90!yellow!20}
 \colorlet{orx}{orange!90!black!90!red!80}
+\colorlet{orz}{orange!90!black!90!red!20}
+\colorlet{ylz}{yellow!50!orange!20}
+\colorlet{ylt}{yellow!50!orange!10}
 
-\setchemfig{atom sep=2em,fixed length=true}
+\setchemfig{atom sep=2em,fixed length=true,bond offset=3pt,cram width=3pt}
 
 \newcommand{\kB}{{k_\text{B}^{}}}
 \newcommand{\NA}{{N_\text{A}^{}}}
 \newcommand{\mB}{{\mu_\text{B}^{}}}
 
 \newcommand{\prb}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\e}[1][]{\text{e}^{#1}}
