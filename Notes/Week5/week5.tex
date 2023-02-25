@@ -22,7 +22,7 @@
         \item Magnetism (doesn't really involve radiation, but whatever).
         \item EPR, XAS, Mossbauer, elecrochemistry, NMR, and (time-permitting) some examples.
     \end{itemize}
-    \item The final: Tuesday, March 7 from 7:30am-9:30am at the Registrar time.
+    \item The final: Tuesday, March 7 at the Registrar time (from 7:30am-9:30am).
     \begin{itemize}
         \item We will probably start at 8:00am and just have a \SI{1.5}{\hour} exam.
     \end{itemize}
@@ -64,7 +64,7 @@
     \item Dynamics via spectroscopy.
     \begin{itemize}
         \item Ask, "what is moving?"
-        \item Moving electrons? Probe with electrochemistry, EPR, optical spectroscopy (not covered much in this course), Mossbauer.
+        \item Moving electrons? Probe with electrochemistry, EPR, optical spectroscopy (not covered much in this course), Mossbauer. We're especially interested in \emph{electron transfer}.
         \begin{itemize}
             \item Will depend on the time scale of delocalization (this can be quite difficult to tease apart).
             \item Electrons may be in stationary, static wavefunction states, but they can also move between locations as both a particle and a wave.
@@ -74,20 +74,26 @@
         \begin{itemize}
             \item Anderson would like to get a grad kinetics course.
         \end{itemize}
+        \item The overall goal here is to obtain a "video" of the molecule.
     \end{itemize}
-    \item Before we dive into different types of spectroscopy, let's look at the difference between the techniques we've discussed thus far.
+    \item The difference between the techniques we've discussed thus far.
+    \item Quick note: It follows from the definition of spectroscopy that XRD if \emph{not} a spectroscopy.
     \begin{itemize}
-        \item It follows from the definition of spectroscopy that XRD if \emph{not} a spectroscopy. (Spectroscopy necessarily involves absorption of radiation, not diffraction.)
+        \item This is because spectroscopy necessarily involves absorption of radiation, not diffraction.
     \end{itemize}
-    \item A bit of physics.
+    \item The main difference between different types of spectroscopy is energy regimes!
+    \item Review: A bit of physics.
     \begin{itemize}
         \item $E=h\nu=hc/\lambda$. Thus,
         \begin{equation*}
             \nu\ (\si{\per\second}) = \frac{c\ (\si{\centi\meter\per\second})}{\lambda\ (\si{\centi\meter})}
         \end{equation*}
-        \item We can define our wavenumber $\nu\ (\si{\centi\meter})=1/\lambda\ (\si{\centi\meter})$.
+        \item We can define the wavenumber
+        \begin{equation*}
+            \nu\ (\si{\per\centi\meter}) = \frac{1}{\lambda\ (\si{\centi\meter})}
+        \end{equation*}
     \end{itemize}
-    \item The EM spectrum.
+    \item We now look at which energy regimes in the EM spectrum correspond to which types of spectroscopy.
     \begin{itemize}
         \item $\lambda=\SI{e6}{\centi\meter}$: Radio frequency, NMR, nuclear spin flips.
         \item $\lambda=\SI{e2}{\centi\meter}$: Microwave frequency, EPR, electron spin flip, rotations.
@@ -96,11 +102,16 @@
         \item $\lambda=\SIrange{e-5}{e-6}{\centi\meter}$: UV photoelectron spectroscopy (PES); won't talk to much about this.
         \item $\lambda=\SIrange{e-6}{e-9}{\centi\meter}$: X-rays, XRD and XAS.
         \item $\lambda=\SI{e-10}{\centi\meter}$: Gamma rays, Mossbauer (allows you to get very small peaks using very high energy radiation).
-        \item Beyond Gamma rays is electron beams.
+        \item Beyond gamma rays is electron beams.
+    \end{itemize}
+    \item Now we have a bunch of different types of spectroscopy. The next logical question is, "what dynamic processes can be probed with each spectroscopy?"
+    \begin{itemize}
+        \item To answer this question, we must consider the \emph{timescales} on which dynamic processes occur.
+        \item Specifically, in order to relate processes to regions of the EM spectrum, we need to know the timescales as a function of the energies involved.
     \end{itemize}
     \item Recall that
     \begin{equation*}
-        \nu = \frac{c}{\lambda} = \frac{1}{t}
+        \frac{1}{t} = \nu = \frac{c}{\lambda}
     \end{equation*}
     \begin{itemize}
         \item $t$ is the maximum time resolution.
@@ -115,7 +126,7 @@
         t = \frac{\SI{3e-7}{\meter}}{\SI{3e8}{\meter\per\second}} = \SI{e-15}{\second} = \SI{1}{\femto\second}
     \end{equation*}
     \begin{itemize}
-        \item A molecule vibrates on this order, so that's why UV/Vis is pretty good at resolving molecular vibrations.
+        \item The period of a molecular vibration is on this order, so that's why UV/Vis is pretty good at resolving molecular vibrations.
     \end{itemize}
     \item Time resolution ranges.
     \begin{itemize}
@@ -132,6 +143,7 @@
         \item Experimental isomer separation: \SI{e2}{\second}.
         \item For kinetics, about the fastest we can do is stop flow at \SIrange{e-3}{e-5}{\second}.
     \end{itemize}
+    \item A few misc. notes on time resolution follow.
     \item We cannot use XRD to resolve a molecular vibration (which happens much more slowly), or at least not easily.
     \begin{itemize}
         \item This is because an XRD experiment collects many frames over 30-60 seconds and we average over all nuclear configurations that occur during that time.
@@ -147,7 +159,7 @@
     \begin{itemize}
         \item They use the FEL to get very good time resolution, growing thousands of crystals on a conveyor belt, dropping them in front of the laser, collecting one frame, and moving onto the next crystal. The random distribution of orientations (as opposed to rotating the goniometer) in the falling crystal leads to really good data.
     \end{itemize}
-    \item The Creutz-Taube ion.
+    \item An example of where time resolution matters: Studying the Creutz-Taube ion.
     \begin{figure}[H]
         \centering
         \footnotesize
@@ -158,16 +170,19 @@
         \label{fig:CreutzTaube}
     \end{figure}
     \begin{itemize}
-        \item Taube was a Nobel laureate and a physical inorganic chemist.
+        \item History.
         \begin{itemize}
-            \item He did most of his work at Stanford and then UChicago lured him away and he's now proudly displayed on our website.
-            \item Anderson: this is a repeating pattern at UChicago
+            \item Henry Taube was a Nobel laureate and a physical inorganic chemist.
+            \begin{itemize}
+                \item He did most of his work at Stanford and then UChicago lured him away and he's now proudly displayed on our website.
+                \item Anderson: This is a repeating pattern at UChicago.
+            \end{itemize}
+            \item Carol Creutz was his grad student (very brilliant). Anderson went to grad school with her nephew, who's now a professor in his own right.
         \end{itemize}
-        \item Carol Creutz was his grad student (very brilliant). Anderson went to grad school with her nephew, who's now a professor in his own right.
         \item The ligand is most typically \ce{NH3}.
-        \item What is the oxidation state of \ce{Ru}? Is it a fractional 2.5 oxidation state, or do we have one \ce{Ru^{II}} and one \ce{Ru^{III}}?
+        \item A pertinent question: What is the oxidation state of \ce{Ru}? Is it a fractional 2.5 oxidation state, or do we have one \ce{Ru^{II}} and one \ce{Ru^{III}}?
         \begin{itemize}
-            \item It depends on which technique you use.
+            \item Where time resolution comes in: The answer to the above question depends on which technique you use.
             \item With good enough time resolution, the electron hopping rate is on the order of \SI{3e8}{\per\second}, so the lifetime $1/\nu$ is on the order of \SI{3.3e-7}{\second}. Look for an IVCT (inter-valence charge transfer).
             \item Visible and IR are the best techniques to use here. \SIrange{1000}{1600}{\nano\meter} is what you want to analyze these types of things.
         \end{itemize}
@@ -208,6 +223,9 @@
     \begin{itemize}
         \item IR: Pump an electron up one vibrational mode. Sometimes multiple via overtones.
         \item Raman: Take your molecule, shoot a laser at the sample, and see what light scatters. You're least interested in \textbf{Rayleigh scattering}. What you care about is different changes (\textbf{Stokes} and \textbf{Anti-Stokes Raman scattering}). Note that the latter will be far less intense than the former due to the differences in populations between the $v=0,1$ states. We resolve vibrational energy levels by looking at differences between input and output frequency.
+        \begin{itemize}
+            \item Indeed, in words: Rayleigh scattering is the most intense, Stokes is ok, and Anti-Stokes is poor.
+        \end{itemize}
         \item Populations are proportional to the sizes of the arrows in Figure \ref{fig:Raman}.
         \item Raman is good for materials, not for molecules.
         \begin{itemize}
@@ -217,11 +235,16 @@
         \item How Raman actually works: Your photon doesn't so much get absorbed as it scatters off of the electron cloud by coupling with the polarization wavefunction.
         \item Rayleigh is elastic; Raman is inelastic scattering.
         \item Conjugated macrocycles (e.g., heme groups) are great, but most aren't. Worth trying in the lab, but don't get your hopes up.
+        \item Resonance is when you have a specific optical bond being much more intense.
     \end{itemize}
-    \item Vibrational spectroscopy can give you identification of specific processes via isotopic labeling.
+    \item To finish off our brief treatment of vibrational spectroscopy, we'll discuss isotope effects.
     \begin{itemize}
-        \item Consider \ce{{}^16O2} vs. \ce{{}^18O2}.
-        \item We have $\nu_{00}=\SI{749}{\per\centi\meter}$ and $\nu_{00}=\SI{708}{\per\centi\meter}$, respectively.
+        \item Many times we want to test whether an observed vibration corresponds to specific atoms. To do this, we want to do an isotopic substitution.
+        \item This can change the energy of a vibration by an amount that can be predicted by the simple harmonic oscillator approximation.
+    \end{itemize}
+    \item Example: Consider \ce{{}^16O2} vs. \ce{{}^18O2}.
+    \begin{itemize}
+        \item In Raman spectroscopy, we have $\nu_{00}=\SI{749}{\per\centi\meter}$ and $\nu_{00}=\SI{708}{\per\centi\meter}$, respectively.
         \item Recall that $\nu=k\sqrt{F/\mu}$, where
         \begin{equation*}
             \frac{1}{\mu} = \frac{1}{\ce{{}^16O}}+\frac{1}{\ce{{}^16O}}
@@ -240,7 +263,6 @@
         \end{align*}
         \item We'll get to practice this on the HW.
     \end{itemize}
-    \pagebreak
     \item The HW will be due 1-2 weeks before the final.
     \item Further examples.
     \begin{enumerate}
@@ -255,6 +277,13 @@
             \item Take spectra of both complexes and then subtract the two to obtain a difference spectrum. If nitrogen is being incorporated, your difference spectrum should be flat except for two peaks (one positive and one negative) at \SI{1000}{\per\centi\meter} and \SI{920}{\per\centi\meter}.
         \end{itemize}
     \end{enumerate}
+    \item Last example from Anderson's written notes.
+    \item \textbf{Nuclear resonance vibrational spectroscopy}: A type of vibrational spectroscopy that uses a synchrotron to induce a nuclear excitation. \emph{Also known as} \textbf{NRVS}.
+    \begin{itemize}
+        \item This excitation can then couple to vibrations of the excited nucleus.
+        \item Particularly relevant for \ce{Fe}, the most common nucleon to study with NRVS.
+        \item Related to Mossbauer spectroscopy.
+    \end{itemize}
 \end{itemize}
 
 
