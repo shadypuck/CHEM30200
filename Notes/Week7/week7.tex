@@ -1,0 +1,551 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{6}
+
+\begin{document}
+
+
+
+
+\chapter{???}
+\section{EPR Spectroscopy}
+\begin{itemize}
+    \item \marginnote{2/14:}Today: EPR Spectroscopy.
+    \item Thursday: XAS and EXAFS (guest lecturer with great experience in the field).
+    \item As an official policy and a cautionary note, don't use ChatGPT to solve this course's homework.
+    \item Benefits of EPR.
+    \begin{itemize}
+        \item Allows you to look at electronic spin flips.
+        \item Allows you to look at paramagnetic complexes (the class complementary to those you can observe with NMR).
+    \end{itemize}
+    \item Most of today: Doublets.
+    \item Electron spin.
+    \begin{itemize}
+        \item An electron can be either spin up or spin down.
+        \item These states are degenerate in the absence of a magnetic field.
+        \item However, a magnetic field induces a Zeeman\footnote{ZAY-mon.} splitting described as follows.
+    \end{itemize}
+    \item The intrinsic electron spin has a magnetic moment defined as
+    \begin{equation*}
+        \mu_z = g\beta M_s
+    \end{equation*}
+    \begin{itemize}
+        \item $g$ is the gyromagnetic ratio for an \emph{electron} ($=2.0023219278$; we usually just treat it as 2; can deviate depending on SOC).
+        \item $M_s=\pm 1/2$ is our spin quantum number.
+        \item $\beta=e\hbar/2m_e$ is our Bohr magneton.
+    \end{itemize}
+    \item It follows that
+    \begin{equation*}
+        E = -\mu\cdot\vec{H}
+        = -\mu H\cos(\vec{\mu}\cdot\vec{H})
+        = -\mu_zH
+        = g\beta HM_s
+        = \pm\frac{1}{2}g\beta H
+    \end{equation*}
+    \begin{itemize}
+        \item This Zeeman splitting is pretty easy to visualize (see Figure \ref{fig:zeroFieldSplita}).
+        \item Thus, the energy to flip an electron is going to be $g\beta H$.
+        \begin{itemize}
+            \item This is also known as the \textbf{resonance condition}.
+        \end{itemize}
+    \end{itemize}
+    \item Aside: Be familiar with ENDOR spectroscopy, a combination of nuclear and electronic.
+    \item In an EPR experiment, we apply radiation to stimulate a spin flip.
+    \begin{itemize}
+        \item $E=h\nu=g\beta H$.
+        \item This energy is in the microwave region.
+        \item Microwaves are much higher in energy than radio waves, thus are more difficult to handle for technical reasons.
+        \item Thus, we cannot run complex, pulsed experiments analogous to in NMR; we just run more simple scans.
+        \item Indeed, herein we \emph{fix} the microwave frequency and vary the magnetic domain.
+        \item Takeaway: EPR is much cruder than NMR in many ways (for technical reasons).
+    \end{itemize}
+    \item The frequency domain $\nu$ can vary based on the spectrometer from \SIrange{1}{285}{\giga\hertz}.
+    \begin{itemize}
+        \item X-band (\SI{9.6}{\giga\hertz}) spectrometers are the most common.
+        \item More rarely, Q-band (\SI{35}{\giga\hertz}) and W-band (\SI{95}{\giga\hertz}) are used.
+        \item Milwaukee has an S-band EPR at \SI{2}{\giga\hertz}.
+        \item High frequencies give you worse splitting (opposite of NMR) but better signal-to-noise.
+    \end{itemize}
+    \item \textbf{Continuous wave EPR}: EPR experiments run under a fixed frequency domain and variable magnetic domain. \emph{Also known as} \textbf{CW EPR}.
+    \begin{itemize}
+        \item All of the setups described above constitute CW EPR.
+    \end{itemize}
+    \item We scan across our magnetic field and observe (fairly broad) Gaussian lineshapes. Thus, we usually plot the first derivative.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw (0,3) -- node[left]{Abs} (0,0) -- node[below]{$H$} (5,0);
+    
+                \draw [rex,thick] plot[domain=-4:4,smooth,samples=100] ({5*(\x+4)/8},{0.5+1.5*e^(-\x*\x)});
+            \end{tikzpicture}
+            \caption{Gaussian lineshape.}
+            \label{fig:EPR1stDeriva}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw (0,3) -- node[left]{Abs} (0,0) -- node[below]{$H$} (5,0);
+    
+                \draw [rex,thick] plot[domain=-4:4,smooth,samples=100] ({5*(\x+4)/8},{1.5-3*\x*e^(-\x*\x)});
+            \end{tikzpicture}
+            \caption{First derivative.}
+            \label{fig:EPR1stDerivb}
+        \end{subfigure}
+        \caption{EPR spectra are plotted as the first derivative.}
+        \label{fig:EPR1stDeriv}
+    \end{figure}
+    \item There are two main types of EPR line broadening.
+    \begin{enumerate}
+        \item \textbf{Secular broadening}. This comes from processes that vary the local magnetic field. Two subclasses.
+        \begin{enumerate}
+            \item \emph{Dynamic broadening}. A homogeneous broadening obtained by adding a paramagnetic ion to a solution of a free radical. This gives Lorentzian lineshapes.
+            \item \emph{Static broadening}. This is effectively the same, but induced by frozen solution and hence no longer homogeneous. This gives Gaussian lineshapes.
+        \end{enumerate}
+        \item \textbf{Lifetime broadening}. This occurs when the excited state lifetime is too short. It mathematically originates from the Heisenberg uncertainty principle. In particular, we have that
+        \begin{align*}
+            \Delta E\Delta t &= \frac{h}{2\pi}&
+                \Delta h\nu = \Delta E &= g\beta H = g\beta\Delta H\\
+            \Delta h\nu\Delta t &= \frac{h}{2\pi}&
+                \Delta\nu &= \frac{g\beta}{h}\Delta H\\
+            \Delta\nu &= \frac{1}{2\pi\Delta t}&
+                \Delta H &= \frac{h}{g\beta}\Delta\nu\\
+        \end{align*}
+        so, combining the above two expressions, the FWHM $\Delta H$ is given by
+        \begin{equation*}
+            \Delta H = \frac{h}{2\pi}\frac{1}{g\beta\Delta t}
+        \end{equation*}
+        Essentially, as $\Delta t$ gets really small, everything else starts to blow up since its in the denominator in the last term.
+    \end{enumerate}
+    \item We typically do EPR experiments in a frozen solution.
+    \item Two flavors of EPR we really care about.
+    \item \textbf{Spin-lattice relaxation}: The interaction of spin with the surroundings. \emph{Denoted by} $\bm{T_1}$. \emph{Given by}
+    \begin{equation*}
+        \Delta H = \frac{\hbar}{g\beta}\frac{1}{2T_1}
+    \end{equation*}
+    \begin{itemize}
+        \item In other words, if some spin is oriented away from $H$, how much time does it take to "reparallelize?"
+    \end{itemize}
+    \item \textbf{Spin-spin relaxation}. \emph{Denoted by} $\bm{T_2}$. \emph{Given by}
+    \begin{equation*}
+        \Delta H = \frac{\hbar}{g\beta}\frac{1}{T_2}
+    \end{equation*}
+    \item Combining the two gives the total homogeneous line width $T_2'$:
+    \begin{equation*}
+        \frac{1}{T_2}=\frac{1}{T_2}+\frac{1}{2T_1}
+    \end{equation*}
+    \item Result: We need to go to low temperatures for EPR spectroscopy both for the lifetime reason and for technical reasons.
+    \begin{itemize}
+        \item We need to go to helium temperatures in many cases.
+        \item Low spins may be observable at "high" temperatures like \SI{77}{\kelvin} or even room temperature in some cases.
+    \end{itemize}
+    \item $g$-values.
+    \begin{itemize}
+        \item The $g$-value is sort of like a ppm shift value for the EPR signal.
+        \item Recall that $g$ is determined by the resonant frequency $H_r$ at which we observe the excitation.
+        \begin{align*}
+            \Delta E &= \Delta E\\
+            g\beta H_r &= h\nu\\
+            g &= \frac{h\nu}{\beta H_r}
+        \end{align*}
+        \item Organic radicals almost always exist at $g=2$ and are isotropic. Deviation might be 1/10,000. This is because organic compounds are composed of light atoms that just don't have much SOC.
+        \item For TM's (and lanthanides), $g$ varies widely. Fortunately, it varies in a way that we can understand with orbitals.
+        \begin{itemize}
+            \item Again, we visualize "ring currents."
+            \item One that opposes the magnetic field induces $g<2$.
+            \begin{itemize}
+                \item Think of a lone electron in a set of 5 degenerate $d$-orbitals.
+            \end{itemize}
+            \item If a hole "hops" through and generates a ring current as in $d^9$ \ce{Cu^2+}, we have a ring current that reinforces the magnetic field and hence $g>2$.
+            \item Essentially, there are three scenarios that determine the value of $g$.
+            \begin{itemize}
+                \item If the $d$-orbitals are less than 1/2 filled, $g<2$.
+                \item If $>$ half filled, $g>2$.
+                \item At a perfectly half-filled shell, we should have $g\approx 2$.
+            \end{itemize}
+            \item This gives us sign. For magnitude\dots
+            \begin{itemize}
+                \item The magnitude of the deviation is related to the magnitude of the SOC.
+                \item To a first approximation, this will relate to symmetry and the degeneracy of orbitals.
+            \end{itemize}
+            \item Trust the half-filled value, not the hole: When you have $d^2$ in an octahedral field, for instance, the $t_{2g}$ set is less than half-filled, so $g<2$; it's not that you have one hole rotating so $g>2$.
+            \item It is the possibility of orbital angular momentum coupling with the spin angular momentum that allows $g$ to change.
+        \end{itemize}
+    \end{itemize}
+    \item Anisotropy: Thus far, we've only considered the effect of isotropic transitions. But both the magnetic field and spin are tensors with $x,y,z$-components.
+    \begin{itemize}
+        \item An isotropic magnetic field is described by
+        \begin{equation*}
+            \hat{H}_\text{iso} = g\beta\hat{H}\cdot\hat{S}
+        \end{equation*}
+        \begin{itemize}
+            \item You spin your samples to try to average this out in solid-state NMR, but it's not perfect so you do need to take axes into account.
+        \end{itemize}
+        \item An anisotropic magnetic field is described by
+        \begin{equation*}
+            \hat{H}_\text{aniso}=\beta\hat{H}\cdot\hat{g}\cdot\hat{S}=\beta(H_x,H_y,H_z)
+            \begin{pmatrix}
+                g_x & 0 & 0\\
+                0 & g_y & 0\\
+                0 & 0 & g_z\\
+            \end{pmatrix}
+            = \beta H_xg_xS_x+\beta H_yg_yS_y+\beta H_zg_zS_z
+        \end{equation*}
+        \item If a molecule has very high symmetry (e.g., $T_d$, $O$, $I_h$, etc.), then $g_x=g_y=g_z$. In this case, we get back to our nice isotropic, one peak picture (Figure \ref{fig:EPR1stDeriva}).
+        \begin{itemize}
+            \item Molecular geometry is \emph{related} to $g$ variations, but they're not the same thing. Don't make the mistake of looking at a highly symmetric molecule and thinking you know what the EPR spectra should be! You have to consider orbitals.
+        \end{itemize}
+        \item EPR is often done on frozen solutions (sometimes powders) so that we don't have rapid solution-phase tumbling to average out the $g$-values but have everything stuck in some orientation. In particular, $g$-values will be inequivalent in frozen solutions!
+    \end{itemize}
+    \item Anisotropic spectra.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.48\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw (0,3) -- node[left]{Abs} (0,0) -- node[below]{$H$} (5,0);
+    
+                \draw [rex,thick] plot[domain=-4:4,smooth] ({5*(\x+4)/8},{(0.5+0.2*e^(-5*(\x+1.8)^2))+(0.5+1.5*e^(-(\x)^2))+(0.5+0.2*e^(-5*(\x-1.8)^2))});
+            \end{tikzpicture}
+            \caption{Gaussian lineshape.}
+            \label{fig:EPRanisoa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.48\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw (0,3) -- node[left]{Abs} (0,0) -- node[below]{$H$} (5,0);
+    
+                \draw [rex,thick] plot[domain=-4:4,smooth,samples=100] ({5*(\x+4)/8},{(0.5-2*(\x+1.8)*e^(-5*(\x+1.8)^2))+(0.5-3*\x*e^(-(\x)^2))+(0.5-2*(\x-1.8)*e^(-5*(\x-1.8)^2))});
+
+                \footnotesize
+                \node at (1.201,1.5) {$g_x$};
+                \node at (2.064,1.5) {$g_y$};
+                \node at (3.799,1.5) {$g_z$};
+            \end{tikzpicture}
+            \caption{First derivative.}
+            \label{fig:EPRanisob}
+        \end{subfigure}
+        \caption{Rhombic anisotroic EPR spectra.}
+        \label{fig:EPRaniso}
+    \end{figure}
+    \begin{itemize}
+        \item Note that we don't know anything about Cartesian coordinates from the spectrum, so Anderson prefers $g_1,g_2,g_3$.
+        \item This is a rhombic spectrum, meaning that $g_x\neq g_y\neq g_z$.
+        \item Axial spectra are often referred to as $g_\parallel$ and $g_\perp$. This corresponds to $g_x\approx g_y\neq g_z$.
+        \begin{itemize}
+            \item We typically have a small $g_\parallel$ peak downfield of a big $g_\perp$ peak (picture in notes).
+            \item You see spectra like this for when your molecules have a clear symmetry axis; decreasing the symmetry further will tend to introduce some more rhombicity.
+        \end{itemize}
+        \item Anisotropy only occurs via coupling into orbital angular momentum. Thus, it is observed for TMs but typically not for organic radicals.
+    \end{itemize}
+    \item We now discuss fine structure for a while.
+    \item Fine structure basics.
+    \begin{itemize}
+        \item The electron spin can also interact with nuclear spin in \textbf{hyperfine interactions} and \textbf{superhyperfine interactions}.
+        \begin{itemize}
+            \item These lead to additional signals and structure.
+            \item Be aware of the differences between hyperfine and superhyperfine, but only hyperfine interactions will be analyzed for the remainder of the time.
+        \end{itemize}
+        \item The quantum-mechanical basis for fine structure involves the following Hamiltonian.
+        \begin{equation*}
+            \hat{H} = g\beta\vec{H}\cdot\hat{S}+a\hat{I}\cdot\hat{S}
+            = g\beta H\cdot\hat{S}_z+a\hat{I}_z\cdot\hat{S}_z
+        \end{equation*}
+        \begin{itemize}
+            \item $\hat{I}$ is the nuclear spin operator.
+            \item $\hat{S}$ is the electron spin operator.
+            \item $z$ is the component along $H$.
+            \item $a$ is the hyperfine coupling constant.
+        \end{itemize}
+        \item Energies: Found by calculating eigenvalues.
+        \begin{equation*}
+            E = \pm\frac{1}{2}g\beta H+\frac{a}{4}
+            = \frac{1}{2}g\beta H\pm\frac{a}{4}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Hyperfine interaction}: An interaction with the direct nucleus which bears the radical.
+    \item \textbf{Superhyperfine interaction}: An interaction involving additional coupling to other nuclei via delocalization.
+    \item Hyperfine Zeeman splitting diagram.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \small
+            \draw (0,3) node[above]{$E$} -- (0,0) -- (5,0) node[right]{$H$};
+    
+            \footnotesize
+            \draw (1.5,0.1) -- ++(0,-0.2) node[below]{$\e[-]$};
+            \draw (2.75,0.1) -- ++(0,-0.2) node[below]{nuclear};
+    
+            \draw [blx,ultra thick]
+                (0,1.5) -- ++(0.5,0)
+                (1.25,2.3) -- ++(0.5,0) node[above left]{$M_s=+\frac{1}{2}$}
+                (1.25,0.7) -- ++(0.5,0) node[below left]{$M_s=-\frac{1}{2}$}
+                (2.5,2.6) -- ++(0.5,0)
+                (2.5,2) -- ++(0.5,0)
+                (2.5,1) -- ++(0.5,0)
+                (2.5,0.4) -- ++(0.5,0)
+            ;
+            \draw [blx,semithick]
+                (0.5,1.5) -- (1.25,2.3)
+                (0.5,1.5) -- (1.25,0.7)
+                (1.75,2.3) -- (2.5,2.6)
+                (1.75,2.3) -- (2.5,2)
+                (1.75,0.7) -- (2.5,1)
+                (1.75,0.7) -- (2.5,0.4)
+            ;
+            \draw [rex,thick,stealth-stealth,shorten <=1pt,shorten >=1pt] (2.65,0.4) -- (2.65,2.6);
+            \draw [orx,thick,stealth-stealth,shorten <=1pt,shorten >=1pt] (2.85,1) -- (2.85,2);
+    
+            \node at (3.5,3.1) {$M_s$};
+            \node at (3.5,2.6) {$+\frac{1}{2}$};
+            \node at (3.5,2) {$+\frac{1}{2}$};
+            \node at (3.5,1) {$-\frac{1}{2}$};
+            \node at (3.5,0.4) {$-\frac{1}{2}$};
+    
+            \node at (4.5,3.1) {$M_I$};
+            \node at (4.5,2.6) {$+\frac{1}{2}$};
+            \node at (4.5,2) {$-\frac{1}{2}$};
+            \node at (4.5,1) {$-\frac{1}{2}$};
+            \node at (4.5,0.4) {$+\frac{1}{2}$};
+        \end{tikzpicture}
+        \caption{Hyperfine splitting.}
+        \label{fig:hyperfineSplitting}
+    \end{figure}
+    \begin{itemize}
+        \item We first have our electron splitting.
+        \item Then if we turn on nuclear splitting, that happens next, yielding four distinct states.
+    \end{itemize}
+    \item Hyperfine election rules.
+    \begin{itemize}
+        \item Thus far, we have implicitly used $\Delta M_s=\pm 1$.
+        \item We must have $\Delta M_I=0$ as well! We can have an electron spin flip, but we can't do a nuclear spin flip at the same time, which may make some intuitive sense as well since the probability that these two unlikely events would happen simultaneously is very low.
+        \item Thus, we have two allowed transitions in Figure \ref{fig:hyperfineSplitting}.
+    \end{itemize}
+    \item Hyperfine EPR spectrum.
+    \begin{itemize}
+        \item The peak splitting is $A$, which is related to the actual hyperfine coupling constant $a$ as we'll talk about shortly.
+        \item A lot of the time, you don't see $y$-axis labels in EPR spectra because "the first derivative of absorbance" is not a particularly helpful unit.
+    \end{itemize}
+    \item A few final notes on hyperfine coupling.
+    \begin{enumerate}
+        \item The hyperfine coupling constant $a$ is field independent.
+        \begin{itemize}
+            \item Zeeman splitting is the only thing that is field dependent.
+        \end{itemize}
+        \item $a$ is a scalar HF constant and
+        \begin{equation*}
+            a = g\beta A
+        \end{equation*}
+        \begin{itemize}
+            \item $A$ is measured in Gauss; it is the \emph{experimental} HF constant.
+        \end{itemize}
+        \item $a$ can also be anisotropic.
+        \begin{itemize}
+            \item Each of the values $g_x,g_y,g_z$ can have an $a$.
+            \item $a$ can be 0 for some $g_i$ and not others.
+        \end{itemize}
+        \item $M_I$ can have many values.
+        \begin{itemize}
+            \item Just like with NMR, a nuclear spin with $M_I>1/2$ can give multiline patterns.
+            \item Examples.
+            \begin{itemize}
+                \item \ce{{}^14N} has $M_I>1/2$.
+                \item TMs can go up to 7/2 or 9/2, leading to very complicated multiline coupling patterns very quickly.
+            \end{itemize}
+        \end{itemize}
+        \item $M_I$ sums the contribution from other neighboring nuclei.
+        \begin{itemize}
+            \item Multiple nuclei can also give multiline patterns, notably with $2nI+1$ lines.
+        \end{itemize}
+        \item If a spin active nucleus is not 100\% abundant, we get a superposition.
+        \begin{itemize}
+            \item Cool example: \ce{Mo(CN)8^3-}.
+            \begin{itemize}
+                \item This is a $d^1$ $S=1/2$ compound.
+                \item $I=0$ is 75\% abundant, but \ce{{}^97Mo} is 25\% abundant with $I=5/2$.
+                \item Thus, an amount of intensity equivalent to 1/3 of the central signal gets divided among 6 smaller neighboring peaks that are all evenly spaced apart (see notes for image).
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+    \item We now get move on to higher spin species.
+    \begin{itemize}
+        \item This is a further level of complication.
+        \item However, these species may have more accessible EPR transitions.
+        \item We usually have larger splitting for higher $M_s$ values.
+    \end{itemize}
+    \item \textbf{Kramer's theorem}: Ions with an odd number of electrons will always have as their lowest energy level at least a doublet that will split in an applied magnetic field and give rise to an EPR signal.
+    \item \textbf{Kramer's doublet}: The doublet predicted by Kramer's theorem.
+    \item Example: Transitions predicted to be visible for a quartet ($S=3/2$).
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \small
+            \draw (0,4) node[above]{$E$} -- (0,0) -- (4,0) node[right]{$H$ (\si{\gauss})};
+    
+            \footnotesize
+            \draw (1,0.1) -- ++(0,-0.2) node[below]{3000};
+            \draw (2,0.1) -- ++(0,-0.2) node[below]{6000};
+            \draw (3,0.1) -- ++(0,-0.2) node[below]{9000};
+    
+            \draw [blx,ultra thick]
+                (0,3) node[left]{$M_s=+\frac{3}{2}$} -- ++(0.5,0)
+                (0,1) node[left]{$M_s=-\frac{3}{2}$} -- ++(0.5,0)
+            ;
+            \draw [blx,semithick,name path={4}] (0.5,3) -- ++(3.3,1);
+            \draw [blx,semithick,name path={3}] (0.5,3) -- ++(3.3,-1);
+            \draw [blx,semithick,name path={2}] (0.5,1) -- ++(3.3,0.7);
+            \draw [blx,semithick,name path={1}] (0.5,1) -- ++(3.3,-0.7);
+    
+            \path [name path={2000}] ({2/3},0) -- ++(0,4);
+            \draw [rex,thick,name intersections={of=2000 and 3,by=a},name intersections={of=2000 and 4,by=b}] (a) -- (b);
+    
+            \path [name path={3000}] (1,0) -- ++(0,4);
+            \draw [rex,thick,name intersections={of=3000 and 1,by=a},name intersections={of=3000 and 2,by=b}] (a) -- (b);
+    
+            \path [name path={9000}] (3,0) -- ++(0,4);
+            \draw [rex,thick,name intersections={of=9000 and 2,by=a},name intersections={of=9000 and 3,by=b}] (a) -- (b);
+        \end{tikzpicture}
+        \caption{Quartet EPR signals.}
+        \label{fig:EPRquartet}
+    \end{figure}
+    \begin{itemize}
+        \item Something lower around \SI{2000}{\gauss}, higher around \SI{3000}{\gauss} and, if our spectrometer is powerful enough, something around \SI{9000}{\gauss}.
+        \item Recall $\Delta M_s=\pm 1$.
+    \end{itemize}
+    \item Example: Transitions predicted to be visible for a triplet ($S=1$).
+    \begin{itemize}
+        \item Triplets are very difficult to see because the lower state takes a long time to drop low enough to see the ground state.
+    \end{itemize}
+    \item Treating spin-orbit coupling.
+    \begin{itemize}
+        \item We have that $\vec{\mu}=g\beta\vec{J}$.
+        \item It follows that
+        \begin{equation*}
+            g = \frac{J(J+1)\cdot S(S+1)-L(L+1)}{2J(J+1)}+1
+        \end{equation*}
+        \item What people tend to do is look at the spectrum.
+    \end{itemize}
+    \item That's it for higher spin species.
+    \item A few practical points on EPR spectroscopy.
+    \begin{enumerate}
+        \item Use a microwave cavity, a fixed frequency, and vary the field.
+        \item Avoid solvents that strongly absorb microwaves (e.g., water, other polar solvents). This can sometimes be ok if the sample is frozen.
+        \item Usually quote $g$-values.
+        \begin{itemize}
+            \item Do we report values as $H$ or $g$??
+        \end{itemize}
+        \item You can double integrate vs. a standard to quantity $\pm 20\%$.
+    \end{enumerate}
+    \item We now move on to advanced EPR techniques.
+    \begin{itemize}
+        \item These are analogous to some of the fancy things you can do with NMR.
+        \item Essentially, they are alternate ways of getting data out of an EPR machine besides straight-up absorption spectra.
+    \end{itemize}
+    \item In particular, we will focus on \textbf{ENDOR} and \textbf{ESEEM} spectroscopy.
+    \item \textbf{Electron spin echo envelope modulation} (spectroscopy). \emph{Also known as} \textbf{ESEEM}.
+    \item \textbf{Electron nuclear double resonance} (spectroscopy). \emph{Also known as} \textbf{ENDOR}.
+    \item Background.
+    \begin{itemize}
+        \item Most EPR spectroscopy compared to NMR is pretty rudimentary.
+        \begin{itemize}
+            \item In NMR, every carbon spectrum you take is proton-decoupled (we'll talk about this later).
+            \item Radiofrequency is really nice to control.
+        \end{itemize}
+        \item However, these are both 2D experiments between EPR and NMR.
+        \begin{itemize}
+            \item They allow us to see spin-active nuclei that are close to the paramagnetic center.
+            \item 2D EPR can give you a ton of information about paramagnetic compounds; the most useful are those that couple electron transitions with nuclear transitions.
+        \end{itemize}
+        \item These are super powerful techniques.
+    \end{itemize}
+    \item ENDOR spectroscopy.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \small
+            \draw (0,3) node[above]{$E$} -- (0,0) -- (5,0) node[right]{$H$};
+    
+            \footnotesize
+            \draw (1.5,0.1) -- ++(0,-0.2) node[below]{EPR};
+            \draw (2.75,0.1) -- ++(0,-0.2) node[below]{NMR};
+            \draw (4,0.1) -- ++(0,-0.2) node[below]{HF};
+    
+            \draw [blx,ultra thick]
+                (0,1.5) -- ++(0.5,0)
+                (1.25,2.3) -- ++(0.5,0) node[above left]{$+\frac{1}{2}g\beta H$}
+                (1.25,0.7) -- ++(0.5,0) node[below left]{$-\frac{1}{2}g\beta H$}
+                (2.5,2.6) -- ++(0.5,0)
+                (2.5,2) -- ++(0.5,0)
+                (2.5,1) -- ++(0.5,0)
+                (2.5,0.4) -- ++(0.5,0)
+                (3.75,2.5) -- ++(0.9,0)
+                (3.75,2.1) -- ++(0.9,0)
+                (3.75,1.1) -- ++(0.9,0)
+                (3.75,0.3) -- ++(0.9,0)
+            ;
+            \draw [blx,semithick]
+                (0.5,1.5) -- (1.25,2.3)
+                (0.5,1.5) -- (1.25,0.7)
+                (1.75,2.3) -- (2.5,2.6)
+                (1.75,2.3) -- (2.5,2)
+                (1.75,0.7) -- (2.5,1)
+                (1.75,0.7) -- (2.5,0.4)
+                (3,2.6) -- (3.75,2.5)
+                (3,2) -- (3.75,2.1)
+                (3,1) -- (3.75,1.1)
+                (3,0.4) -- (3.75,0.3)
+            ;
+            \draw [rex,thick,-stealth,shorten <=1pt,shorten >=1pt] (3.9,0.3) -- (3.9,2.1);
+            \draw [rex,thick,-stealth,shorten <=1pt,shorten >=1pt] (4.1,1.1) -- (4.1,2.5);
+            \draw [orx,thick,-stealth,shorten <=1pt,shorten >=1pt] (4.1,0.3) -- (4.1,1.1);
+            \draw [orx,thick,-stealth,shorten <=1pt,shorten >=1pt] (3.9,2.1) -- (3.9,2.5);
+            \draw [ylx,thick,-stealth,shorten <=1pt,shorten >=1pt] (4.3,1.1) -- (4.3,2.1);
+            \draw [ylx,thick,-stealth,shorten <=1pt,shorten >=1pt] (4.5,0.3) -- (4.5,2.5);
+    
+            \draw [rex,ultra thick] (5,1.1) -- ++(0.5,0) node[right]{EPR};
+            \draw [orx,ultra thick] (5,0.8) -- ++(0.5,0) node[right]{NMR};
+            \draw [ylx,ultra thick] (5,0.5) -- ++(0.5,0) node[right]{ENDOR};
+        \end{tikzpicture}
+        \caption{ENDOR splitting.}
+        \label{fig:ENDORsplitting}
+    \end{figure}
+    \begin{itemize}
+        \item The quantum-mechanical basis for ENDOR involves the following Hamiltonian.
+        \begin{equation*}
+            \hat{H} = \underbrace{\vphantom{g_N}g\beta\hat{H}\cdot\hat{S}}_\text{EPR}-\underbrace{g_N\beta_N\hat{H}\cdot\hat{I}}_\text{NMR}+\underbrace{\vphantom{g_N}ha\hat{I}\cdot\hat{S}}_\text{HF}
+        \end{equation*}
+        \item Three levels of splitting: EPR, NMR, and HF.
+        \begin{itemize}
+            \item The last one doesn't actually induce splitting; it's just coupling between the first two that affects energy levels.
+        \end{itemize}
+        \item EPR has $\Delta M_s=\pm 1$, $\Delta M_I=0$.
+        \item Here, we turn on semi-forbidden transitions, i.e., those with $\Delta M_s=\pm 1$ and $\Delta M_I=\pm 1$.
+        \item $1\to 3$ and $2\to 4$ are EPR allowed.
+        \item $1\to 2$ and $3\to 4$ are NMR allowed.
+        \item ENDOR transitions (which we're turning on in this experiment) are $2\to 3$ and $1\to 4$.
+        \item ENDOR spectra tend to look like look like a big messy hunk corresponding to the nucleus, and then distinct ones further out which correspond to the NMR transitions.
+    \end{itemize}
+    \item Possibly a bit more ENDOR on Friday.
+    \item We now move on to ESEEM.
+    \begin{itemize}
+        \item Do we need to know this??
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
