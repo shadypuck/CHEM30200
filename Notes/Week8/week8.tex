@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{Mossbauer and EChem}
 \section{Mossbauer Spectroscopy}
 \begin{itemize}
     \item \marginnote{2/21:}HW will be posted tonight. Due on 3/2.
@@ -307,10 +307,117 @@
         \item $iR_s$ is the current times some internal resistance from the system.
         \item The Nernst equation is only valid for relatively simple electron transfers. Systems that obey the Nernst equation are referred to as \textbf{Nernstian}.
     \end{itemize}
-    \item You typically scan one way and then scan the other way to 
-    \item The midpoint between the peaks is $E^\circ$.
-    \item Peak to peak separation is \SI{57}{\milli\volt} for $n=1$, and then it shrinks as $n$ increases.
-    \item Electrochemists call the shape on a CV diagram a "duck."
+    \item Intro to CV.
+    \begin{itemize}
+        \item You typically scan one way and then scan the other way.
+        \item The midpoint between the peaks is $E^\circ$.
+        \item Peak to peak separation is \SI{57}{\milli\volt} for $n=1$, and then it shrinks as $n$ increases.
+        \item Electrochemists call the shape on a CV diagram a "duck."
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Electrochemistry}
+\begin{itemize}
+    \item \marginnote{2/23:}Electrochemical data is recorded on current vs. potential axes.
+    \begin{itemize}
+        \item The applied potential in volts, both positive and negative, makes up the $x$-axis.
+        \begin{itemize}
+            \item Negative potentials are to the right, and positive ones are to the left.
+        \end{itemize}
+        \item Current makes up the $y$-axis, with $I_\text{cathode}$ being positive and $I_\text{anode}$ being negative.
+    \end{itemize}
+    \item We now discuss the electrode surface in solution under an applied potential.
+    \item \textbf{Electrochemical double layer}: The complex, multilayered structure that forms near the surface of an electrode under an applied potential.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \small
+            \draw (-2,-1) -- (-2,0) -- node[below=3mm]{Electrode} (2,0) -- (2,-1);
+    
+            \footnotesize
+            \foreach \x in {-1.8,-1.5,...,2} {
+                \node at (\x,-0.15) {$+$};
+            }
+            %
+            \foreach \x in {-1.9,-1.7,...,2} {
+                \draw (\x,0)
+                    to[out=45,in=-45] ++({0.02*rand},{0.1+0.02*rand})
+                    to[out=135,in=-135] ++({0.02*rand},{0.1+0.02*rand})
+                ;
+            }
+            \foreach \x in {-1.8,-1.5,...,2} {
+                \node at (\x,0.3) {$-$};
+            }
+            %
+            \foreach \x in {-1.8,-1.3,...,2} {
+                \node at (\x,{0.8+0.3*rand}) {$-$};
+            }
+            %
+            \foreach \x in {-1.8,-1.3,...,2} {
+                \node at (\x,{1.4+0.15*rand}) {$-$};
+            }
+            \foreach \x in {-1.55,-1.05,...,2} {
+                \node at (\x,{1.4+0.15*rand}) {$+$};
+            }
+    
+            \draw [decorate,decoration={brace,mirror}] (2.2,1.25) -- node[right]{Bulk solution} ++(0,0.4);
+            \draw [decorate,decoration={brace,mirror}] (2.2,0.45) -- node[right]{Diffuse layer/diffusion layer} ++(0,0.7);
+            \draw [decorate,decoration={brace,mirror}] (2.2,0.05) -- node[right]{Tight binding layer} ++(0,0.3);
+
+            \path (-6,0) -- (6,0);
+        \end{tikzpicture}
+        \caption{Electrochemical double layer.}
+        \label{fig:echem2layer}
+    \end{figure}
+    \begin{itemize}
+        \item Charge transfer to the analyte occurs through this double layer.
+    \end{itemize}
+    \item Cyclic voltammetry.
+    \begin{itemize}
+        \item One of the most common experiments in electrochem.
+        \item You sweep between two potentials linearly, plotting the current that flows vs. the potential applied.
+        \item The anode oxidizes and the cathode gets reduced during the course of the reaction.
+        \item A \emph{reversible} electrochemical reaction appears at a certain potential as a "duck."
+        \begin{itemize}
+            \item Here, the maximum current ($I_{P_c}$; the peak of the duck) and minimum current ($I_{P_a}$; the belly of the duck) should have the same magnitude.
+        \end{itemize}
+        \item An \emph{irreversible} electrochemical reaction appears at a certain potential as a one-sided hump or dip.
+        \item As stated last time, the peak-to-peak separation should be about \SI{59}{\milli\volt}, but it almost never is.
+        \begin{itemize}
+            \item \SI{57}{\milli\volt} or \SI{59}{\milli\volt}??
+            \item This is the origin of the following equation (possibly related to the SHE vs. $\pH$ one from \textcite{bib:CHEM26700Notes}?).
+            \begin{equation*}
+                E_{P_c}-E_{P_a} = \frac{\SI{0.059}{\volt}}{n}
+            \end{equation*}
+        \end{itemize}
+        \item There is also a scan-rate dependence on peak separation given by
+        \begin{equation*}
+            i_P = \num{2.99e-5}\cdot n(\alpha n)^{1/2}AC_0^*D^{1/2}V^{1/2}
+        \end{equation*}
+        \begin{itemize}
+            \item $n$ is the number of electrons.
+            \item $\alpha$ is the transfer coefficient.
+            \item $A$ is the area of the electrode.
+            \item $C_0^*$ is the concentration.
+            \item $D$ is the diffusion coefficient.
+            \item $V$ is the sweep voltage.
+        \end{itemize}
+    \end{itemize}
+    \item Differential pulse voltammetry.
+    \begin{itemize}
+        \item This is another technique that allows better resolution than CV for closely spaced features.
+        \item More??
+    \end{itemize}
+    \item Rotating disk or ring electrodes.
+    \begin{itemize}
+        \item Diffusion is difficult to account for in electrochemistry.
+        \item With rotation, we can eliminate diffusion.
+        \item We can also add an outside ring around the active electrode to further characterize any compound generated.
+        \item If the electrode is rotating, the diffusion path of particles in solution is to move toward the center of the working electrode from underneath and then be spun out to the sides.
+    \end{itemize}
+    \item Anything else I missed in this lecture??
 \end{itemize}
 
 
