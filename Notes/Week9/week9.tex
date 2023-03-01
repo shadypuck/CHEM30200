@@ -1,0 +1,692 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{8}
+
+\begin{document}
+
+
+
+
+\chapter{???}
+\section{NMR Spectroscopy}
+\begin{itemize}
+    \item \marginnote{2/28:}Announcements.
+    \begin{itemize}
+        \item Second HW is due Friday at noon.
+        \begin{itemize}
+            \item We should have everything we need for it after today.
+        \end{itemize}
+        \item The final will be from 8:00-9:20am on Tuesday.
+        \begin{itemize}
+            \item It is solely on Anderson's lectures (it's just a second midterm).
+            \item Not open note. Shouldn't be too many things to memorize: $g\beta H$, magnetic moment formulas, gnarly stuff like the EXAFS formula we don't need to have memorized.
+        \end{itemize}
+    \end{itemize}
+    \item We now start the lecture.
+    \item Relation between EPR and NMR.
+    \begin{itemize}
+        \item There are many parallels.
+        \item NMR is more common than EPR, and much more complicated.
+    \end{itemize}
+    \item We will start with some simpler NMR examples to build a foundation.
+    \item NMR background/underlying principles.
+    \begin{itemize}
+        \item Like an electron has $S=\pm 1/2$, nuclei also have a given spin $I$.
+        \item While a single electron can only be $S=1/2$, a single nucleus can be $I=0,1/2,1,3/2,\dots$.
+    \end{itemize}
+    \item A few rules about $I$.
+    \begin{enumerate}
+        \item A nucleus with an odd mass number has a half-integer spin.
+        \item A nucleus with an even mass number and an odd atomic number has an integer spin.
+        \begin{itemize}
+            \item Examples: Deuterium, \ce{{}^14N}, etc.
+        \end{itemize}
+        \item A nucleus with an even mass number and an even atomic number has zero spin.
+    \end{enumerate}
+    \item We now investigate the \textbf{Zeeman splitting} of an $I=1/2$ nucleus.
+    \begin{itemize}
+        \item Like electron spins in EPR, nuclear spins align with or against applied magnetic fields.
+        \item The splitting is as in Figure \ref{fig:zeroFieldSplita}.
+        \item We know that $\Delta E=\gamma\hbar B_0$, where $\gamma$ is the gyromagnetic ratio and $B_0$ is the applied field.
+    \end{itemize}
+    \item The notes also consider the $I=1$ case.
+    \item \textbf{Zeeman splitting}: The energy difference between a spin aligned with and against a magnetic field.
+    \item \textbf{Larmor frequency}: The frequency of electromagnetic radiation that induces a spin flip. \emph{Also known as} \textbf{resonant frequency}. \emph{Denoted by} $\bm{\nu_0}$. \emph{Given by}
+    \begin{equation*}
+        \nu_0 = \frac{\gamma B_0}{2\pi}
+    \end{equation*}
+    \begin{itemize}
+        \item Takeaway: A nucleus's resonant frequency is determined by $\gamma$ and $B_0$.
+    \end{itemize}
+    \item Typical values for $B_0$, $\gamma$, and $\nu_0$.
+    \begin{itemize}
+        \item $B_0$: \SIrange{1.4}{14}{\tesla}.
+        \item $\nu_0$: \SIrange{60}{600}{\mega\hertz}, though we can go higher.
+    \end{itemize}
+    \item Example: The Larmor frequency of some common NMR nuclei under a \SI{9.4}{\tesla} magnet.
+    \begin{itemize}
+        \item \ce{{}^1H}: We have that
+        \begin{equation*}
+            \nu_0 = \frac{\gamma B_0}{2\pi}
+            = \frac{(\SI{26.8e7}{\per\tesla\per\second})(\SI{9.4}{\tesla})}{2\pi}
+            = \SI{4.0e8}{\per\second}
+            = \SI{400}{\mega\hertz}
+        \end{equation*}
+        \item \ce{{}^13C}: \SI{100}{\mega\hertz}.
+        \item \ce{{}^31P}: \SI{162}{\mega\hertz}.
+        \item \ce{{}^2H}: \SI{61}{\mega\hertz}.
+    \end{itemize}
+    \item The key limitation of NMR is \emph{sensitivity}.
+    \begin{itemize}
+        \item The sensitivity for NMR is pretty atrocious. This is because all relevant energies are pretty small (radiofrequency region) and thus hard to detect.
+        \item Quantitatively, sensitivity is proportional to the magnetogyric ratio cubed times the number of nuclei (equivalently, the concentration).
+        \item This is why MRI is really tough.
+        \item Also why you need really big magnets for NMR.
+        \item Additional limitation: The signal increases by the square of the applied field strength.
+        \begin{itemize}
+            \item How is this limiting??
+        \end{itemize}
+    \end{itemize}
+    \item Aside: Hyperpolarization for NMR.
+    \begin{itemize}
+        \item Goal: Enhance signal intensity by further polarizing nuclear spins.
+        \item Essentially, if you have four particles in the spin ground state and three in the spin excited state, exciting one of the ground state spins won't cause a significantly measurable change. However, if you \emph{hyperpolarize} the system so that there are, for example, six particles in the ground state and only one in the excited state, then inducing an excitation causes a far greater change.
+        \begin{itemize}
+            \item You can do this with \textbf{dynamic nuclear polarization}, particularly \textbf{triplet DNP}.
+            \item Also something akin to ENDOR with Zeeman splitting and microwaves to get a huge polarization buildup. Nobody has pulled this off \emph{in situ} yet, but that's a goal.
+        \end{itemize}
+        \item There's a scientist in Texas (possibly Christian Hilty??) looking into \textbf{parahydrogen}.
+        % \item DNP: Taking a singlet. Photoexciting it with light to generate a triplet. Then intersystem crossing to give you an $M_s$ that is selectively 0. You selectively populate the $M_s=0$ state. If this interacts with your nuclear spin, it causes the polarization; this is \textbf{triplet dynamic nuclear polarization}.
+    \end{itemize}
+    \item \textbf{Dynamic nuclear polarization}: A technique for hyperpolarization involving the transfer of spin polarization from electrons to nuclei. \emph{Also known as} \textbf{DNP}.
+    \item \textbf{Triplet DNP}: Photoexciting a singlet to a triplet and then harnessing intersystem crossing to selectively populate the $M_s=0$ state before transferring this polarization to the nuclei.
+    \item \textbf{Parahydrogen}: The spin isomer of hydrogen with the two proton spins aligned antiparallel.
+    \item The key advantage of NMR is \emph{resolution}.
+    \begin{itemize}
+        \item The specific frequency of a given nuclei is often exquisitely sensitive to its chemical environment.
+        \item NMR is a Qbit technique: We're using the nuclear spin as a quantum sensor for the system.
+        \item This really comes down to shielding.
+    \end{itemize}
+    \item Shielding.
+    \begin{itemize}
+        \item A useful (but technically inaccurate) classical analogy.
+        \begin{itemize}
+            \item If we have an electron and we apply a magnetic field $H_0$ to it in the $z$-direction, our electron will begin to circulate around it and induce a magnetic field in the opposite ($-z$) direction.
+            \item The angular frequency $\omega_1$ equals $eH_0/2m_e$.
+        \end{itemize}
+        \item Takeaway: Applied magnetic fields result in slight changes depending on the nuclear environment.
+        \item Because nuclei have very small energy splittings, we can resolve very small energy changes in our NMR spectra; this is the origin of the ppm splitting we're familiar with.
+    \end{itemize}
+    \item Shielding originates primarily from three places.
+    \begin{enumerate}
+        \item Nucleus: Specifically how electron-rich or -poor it is.
+        \item Solvent: The electrons therein will strongly influence the magnetic field felt by the nuclei.
+        \item Chemical environment: Bonds, functional groups, other nuclei, electrons, etc.
+    \end{enumerate}
+    \item Parts 1 and 3 (electron richness and nuclear factors) are related to each other and are important.
+    \begin{itemize}
+        \item We usually correct for part 2 using a known solvent shift and an internal standard.
+    \end{itemize}
+    \item Measuring and describing the \textbf{chemical shift}.
+    \begin{itemize}
+        \item \SI{1}{\ppm} is a shift in the resonant frequency of a given nucleus. Specifically,
+        \begin{equation*}
+            \SI{1}{\ppm} = \frac{\nu_1-\nu_\text{ref}}{\nu_0\cdot\num{e6}}
+        \end{equation*}
+        \begin{itemize}
+            \item $\nu_1$ is the measured Larmor frequency for a given nucleus.
+            \item $\nu_\text{ref}$ refers to a single compound that we reference against, e.g., TMS.
+            \item $\nu_0$ is the predicted Larmor frequency for said nucleus based on its $\gamma$.
+        \end{itemize}
+        \item Thus, at \SI{60}{\mega\hertz} (for example), $\SI{1}{\ppm}=\SI{60}{\hertz}$.
+        \item Chemical shift lingo.
+        \begin{itemize}
+            \item More \emph{shielded} nuclei require \emph{higher fields}, have a \emph{lower chemical shift}, and are positioned relatively \emph{upfield}.
+            \item More \emph{deshielded} nuclei resonate at \emph{lower fields}, have a \emph{higher chemical shift}, and are positioned relatively \emph{downfield}.
+        \end{itemize}
+    \end{itemize}
+    \item Line widths.
+    \begin{itemize}
+        \item Recall from EPR: $\tau$ denotes \textbf{lifetime}.
+        \item We're limited by the Heisenberg uncertainty principle
+        \begin{equation*}
+            \Delta E\Delta t = \hbar
+            \quad\Longleftrightarrow\quad
+            \Delta E = \frac{\hbar}{\tau}
+        \end{equation*}
+        \item It follows that a long lifetime $\tau$ gives you a small $\Delta E$ and a sharp line.
+        \item Typical lifetimes: $\tau_\text{NMR}=\SIrange{1}{100}{\second}$, $\tau_\text{rot}=\SI{e-9}{\second}$, $\tau_\text{vib}=\SI{e-6}{\second}$.
+    \end{itemize}
+    \item \textbf{Lifetime}: The time that a signal will remain polarized. \emph{Denoted by} $\bm{\tau}$, $\bm{\Delta t}$.
+    \item \textbf{Chemical shift}. \emph{Denoted by} $\bm{\sigma}$. \emph{Given by}
+    \begin{equation*}
+        \sigma = \sigma_d+\sigma_p+\sigma_R+\sigma_e+\sigma_\text{int}
+    \end{equation*}
+    \begin{itemize}
+        \item Each of the five variables represents a contribution to the nucleus from some magnetic component.
+        \item $\sigma_d$ is our diamagnetic term.
+        \begin{itemize}
+            \item Usually positive, so it causes signals to shift downfield.
+            \item Most important for \ce{{}^1H} NMR.
+            \item Correlates with the $s$-electron density at the nucleus; thus can give us a direct readout of the electron density of the nucleus. Also, more electron rich means more shielded.
+        \end{itemize}
+        \item $\sigma_p$ is our paramagnetic term.
+        \begin{itemize}
+            \item Usually negative, so it causes signals to shift upfield.
+            \item Most important for heavier elements (e.g., \ce{{}^31P}, \ce{{}^119Sn}, etc.).
+            \item A large term in general (larger than $\sigma_d$??).
+            \item Distinct usage from paramagnetic \emph{samples} (diamagnetic nuclei can have paramagnetic terms).
+        \end{itemize}
+        \item $\sigma_R$ is for ring currents.
+        \begin{itemize}
+            \item Consider a benzene ring for instance. The large induced ring current creates two cones of positive shift and negative regions outside.
+            \item Other multiple bonds also contribute in various ways.
+            \item For more details, see the discussion associated with Figure \ref{fig:BnzRingCurrent} below.
+        \end{itemize}
+        \item $\sigma_e$ is for electric fields.
+        \item $\sigma_\text{int}$ is for intermolecular effects.
+        \item The latter three are often combined into $\sigma_N$.
+        \item Recall\dots
+        \begin{itemize}
+            \item $\sigma>0$ means an upfield shift (lower ppm)
+            \item $\sigma<0$ means a downfield shift (higher ppm).
+        \end{itemize}
+    \end{itemize}
+    \item Benzene ring current effects.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \fill [blz,opacity=0.5] (0.45,0) arc[start angle=0,end angle=180,x radius=0.45cm,y radius=0.135cm] -- (-1,-2) arc[start angle=180,end angle=0,x radius=1cm,y radius=0.3cm] -- cycle;
+            \fill [blz,opacity=0.5] (0.45,0) arc[start angle=0,end angle=-180,x radius=0.45cm,y radius=0.135cm] -- (-1,-2) arc[start angle=-180,end angle=0,x radius=1cm,y radius=0.3cm] -- cycle;
+    
+            \begin{scope}[yscale=0.3,rotate=-2]
+                \node[transform shape]{\chemfig{**6(------)}};
+            \end{scope}
+    
+            \fill [blz,opacity=0.5] (0.45,0) arc[start angle=0,end angle=180,x radius=0.45cm,y radius=0.135cm] -- (-1,2) arc[start angle=180,end angle=0,x radius=1cm,y radius=0.3cm] -- cycle;
+            \fill [blz,opacity=0.5] (0.45,0) arc[start angle=0,end angle=-180,x radius=0.45cm,y radius=0.135cm] -- (-1,2) arc[start angle=-180,end angle=0,x radius=1cm,y radius=0.3cm] -- cycle;
+    
+            \footnotesize
+            \node at (0,2) {$+$};
+            \node at (0,-2) {$+$};
+            \node at (1.3,0) {$-$};
+            \node at (-1.3,0) {$-$};
+        \end{tikzpicture}
+        \caption{The effect of the ring current in benzene.}
+        \label{fig:BnzRingCurrent}
+    \end{figure}
+    \begin{itemize}
+        \item It's a fake ring current.
+        \item It's a quantum mechanical effect from the interaction of the magnetic field with the degenerate $\pi$ system.
+        \item But still, it's a useful classical picture.
+        \item Something with Zwitterionic character may be able to give you a "real" ring current.
+    \end{itemize}
+    \item Most of us have probably seen some of this before. But now we'll move onto something we haven't seen: Heavier nuclei.
+    \item With heavier nuclei, $\sigma_p$ dominates.
+    \begin{itemize}
+        \item The spread is much bigger than with \ce{{}^1H} NMR.
+        \item $\sigma_d$ is still there but is typically small and much more constant.
+    \end{itemize}
+    \item Contributions to $\sigma_p$.
+    \begin{itemize}
+        \item The orbital angular momentum, largely from the $p,d,f$ orbitals.
+        \begin{itemize}
+            \item We do \emph{not} consider electron spin here, just orbital spin.
+        \end{itemize}
+        \item The magnitude of $\sigma_p$ is controlled by mixing.
+        \begin{itemize}
+            \item Mixing in other states mixes in their angular momentum.
+            \item Most common when there is lowered symmetry, low-lying excited states, and lots of EWGs.
+            \item Mathematically, we describe $\sigma_p$ with the \textbf{Ramsey equation}.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Ramsey equation}: The equation giving the relative magnitude of $\sigma_p$. \emph{Given by}
+    \begin{equation*}
+        \sigma_p \propto -\left[ \frac{1}{E_\text{es}}-E_\text{gs} \right]\left\langle \frac{1}{r^3} \right\rangle[\pi\text{-bonding term}]
+    \end{equation*}
+    \begin{itemize}
+        \item es denotes the excited state.
+        \item gs denotes the ground state.
+        \item Rationalizing the energy separation (first) term.
+        \begin{itemize}
+            \item Alkanes have strong bonds and no low-lying excited states, while alkenes will have lower excited states.
+            \item Thus, $\sigma_p$ is greater for alkenes than alkanes, for example.
+            \item Takeaway: Unsaturation typically leads to larger paramagnetic terms.
+        \end{itemize}
+        \item Rationalizing the $1/r^3$ term.
+        \begin{itemize}
+            \item It is related to how close electrons are to the nucleus.
+            \item EWGs decrease electron-electron repulsions, moving electrons closer to the nucleus, thus increasing $\sigma_p$ and shift heavier nuclei more downfield.
+        \end{itemize}
+        \item The $\pi$-bonding term is complicated; we will not discuss it further.
+        \begin{itemize}
+            \item It is summed over all relevant interactions.
+            \item Depends on the system at hand.
+        \end{itemize}
+    \end{itemize}
+    \item Thus, the chemical shift can provide important chemical information.
+    \item However, it can also provide other useful information, such as on \textbf{coupling}.
+    \item \textbf{First order system}: A system in which the spread of the nuclei is much higher in ppm than the coupling constant, i.e., in which the following equation is satisfied.
+    \begin{equation*}
+        \Delta\nu = |\nu_{\ce{A}}-\nu_{\ce{X}}| \gg J_{\ce{AX}}
+    \end{equation*}
+    \begin{itemize}
+        \item $\nu_{\ce{A}}$ is the frequency/ppm shift of nucleus \ce{A}.
+        \item $\nu_{\ce{X}}$ is the frequency/ppm shift of nucleus \ce{X}.
+        \item $J_{\ce{AX}}$ is the coupling constant between \ce{A} and \ce{X}.
+        \item Coupling is relatively simple in first order systems.
+        \item We will not get into second order splitting, which occurs when the above inequality is not satisfied and is very complicated.
+    \end{itemize}
+    \item Example: Consider the following molecule, which has two nuclei of interest (each with $I=1/2$).
+    \begin{figure}[H]
+        \centering
+        \footnotesize
+        \chemfig{Cl_3C-C(-[6]Cl)(-[2]{H_A})-C(-[6]Cl)(-[2]{H_X})-Cl}
+        \caption{NMR coupling of two neighboring nuclei.}
+        \label{fig:couplingTwo}
+    \end{figure}
+    \begin{itemize}
+        \item Comments on the molecule.
+        \begin{itemize}
+            \item A nasty molecule chemically; would probably destroy the ozone layer and such.
+            \item Only two spin-active proton nuclei.
+            \item We stick on the \ce{CCl3} group to put the two protons in different chemical environments (gets rid of the reflection plane that would be there if \ce{CCl3} were just \ce{Cl}).
+        \end{itemize}
+        \item Let's look at the peak structure of \ce{A} first.
+        \begin{itemize}
+            \item \ce{X} can have one of two values: $M_I=\pm 1/2$.
+            \item Thus, \ce{A} can be in two marginally different chemical environments, and hence should appear as a doublet.
+        \end{itemize}
+        \item The same is true of \ce{X}.
+        \item Thus, the full \ce{{}^1H} NMR spectrum should consist of a pair of doublets.
+    \end{itemize}
+    \item There are two types of coupling.
+    \begin{enumerate}
+        \item \textbf{Dipolar coupling}. Occurs "through space."
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}[b]{0.2\linewidth}
+                \centering
+                \begin{tikzpicture}
+                    \small
+                    \node (A)          {\ce{A}};
+                    \node (X) at (1,0) {\ce{X}}
+                        edge [blx,thick,-stealth] (1,0.7)
+                    ;
+                    \draw [blx,dashed,->] (1,0.7) to[out=90,in=90,in looseness=3,out looseness=1] (A);
+                    \draw [blx,dashed,->] (A) to[out=-90,in=-90,looseness=3] (X);
+        
+                    \footnotesize
+                    \draw [-latex] (-0.5,-0.5) -- node[left]{$B_0$} ++(0,1);
+        
+                    \path (-1,0) -- (2,0);
+                \end{tikzpicture}
+                \caption{Opposing.}
+                \label{fig:dipolarCouplinga}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.2\linewidth}
+                \centering
+                \begin{tikzpicture}
+                    \small
+                    \node (A)          {\ce{A}};
+                    \node (X) at (1,0) {\ce{X}}
+                        edge [blx,thick,stealth-] (1,0.7)
+                    ;
+                    \draw [blx,dashed,<-,shorten <=2pt] (1,0.7) to[out=90,in=90,in looseness=3,out looseness=1] (A);
+                    \draw [blx,dashed,<-] (A) to[out=-90,in=-90,looseness=3] (X);
+                \end{tikzpicture}
+                \caption{Reinforcing.}
+                \label{fig:dipolarCouplingb}
+            \end{subfigure}
+            \caption{Dipolar coupling.}
+            \label{fig:dipolarCoupling}
+        \end{figure}
+        \begin{itemize}
+            \item Having a nearby element \ce{X} that is magnetized is like bringing an additional magnet close to \ce{A}, affecting its chemical environment.
+            \item \ce{X} can oppose or reinforce the applied magnetic field $B_0$ at \ce{A} (see Figure \ref{fig:dipolarCoupling}).
+            \item The field is given by
+            \begin{equation*}
+                B_{\ce{AX}} = \gamma_{\ce{A}}\gamma_{\ce{X}}\cdot\frac{3\cos^2\theta-1}{r_{\ce{AX}}^2}
+            \end{equation*}
+            \begin{itemize}
+                \item $\gamma$'s are gyromagnetic ratios.
+                \item $r_{\ce{AX}}$ is assumed to be big; thus distance is important.
+                \begin{itemize}
+                    \item Is the exponent a 2 or a 3??
+                \end{itemize}
+                \item $\theta$ is the angle between the two nuclear spin axes (of \ce{A} and \ce{X}).
+                \item What exactly is this field??
+            \end{itemize}
+            \item Dipolar coupling averages to zero in solution but still affects relaxation.
+            \item When \ce{{}^31P} NMR is run, it is done proton decoupled to get bigger shifts.
+            \begin{itemize}
+                \item How is this relevant??
+            \end{itemize}
+        \end{itemize}
+        \item \textbf{Scalar coupling}. Occurs "through bond."
+        \begin{itemize}
+            \item Dominates in solution.
+            \item We have that
+            \begin{equation*}
+                E_\text{scalar} = hJM_{I,\ce{A}}M_{I,\ce{X}}
+            \end{equation*}
+            \item $J$ is our coupling constant in Hertz.
+            \item Notes on $J$.
+            \begin{itemize}
+                \item Can be positive or negative, but in most cases, we don't care what its sign is. We can determine this experimentally if we need it, though.
+                \item Proportional to the $s$-character of the bond.
+                \item Independent of $H$, so the same on all instruments.
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+    \item Dipolar coupling example: The \ce{C3Cl6H2} doublets.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw (0,3) node[above]{$E$} -- (0,0) -- (6,0) node[right]{$H$};
+    
+            \footnotesize
+            \draw [dashed]
+                (1.25,2.3) -- (3,2.3)
+                (1.25,0.7) -- (3,0.7)
+            ;
+    
+            \draw [blx,ultra thick]
+                (0,1.5) -- ++(0.5,0)
+                (1.25,2.3) -- ++(0.5,0)
+                (1.25,0.7) -- node[below]{$-\frac{\nu_{\ce{A}}}{2}$} ++(0.5,0)
+                (2.5,2.6) -- ++(0.7,0)
+                (2.5,2) -- ++(0.7,0)
+                (2.5,1) -- ++(0.7,0)
+                (2.5,0.4) -- ++(0.7,0)
+            ;
+            \draw [blx,semithick]
+                (0.5,1.5) -- node[above left]{$\beta$} (1.25,2.3)
+                (0.5,1.5) -- node[below left]{$\alpha$} (1.25,0.7)
+                (1.75,2.3) -- (2.5,2.6)
+                (1.75,2.3) -- (2.5,2)
+                (1.75,0.7) -- (2.5,1)
+                (1.75,0.7) -- (2.5,0.4)
+            ;
+    
+            \node at (3.6,3.1) {\ce{A}};
+            \node at (3.6,2.6) {$\beta$};
+            \node at (3.6,2) {$\beta$};
+            \node at (3.6,1) {$\alpha$};
+            \node at (3.6,0.4) {$\alpha$};
+    
+            \node at (3.9,3.1) {\ce{X}};
+            \node at (3.9,2.6) {$\beta$};
+            \node at (3.9,2) {$\alpha$};
+            \node at (3.9,1) {$\alpha$};
+            \node at (3.9,0.4) {$\beta$};
+    
+            \node at (4.7,3.1) {$M_{I,\ce{A}}$};
+            \node at (4.7,2.6) {$-\frac{1}{2}$};
+            \node at (4.7,2) {$-\frac{1}{2}$};
+            \node at (4.7,1) {$+\frac{1}{2}$};
+            \node at (4.7,0.4) {$+\frac{1}{2}$};
+    
+            \node at (5.7,3.1) {$M_{I,\ce{X}}$};
+            \node at (5.7,2.6) {$-\frac{1}{2}$};
+            \node at (5.7,2) {$+\frac{1}{2}$};
+            \node at (5.7,1) {$+\frac{1}{2}$};
+            \node at (5.7,0.4) {$-\frac{1}{2}$};
+    
+            \draw [rex,thick,stealth-stealth] (2.65,2.3) -- (2.65,2.6);
+            \draw [orx,thick,stealth-stealth] (2.85,2) -- (2.85,2.6);
+            \draw [ylx,thick,stealth-stealth] (2.65,1) -- (2.65,2);
+            \draw [grx,thick,stealth-stealth] (3.05,0.4) -- (3.05,2.6);
+        
+            \draw [rex,ultra thick] (6.2,2)   -- ++(0.5,0) node[right]{$\frac{J}{4}=JM_{I,\ce{A}}M_{I,\ce{X}}$};
+            \draw [orx,ultra thick] (6.2,1.5) -- ++(0.5,0) node[right]{$\frac{J}{2}$};
+            \draw [ylx,ultra thick] (6.2,1)   -- ++(0.5,0) node[right]{$\nu_{\ce{A}}-\frac{J}{2}$};
+            \draw [grx,ultra thick] (6.2,0.5) -- ++(0.5,0) node[right]{$\nu_{\ce{A}}+\frac{J}{2}$};
+    
+            \path (-2,0) -- (8,0);
+        \end{tikzpicture}
+        \caption{Formation of a pair of NMR doublets.}
+        \label{fig:NMRpairDoublets}
+    \end{figure}
+    \begin{itemize}
+        \item Analysis of the first splitting (originates from the applied magnetic field).
+        \begin{itemize}
+            \item Of the left two connecting lines, the lower one is referred to as the \textbf{$\bm{\alpha}$-manifold} and the upper one is referred to as the \textbf{$\bm{\beta}$-manifold}.
+            \begin{itemize}
+                \item What exactly are these?? Relation to $\alpha,\beta$ designation of spin from \textcite{bib:CHEM26100Notes}.
+            \end{itemize}
+            \item The energy of the upper state at the end of the $\beta$-manifold is given by
+            \begin{equation*}
+                E = -\frac{\gamma}{2\pi}B_0(1-\sigma_{\ce{A}})M_{I,\ce{A}}
+                = -\nu_{\ce{A}}M_{I,\ce{A}}
+                = \frac{\nu_{\ce{A}}}{2}
+            \end{equation*}
+            \begin{itemize}
+                \item There is a sign flip in the last equality because $M_{I,\ce{A}}$ is negative.
+            \end{itemize}
+            \item Per the definitions of the green and yellow gaps in Figure \ref{fig:NMRpairDoublets}, the energy difference between the two states at the end of the $\alpha$- and $\beta$-manifolds will just be $\nu_{\ce{A}}$.
+            \item Takeaway: In the absence of coupling, one peak corresponds to \ce{A} at the frequency $\nu_{\ce{A}}$.
+        \end{itemize}
+        \item We now factor in the second splitting (originates from coupling).
+        \begin{itemize}
+            \item We label the resultant states with a second set of $\beta$'s and $\alpha$'s.
+            \begin{itemize}
+                \item The signs are related to the signs of the fields from the other nucleus.
+            \end{itemize}
+            % \item $JM_{I,\ce{A}}M_{I,\ce{X}}=J/4$ is the secondary splitting.
+            % \begin{itemize}
+            %     \item Thus, $J/2$ is the energy difference between $\beta\beta$ and $\beta\alpha$.
+            % \end{itemize}
+            % \item Similarly\dots
+            % \begin{itemize}
+            %     \item $\nu_{\ce{A}}-J/2$ is the energy difference between $\beta\alpha$ and $\alpha\alpha$.
+            %     \item $\nu_{\ce{A}}+J/2$ is the energy difference between $\alpha\beta$ and $\beta\beta$.
+            % \end{itemize}
+            \item Selection rule: $\Delta M_I=\pm 1$.
+            \begin{itemize}
+                \item Thus, only $\alpha\alpha\to\beta\alpha$ (yellow) and $\alpha\beta\to\beta\beta$ (green) are allowed.
+            \end{itemize}
+            \item From the frequencies of these two transitions, the splitting in the doublet is
+            \begin{equation*}
+                J = \left( \nu_{\ce{A}}+\frac{J}{2} \right)-\left( \nu_{\ce{A}}-\frac{J}{2} \right)
+            \end{equation*}
+            \item $J$ is typically small compared to $\nu_{\ce{A}}$.
+            \item Takeaway: Factoring in coupling, we will observe a \emph{doublet} centered around $\nu_{\ce{A}}$. However, $\nu_{\ce{A}}$ is no longer an allowable transition; only the yellow and green ones are (note that these are centered around $\nu_{\ce{A}}$). The peaks corresponding to the yellow and green transitions will be separated by $J$, as described above.
+        \end{itemize}
+    \end{itemize}
+    \item Scalar coupling example: A diatomic molecule.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \node [circle,draw=rex] (A) {A}
+                edge [blx,thick,-stealth,shorten <=1mm] (0,0.8)
+            ;
+            \node [circle,draw=rex] (X) at (1.5,0) {X}
+                edge [rex] node[above]{${\color{blx}\downharpoonleft\hspace{-1pt}\upharpoonright}$} (A)
+                edge [blx,thick,stealth-,shorten <=1mm] (1.5,0.8)
+            ;
+        \end{tikzpicture}
+        \caption{Scalar coupling in a diatomic molecule.}
+        \label{fig:scalarCouplingDiatomic}
+    \end{figure}
+    \begin{itemize}
+        \item How scalar coupling works in more detail (very complicated, but a nice simplistic picture).
+        \begin{itemize}
+            \item Empirical observation: Electrons and nuclei prefer to align antiparallel.
+            \item Notice how each nucleus in Figure \ref{fig:scalarCouplingDiatomic} is aligned antiparallel to the nearest electron.
+            \item Naturally, the electrons are also aligned antiparallel since they are in the same bonding orbital.
+            \item Thus, the neighboring nuclei prefer to be anti-parallel because of the indirect interaction chain of nucleus-electron, electron-electron, electron-nucleus.
+        \end{itemize}
+        \item At this point, some of our previous observations should make more sense.
+        \begin{itemize}
+            \item Example: Scalar coupling scales with $s$-character because greater $s$-character maximizes electron-nucleus interactions.
+        \end{itemize}
+        % \item As \ce{A} is polarized, there will be some coupling constant to \ce{X}.
+        % \item As our nuclear spins (big arrows) point one direction, they polarize the bonding electrons in the other direction.
+        % \item Takeaway: Neighboring spins will be antiparallel.
+        \item We have no way of measuring the sign of $J$ in an NMR experiment. In order to do the transition, we can see why $s$-character matters: The more the electrons interact with the nucleus (higher $s$-character means closer to nuclei), the stronger the effect will be.
+        \begin{itemize}
+            \item What is the effect?? What is scalar coupling? How does it show up? How do all of the equations fit together?
+        \end{itemize}
+        \item On the sign of $J$ for neighboring nuclei.
+        \begin{itemize}
+            \item If we have a single bond, then $J>0$ and antiparallel spins are more stable.
+            \item If we have a double bond, then $J<0$ and parallel spins are more stable.
+            \item In general, an odd number of bonds means $J>0$ and an even number of bonds means $J<0$.
+            \begin{itemize}
+                \item There are many exceptions, though.
+            \end{itemize}
+        \end{itemize}
+        \item On the magnitude of $J$.
+        \begin{itemize}
+            \item 2-bond: ${}^2J_{\ce{HH}}=\SIrange{10}{25}{\hertz}$. Are these values negative?? $sp^2$ can be $+\SI{41}{\hertz}$.
+            \item 3-bond: ${}^3J_{\ce{HH}}=\SIrange{0}{25}{\hertz}$.
+        \end{itemize}
+    \end{itemize}
+    \item Coupling constants and electronic proximity to the nucleus.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{ccc|ccc}
+            \textbf{Compound} & \textbf{Hybridization} & \textbf{$\bm{J_\textbf{CH}}$ (Hz)} & \textbf{EWG} & $\bm{\chi}$ & \textbf{$\bm{J_\textbf{CH}}$ (Hz)}\\
+            \hline
+            Ethane    & $sp^3$ & 125 & \ce{CH3-F}         & 4.0  & 150\\
+            Ethene    & $sp^2$ & 156 & \ce{CH3-Cl}        & 3.2  & 150\\
+            Benzene   & $sp^2$ & 159 & \ce{CH3-OH}        & 3.4  & 141\\
+            Cubane    &        & 160 & \ce{CH4}           & 2.2  & 125\\
+            Acetylene & $sp$   & 248 & \ce{Cp2Zr(CH3)(I)} & 1.3  & 120\\
+            \ce{H-H}  & $s$    & 284 & \ce{CH3-Li}        & 0.98 & 98\\
+        \end{tabular}
+        \caption{Coupling constants and molecular electronics.}
+        \label{tab:couplingElectron}
+    \end{table}
+    \begin{itemize}
+        \item The last coupling constant on the left is technically a $J_{\ce{HH}}$, not a $J_{\ce{CH}}$.
+        \item The left exhibits the expected trend based on $s$-character: Compounds that maximize $s$-character and place electrons closer to the nucleus have higher coupling constants.
+        \item The right exhibits the expected trend based on \textbf{Bent's rule}: Compounds with less electronegative EWGs must give more $s$-character to bonding; thus, there is less $s$-character to promote (scalar) coupling and the coupling constant diminishes.
+        \item You can quantitatively derive this stuff with MO theory.
+        \item Observing these coupling constants: They show up under \ce{{}^13C} NMR that isn't proton decoupled.
+    \end{itemize}
+    \item \textbf{Bent's rule}: More electronegative elements prefer $p$-character.
+    \begin{itemize}
+        \item See \textcite{bib:CHEM20100Notes} for more.
+    \end{itemize}
+    \item Aside: Diamond vacancy centers in quantum computing.
+    \begin{itemize}
+        \item One of the first things used for a quantum computer was an NMR.
+        \item The first quantum computation was performed via NMR spectroscopy.
+        \item It was a funky molecule, just enough stuff to do quantum computation, but it worked.
+    \end{itemize}
+    \item A couple more notes about coupling constants.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \chemfig{M(-@{P1}PR_3)(-[2]@{P2}PR_3)(-[4]R_3@{P3}P)(-[6,,,,black!20]{\color{black!20}P}|{\color{black!20}R_3})}
+            \chemmove{
+                \draw [rex,thick,-,shorten <=3pt,shorten >=12pt] (P1) to[out=90,in=0,looseness=1.2] node[above right,black]{$J_\textit{cis}$} (P2);
+                \draw [rex,thick,-,shorten <=3pt,shorten >=3pt] (P1) to[out=-90,in=-90,looseness=1.5] node[pos=0.25,below right,black]{$J_\textit{trans}$} (P3);
+            }
+            \caption{\emph{cis} vs. \emph{trans}.}
+            \label{fig:couplingSpecialCasea}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \chemfig{(-[:120]H)--[:60]H}
+            \hspace{2em}
+            \begin{tikzpicture}
+                \draw circle (4mm);
+    
+                \draw (90:0.4) -- (90:0.6) node(H1)[above]{\ce{H}};
+                \draw (30:0.4) -- (30:0.6) node(H2)[above right,yshift=-2pt]{\ce{H}};
+    
+                \draw [rex,thick] (H1) to[out=0,in=130] node[above right,black]{$\theta$} (H2);
+            \end{tikzpicture}
+            \caption{Viscinal hydrogens.}
+            \label{fig:couplingSpecialCaseb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \chemfig{@{HB}{H_B}-[:30](=[2](-[:150]@{HA}{H_A})(-[:30,,,,black!20]\textcolor{black!20}{Cl}))-[:-30]@{HC}{H_C}}
+            \chemmove{
+                \draw [rex,thick,-,shorten >=3pt] (HA) to[bend left=60,looseness=1.3] node[pos=0.75,above right,black]{$J_{AC}$} (HC);
+                \draw [rex,thick,-,shorten <=1pt,shorten >=1pt] (HB) to[bend right=30] node[below,black]{$J_{BC}$} (HC);
+                \draw [rex,thick,-,shorten <=1pt,shorten >=3pt] (HA) to[bend right=30] node[left,black]{$J_{AB}$} (HB);
+            }
+            \vspace{2em}
+            \caption{Olefins.}
+            \label{fig:couplingSpecialCasec}
+        \end{subfigure}
+        \caption{Special cases in coupling.}
+        \label{fig:couplingSpecialCase}
+    \end{figure}
+    \begin{enumerate}
+        \item \emph{cis} vs. \emph{trans} metal complexes.
+        \begin{itemize}
+            \item $J_\textit{trans}>J_\textit{cis}$.
+            \item Example: If we have a square planar coordination compound with four phosphenes, the two pairs of \emph{trans} ligands will (independently) couple more than any of the four pairs of \emph{cis} ligands.
+            \item Why: Same argument as \emph{trans} effect; make an MO argument that \emph{trans} will overlap better.
+        \end{itemize}
+        \item Viscinal coupling: Coupling of atoms separated by two other atoms.
+        \begin{itemize}
+            \item Example: Two hydrogens on different carbons of ethane.
+            \item Coupling magnitude: Depends on the dihedral angle $\theta$ from the Newman projection.
+            \item For syn and anti conformers, $J$ will be larger.
+            \item For gauche conformers, $J$ will be smaller.
+        \end{itemize}
+        \item Olefins.
+        \begin{itemize}
+            \item Example: Vinyl chloride.
+            \item $J_{\ce{AC}}=\SIrange{12}{18}{\hertz}$. Sometimes referred to as \emph{trans}.
+            \item $J_{\ce{BC}}=\SIrange{0}{3}{\hertz}$. Sometimes referred to as \emph{gem}.
+            \item $J_{\ce{AB}}=\SIrange{6}{12}{\hertz}$. Sometimes referred to as \emph{cis}.
+        \end{itemize}
+    \end{enumerate}
+    \item A more realistic view of spins under a magnetic field.
+    \begin{itemize}
+        \item We may treat the collection of polarized molecules as an ensemble of spins in space.
+        \item However, just because a magnetic field has been applied doesn't mean that each nuclear spin is perfectly poised along the $z$-axis.
+        \item Rather, there are still residual $x$- and $y$-components that will precess around the $z$-axis.
+        \begin{itemize}
+            \item We have, in fact, a whole distribution of spins which are arranged in some cone around the $z$-axis. We do indeed have a random and equally dispersed $x,y$-spins.
+            \item The precession is called a \textbf{Larmor precession} and occurs at the \textbf{Larmor frequency}.
+        \end{itemize}
+        % \item Let's capture the fraction of proton spins that are aligned in the $z$-direction.
+        % \item These spins are not static; they're precessing about the $z$-axis.
+        % \item The precession $\nu_0=-\gamma B_0/2\pi$ is the \textbf{Larmor frequency}.
+    \end{itemize}
+    \item The NMR experiment.
+    \begin{itemize}
+        \item What we do is take the ensemble of spins and apply a \ang{90} radiofrequency pulse to project the net magnetization onto the $x$-axis. Then, we monitor the precession rate about the $xy$-plane.
+        \item This is called a \textbf{Hahn Echo experiment}.
+        \begin{itemize}
+            \item We also use this technique in pulsed EPR experiments.
+        \end{itemize}
+        \item We then Fourier transform the wave to get it back to normal.
+        \item Misc. notes.
+        \begin{itemize}
+            \item The $x$- and $y$-components vary in time.
+            \item Both $\alpha$ and $\beta$ (up and down) spins precess at the same frequency.
+            \item Chemically equivalent nuclei precess at the same frequency, but are not necessarily in phase.
+            \item While the $x$- and $y$-components are scattered, there is still net polarization along $z$ and hence a net magnetization in this direction.
+        \end{itemize}
+    \end{itemize}
+    \item Next time.
+    \begin{itemize}
+        \item Wikipedia description of the Hahn Echo experiment (really good).
+        \item A bit more on NMR, too, to be wrapped up at the beginning of the lecture.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
