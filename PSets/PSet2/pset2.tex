@@ -1,0 +1,102 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\stepcounter{section}
+
+\begin{document}
+
+
+
+
+\section{Magnetism and More Spectroscopy}
+\begin{enumerate}
+    \item \marginnote{3/3:}You propose that you have made a terminal amide (\ce{NH2}) complex. You observe two stretching frequencies in the IR spectrum at \SI{2400}{\per\centi\meter} and \SI{2330}{\per\centi\meter}.
+    \begin{enumerate}
+        \item Do you have one or two complexes? Rationalize this based on symmetry.
+        \item If you deuterate this complex, where should the \ce{N-D} stretches come?
+    \end{enumerate}
+    \item Copper (II) acetate is a dimer and the two \ce{Cu} atoms strongly interact. The EPR spectrum consists of seven lines with intensities of $1:2:3:4:3:2:1$. Copper nuclei have $I=3/2$, and copper acetate consists of a ground state singlet with an accessible triplet excited state. Explain the number and relative intensity of the observed signals.
+    \item The intensities and frequencies (vs. \ce{H3PO4}) of resonances in the \SI{121.4}{\mega\hertz} \ce{{}^31P}\{\ce{{}^1H}\} NMR spectrum of \ce{Pt(PPh3)\{\eta^3-N(CH2CH2PPh2)3\}} are listed below. Determine the chemical shifts (i.e., $\delta$ values) and coupling constants, and draw the structure.
+    \begin{center}
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{SS}
+            \textbf{Frequency} & \textbf{Intensity}\\
+            \hline
+            -3393.4 & 7.8\\
+            -3313.5 & 7.7\\
+            -1484.8 & 31.1\\
+            -1404.9 & 31.3\\
+            -833.3 & 0.7\\
+            -753.5 & 1.9\\
+            -673.4 & 2.0\\
+            -593.6 & 0.6\\
+            263.7 & 7.9\\
+            343.7 & 7.7\\
+            1385.5 & 2.6\\
+            1465.6 & 7.8\\
+            1545.8 & 7.6\\
+            1625.6 & 2.7\\
+            3604.5 & 0.7\\
+            3684.6 & 1.9\\
+            3764.4 & 1.9\\
+            3844.7 & 0.6\\
+        \end{tabular}
+    \end{center}
+    \item Predict the spin state, $\mu_\text{eff}$, and $\chi T$ values for the following ions in the indicated geometry.
+    \begin{enumerate}
+        \item Tetrahedral \ce{Mn(II)}.
+        \item Octahedral \ce{Ir(III)}.
+        \item Octahedral \ce{Ru(III)}.
+        \item Square planar \ce{Co(I)}.
+        \item Square planar \ce{Pt(II)}.
+        \item Octahedral \ce{Ni(II)}.
+        \item Tetrahedral \ce{Cr(0)}.
+    \end{enumerate}
+    \item Predict whether the following high-spin ions should have an isotropic EPR $g$-value greater than, equal, or less than 2.
+    \begin{enumerate}
+        \item \ce{Cu(II)}.
+        \item \ce{Cr(V)}.
+        \item \ce{Mn(II)}.
+        \item \ce{Fe(III)}.
+        \item \ce{Co(II)}.
+    \end{enumerate}
+    \item If you were handed two vials, one with ferrocene and one with ferrocenium, how could you use XAS and Mossbauer to determine which was which?
+    \item 
+    \begin{enumerate}
+        \item Name 3 pieces of structural information you can get from a $K$-edge EXAFS spectrum on an unknown TM complex with at least one phosphine ligand.
+        \item A Mossbauer spectrum of an \ce{FeL5} complex shows two signals with differing isomer shifts and quadrupole splittings. Offer an explanation for this.
+    \end{enumerate}
+    \item Draw a clearly labeled diagram representing the expected EPR spectrum of an aqueous \ce{{}^63Cu^2+} ion ($I=3/2$) at room temperature. Clearly indicate the position of the isotropic $g$-value.
+    \item The EPR spectrum of an axially symmetric \ce{Cu^2+} complex in a frozen solution that is 100\% \ce{{}^63Cu} consists of three well-resolved low field $g$-parallel components, a fourth component of the multiplet that overlaps the $g$-perpendicular signal, and some higher field lines. The minima between the four largely resolved components appear at \SI{2720}{\gauss}, \SI{2810}{\gauss}, and \SI{2900}{\gauss}. Given this information and a spectrometer frequency of \SI{9.12}{\giga\hertz}\dots
+    \begin{enumerate}
+        \item Compute the value of $g_\parallel$;
+        \item Compute the hyperfine coupling constant.
+    \end{enumerate}
+    \item The structure of the active site of carbon monoxide dehydrogenase was determined from XAS data to be
+    \begin{center}
+        \footnotesize
+        \chemfig{Mo(-[:30]S-[:-30]Cu-[:30]S-[:-30])(=[2]O)(-[:150]@{S1}S)(-[:-150]@{S2}S)(-[:-30]OH)}
+        \chemmove{
+            \draw [-,shorten <=3pt,shorten >=3pt] (S1) to[bend right=40] (S2);
+        }
+    \end{center}
+    \begin{enumerate}
+        \item Indicate how you could identify the heavy atoms with XANES or EXAFS data, the oxidation state of these atoms, and the coordination environment.
+        \item Your results tell you that the oxidation states of \ce{Mo} and \ce{Cu} are $6+$ and $1+$, respectively. How could you determine the protonation state of the hydroxide (\ce{OH} or \ce{OH2}) with ENDOR spectroscopy?
+    \end{enumerate}
+    \item For the following fragments, predict the $\chi T$ and $\mu_\text{eff}$ values for anti-ferromagnetic, ferromagnetic, and uncoupled scenarios. Using the indicated room temperature $\chi T$ or $\mu_\text{eff}$ values, predict the coupling in these fragments. Assume no contributions from spin-orbit coupling.
+    \begin{enumerate}
+        \item \ce{Cu^{II}-X-Cu^{II}}, $\chi T=\SI{0.4}{\centi\meter\cubed\kelvin\per\mole}$.
+        \item \ce{Ni^{II}-X-Cr^{II}}, $\chi T=\SI{4.4}{\centi\meter\cubed\kelvin\per\mole}$.
+        \item \ce{Fe^{III}-X-Fe^{III}}, $\mu_\text{eff}=8.4\,\mB$.
+        \item \ce{Fe^{II}-X-Fe^{III}}, $\chi T=\SI{11}{\centi\meter\cubed\kelvin\per\mole}$.
+    \end{enumerate}
+    \item You synthesize a series of new metal oxides with each metal center in an $O_h$ coordination environment. The two metals alternate in an edge-sharing \ce{AB}. You note that when $\ce{A}=\ce{Ti(III)}$ and $\ce{B}=\ce{Cu(II)}$, the material exhibits strong ferromagnetic exchange. However, when $\ce{A}=\ce{Fe(III)}$, a strong antiferromagnetic exchange is observed. Rationalize these two observations.
+\end{enumerate}
+
+
+
+
+\end{document}
