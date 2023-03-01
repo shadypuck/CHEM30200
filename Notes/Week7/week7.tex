@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{EPR and XAS}
 \section{EPR Spectroscopy}
 \begin{itemize}
     \item \marginnote{2/14:}Today: EPR Spectroscopy.
@@ -543,6 +543,272 @@
     \begin{itemize}
         \item Do we need to know this??
     \end{itemize}
+\end{itemize}
+
+
+
+\section{X-ray Absorption Spectroscopy}
+\begin{itemize}
+    \item \marginnote{2/16:}The pic that Anderson drew wasn't great; you can also find bootleg copies of \textcite{bib:Drago}.
+    \item Patrick (or Pat): Guest lecturer on XAS, which he used a lot in his PhD.
+    \begin{itemize}
+        \item He's currently a post-doc in Anderson's group.
+        \item Studied a lot of high-valent iron complexes.
+    \end{itemize}
+    \item We now begin the lecture.
+    \item \textbf{X-ray absorption spectroscopy}: A range of techniques which are all based on the absorption of X-rays by a nucleus of choice. \emph{Also known as} \textbf{XAS}.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw (0,3.5) -- node[left]{Abs} (0,0) -- node[below]{$E$ (\si{\electronvolt})} (5,0);
+            
+            \footnotesize
+            \draw [dashed] (2.25,0) -- ++(0,3.5);
+            \node at (1.125,3.2) {XANES};
+            \node at (3.625,3.2) {EXAFS};
+    
+            \draw [rex,thick] (0.2,0.4)
+                to[out=0,in=-173] (1.5,0.5)
+                to[out=7,in=180] (1.7,0.7)
+                to[out=0,in=180] (2,0.5)
+                to[out=0,in=180,looseness=0.3] node[fill=white]{Edge} (2.5,2.8)
+                to[out=0,in=180,out looseness=0.3] (2.8,2.4)
+                to[out=0,in=180] (3.2,2.6)
+                to[out=0,in=180] (3.7,2.35)
+                to[out=0,in=180] (4.3,2.4)
+                to[out=0,in=180] (5,2.3)
+            ;
+    
+            \node [above left=2mm] at (1.7,0.7) {Pre-edge}
+                edge [shorten >=1mm] (1.7,0.7)
+            ;
+        \end{tikzpicture}
+        \caption{An X-ray absorption spectrum.}
+        \label{fig:XASspectrum}
+    \end{figure}
+    \begin{itemize}
+        \item In a basic experiment, the absorption of X-rays is directly measured.
+    \end{itemize}
+    \item An X-ray with sufficient energy can eject an electron from a core orbital.
+    \begin{itemize}
+        \item The ejected electron (\textbf{photoelectron}) dissociates at the \textbf{edge energy}.
+    \end{itemize}
+    \item \textbf{Photoelectron}: An electron ejected from a core orbital by an X-ray.
+    \item \textbf{Edge energy}: The energy needed to take the photoelectron to the infinite energy level.
+    \item Different edges give different information.
+    \item The $K$- and $L$-edges give the most important information.
+    \begin{itemize}
+        \item Pat uses the $L_\text{III}$ edge most commonly.
+        \item It corresponds to a $2p\to 3d$ excitation.
+    \end{itemize}
+    \item \textbf{$\bm{K}$-edge}: The excitation of a core $1s$ electron from an element.
+    \begin{itemize}
+        \item The edge that can give you oxidation, symmetry, and structural information based on the photoelectron's environment.
+        \item The $K$-edge energy roughly correlates with $Z$.
+        \item Serena DeBeer does a lot on $K$-edge spectroscopy.
+    \end{itemize}
+    \item \textbf{$\bm{L}$-edge}: The excitation of a core $2s$ or $2p$ electron.
+    \begin{itemize}
+        \item The edge that can give you bonding and molecular orbital information.
+        \item Nothing more on this today; look up Kyle Lancaster's work if you're curious.
+    \end{itemize}
+    \item Benefits of XAS.
+    \begin{itemize}
+        \item You don't need a crystal.
+        \item Allows you to study transient intermediates, esp. in biochemistry; freeze-quench a reaction and get structural info about active states.
+        \item Better local picture than XRD.
+        \item Sensitive to local geometric structure of an absorber, i.e., ligation, oxidation state, spin state, symmetry.
+        \item Lower X-ray dose needed than in crystallography; more control of photoreduction.
+        \item XAS is \emph{element specific} and can be applied to almost any system --- biochemistry, synthetic inorganic chemistry, materials chemistry, etc.
+        \item Can be measured at multiple edges.
+        \item Tolerates less concentrated samples.
+    \end{itemize}
+    \item All XAS uses the same fundamental principle, but there are many detection methods to get a lot of information.
+    \begin{itemize}
+        \item Beamline scientists love to geek out about this.
+        \item Transition mode vs. fluorescence mode.
+    \end{itemize}
+    \item \textbf{Transition mode}: Measure the difference between incident and final intensity.
+    \begin{itemize}
+        \item Better for solid samples than frozen solutions, esp. close-packed ones.
+    \end{itemize}
+    \item Frozen solutions with an X-ray-transparent window: Collect in fluorescence mode.
+    \item To freeze: Submerge in a liquid nitrogen or isopropanol bath.
+    \item K-Edge spectra.
+    \begin{itemize}
+        \item Two main regions: XANES (X-ray absorption near edge structure) which includes the pre-edge (symmetry information) and the $K$-edge (oxidation state info).
+        \item The $K$-edge is the energy at which you actually eject the electron into the continuum.
+        \begin{itemize}
+            \item This energy will change with oxidation state: As you probe something that's more oxidized, you know that its electrons will be held more tightly due to decreased repulsions, so the $K$-edge will increase.
+        \end{itemize}
+        \item The pre-edge consists of a $1s\to 3d$ transition.
+        \begin{itemize}
+            \item While the edge energy is the energy required to eject an electron into the continuum, the pre-edge features correspond to excitation into valence orbitals.
+        \end{itemize}
+    \end{itemize}
+    \item Pre-edge.
+    \begin{itemize}
+        \item In $K$-edge XAS, the pre-edge feature is primarily the $1s\to 3d$ transition (electron-dipole forbidden, electric-quadrupole allowed). Thus, as symmetry decreases and we get more coupling, this increases.
+        \item The pre-edge area is indicative of deviation from centrosymmetry and $3d$/$4p$ mixing.
+        \begin{itemize}
+            \item High symmetry molecules will give $d$-$p$ mixing/hybridization and thus have more intense pre-edge features.
+        \end{itemize}
+        \item Selection rule: $\Delta e=\pm 1$, so technically $s\to p$ is allowed and $s\to d$ is not.
+    \end{itemize}
+    \item Example of XANES: \ce{Fe^V} vs. \ce{Fe^{VI}}.
+    \begin{itemize}
+        \item The pre-edge tends to get over-interpreted.
+        \item A pure metal foil is often used as a standard; there is some debate about what a pure-metal $K$-edge is, though. Make sure you know what the standard is when you read literature!
+        \item $K$-edge XANES may be the best technique we have to measure oxidation state, even though oxidation state doesn't really exist. Perhaps better for seeing that an electron was removed; much better in a comparative/relative sense than in an absolute sense.
+    \end{itemize}
+    \item Pre-edge area is sensitive to the oxidation state.
+    \begin{itemize}
+        \item This is because we often lose symmetry as we go to higher oxidation states.
+        \item Even just shortening the axial ligand in a square pyramidal complex can have a drastic effect.
+        \item Less symmetry $\Rightarrow$ greater peak area.
+        \item You measure the area with any peak-fitting program (e.g., Fit It).
+        \begin{itemize}
+            \item There's a paper by Ed Solomon in the 1990s that describes fitting in greater detail; a lot of the best practices are included.
+            \item You fit with a pseudo-Gaussian that's 50\% Gaussian and 50\% Voight. Sometimes it's hard to distinguish between two close peaks because there can be substantial overlap.
+        \end{itemize}
+        \item Metal-ligand bonding can turn on more pre-edge area; metal-ligand interactions shouldn't be too important; multiply bonded ligands with shorter oxidation states help more.
+    \end{itemize}
+    \item Mossbauer in theory predicts bond lengths. You get a much better correlation with bond states when...
+    \item Case study: Determining $\Delta$ from the pre-edge region.
+    \begin{itemize}
+        \item High-spin \ce{Fe^{III}} should give two distinct $1s\to 3d$ transitions; the splitting between then is $\Delta$.
+    \end{itemize}
+    \item If you have a metal in different oxidation states, XANES is probably what you want.
+    \begin{itemize}
+        \item We use a metal standard because it's somewhat stable and...
+        \item When you use foil, that's your $x$-axis calibration standard.
+        \item Some compounds don't have a pre-edge.
+        \item To fit our pre-edge, fit...
+    \end{itemize}
+    \item People in the XAS community are usually willing to discuss, share, and argue about their XAS fitting.
+    \begin{itemize}
+        \item Parameters varied: Computer program, function or algorithm, procedure.
+    \end{itemize}
+    \item Beamline scientists hate giving tutorials on how to do something or how to fix something, but they like looking at data and science.
+    \item A short EXAFS primer.
+    \begin{itemize}
+        \item Pat's favorite part.
+        \item Includes the wavy features after the edge.
+        \item Mechanism: Ionizing radiation hits an absorber atom, ejecting the $1s$ electron which leaves the \textbf{absorber} atom. Then the surrounding atoms send the waves back, leading to constructive and destructive interference.
+        \item You can also get multiple scattering (photoelectron may be scattered by more than one atom before returning to the center).
+    \end{itemize}
+    \item Equations and quantities relevant to EXAFS.
+    \begin{itemize}
+        \item Let $R_j$ be the distance between the absorber and back scatterer $j$.
+        \item Recall that $I=I_0\e[-\mu t]$, where $I_0$ is the incident irradiation, $\mu$ is the linear absorption coefficient, and $t$ is the thickness.
+        \item The signal can be modeled with the \textbf{EXAFS equation}.
+        \item We have that $\chi=(\mu-\mu_s)/\mu_0$, where $\mu_s$ is with a smooth background and $\mu_0$ normalizes for free atoms.
+    \end{itemize}
+    \item How we get information from EXAFS: Use the EXAFS equation.
+    \begin{equation*}
+        \chi(k) = \sum_i\frac{(N_iS_0^2)F_i(k)}{kR_i^2}\cdot\sin(2kR_i+\delta_i(k))\e[-2\sigma_i^2k^2]\e[-2R_i/\lambda(k)]
+    \end{equation*}
+    \begin{itemize}
+        \item The XAS spectrum is the sum of multiple sines.
+        \item The sine wave overlies the fluorescence decay, which can also be important.
+        \item $\chi(k)$ depends on a number of things, but for a shell made of the same scattering atoms, the variables we control are $N_i$ --- the number of equivalent scatterers.
+        \item $R_i$ is the distance between your absorber and your scatterer.
+        \item $f_j$ is the electron backscattering amplitude of the scatterer.
+        \begin{itemize}
+            \item It depends on $Z$.
+        \end{itemize}
+        \item $\sigma_i$ is the root mean square variation in $R_j$.
+        \item $\delta_i$ is the scatterer phase shift from the theory or model.
+        \item Together $\sigma_i$ and $\delta_i$ make up the \textbf{Debye-Waller factor}, which accounts for disorder.
+        \item $k$ is the photoelectron vector.
+        \begin{itemize}
+            \item It is given by
+            \begin{equation*}
+                k = \sqrt{\frac{2m_e}{\hbar^2}(E-E_0)}
+            \end{equation*}
+            where $E_0$ is the threshold energy for electron ejection.
+        \end{itemize}
+        \item To accurately describe these variables, a lot of information is needed about the system...
+        \item We $k$-weight our spectrum to account for differences between heavy and light elements.
+        \item We FT our spectrum to transform it to space data.
+    \end{itemize}
+    \item \textbf{Debye-Waller factor}: Equivalent to thermal ellipsoids in crystallography. If it's negative, it's fake; if it's too big, it's fake. \emph{Given by}
+    \begin{equation*}
+        \e[-2\sigma_i^2k^2]
+    \end{equation*}
+    \item You get transitions in the edge in some specific compounds.
+    \item Principles to guide data analysis.
+    \begin{itemize}
+        \item You can fit anything if you try hard enough. Use your chemical intuition. Does a fit make sense?
+        \item Error in EXAFS is typically $\pm\SI{0.02}{\angstrom}$, but the shell resolution is usually much larger (equal to $\pi/(2\Delta K))$. Don't give things within a shell-resolution of each other!
+        \item EXAFS is very much a "helper" spectroscopy.
+        \begin{itemize}
+            \item XAS should be the last step of any project you perform. Just to fill in the gaps; you need chemical intuition to make sense of your data.
+        \end{itemize}
+    \end{itemize}
+    \item Information we can get out of our data: A good fit tells us\dots
+    \begin{enumerate}
+        \item The number, type, and distance of scatterers.
+        \begin{itemize}
+            \item This can inform on the immediate coordination sphere of a metal center.
+            \item Heavier atoms scatter more, and shorter distances scatter more.
+            \item From XAFS, you can get the number of scatterers $\pm 1$.
+        \end{itemize}
+        \item You can pull out angular information if the data is really good and the geometry is right.
+        \begin{itemize}
+            \item Pat thinks this is fake, though.
+        \end{itemize}
+        \item You can do it in solution phase and with amorphous materials.
+        \begin{itemize}
+            \item You can also pull out EXAFS data for \SIrange{6}{8}{\angstrom} in certain solids.
+        \end{itemize}
+    \end{enumerate}
+    \item Case study: Oxygen activation at a diiron site.
+    \begin{itemize}
+        \item Can't do Mossbauer with iron, so even if it's not giving you approximate...
+        \item Typically, you want to aim for $R(\si{\angstrom})<6$.
+        \item Both irons will be oxidized...
+        \item Data can be decomposed with a linear combination analysis.
+    \end{itemize}
+    \item Data fitting is not always so easy.
+    \begin{itemize}
+        \item M\"{o}ssbauer...
+        \item This is the decay of 3.
+        \item Thermal decay: The things we don't want to see is...
+        \item Took 11 attempts to fit (that's a lot for Pat). 
+    \end{itemize}
+    \item Big picture for the diiron system.
+    \begin{itemize}
+        \item Getting more and more rigid.
+    \end{itemize}
+    \item Not a lot of people use this technique, so a lot of labs publish bad data, but reach out to them if you're confused! They'll usually be willing to work with you.
+    \item Ask for slides!
+    \item Review \textbf{XAFS for Everyone}!
+    \item Return to ENDOR spectrsocopy.
+    \begin{itemize}
+        \item The energy level diagram we want is the one in the picture.
+    \end{itemize}
+    \item Experimental considerations.
+    \begin{itemize}
+        \item You need a high energy, intense X-ray beam (typically a synchrotron).
+        \begin{itemize}
+            \item The closest synchrotron to us is the APS at Argonne.
+            \item We can also run at the SLAC at Stanford, and there are others elsewhere, too.
+        \end{itemize}
+        \item Data workup is involved and needs to be done carefully.
+        \begin{itemize}
+            \item The relevant software suite is called Demeter and published by Bruce Ravel; it is all free.
+        \end{itemize}
+    \end{itemize}
+    \item A note on the data.
+    \begin{itemize}
+        \item After treatment, the data is typically plotted as a Fourier transform.
+        \item Note: The "distance" $R$ in an FT plot is often not true distance; true distance is usually $R$ plus approximately \SI{0.4}{\angstrom}.
+    \end{itemize}
+    \item Next Tuesday: Mossbauer.
 \end{itemize}
 
 
