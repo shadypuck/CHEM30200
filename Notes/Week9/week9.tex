@@ -9,7 +9,7 @@
 
 
 
-\chapter{???}
+\chapter{NMR}
 \section{NMR Spectroscopy}
 \begin{itemize}
     \item \marginnote{2/28:}Announcements.
@@ -133,7 +133,7 @@
     \begin{itemize}
         \item \SI{1}{\ppm} is a shift in the resonant frequency of a given nucleus. Specifically,
         \begin{equation*}
-            \SI{1}{\ppm} = \frac{\nu_1-\nu_\text{ref}}{\nu_0\cdot\num{e6}}
+            \SI{1}{\ppm} = \frac{\nu_1-\nu_\text{ref}}{\nu_0}\times\num{e6}
         \end{equation*}
         \begin{itemize}
             \item $\nu_1$ is the measured Larmor frequency for a given nucleus.
@@ -666,7 +666,7 @@
     \item The NMR experiment.
     \begin{itemize}
         \item What we do is take the ensemble of spins and apply a \ang{90} radiofrequency pulse to project the net magnetization onto the $x$-axis. Then, we monitor the precession rate about the $xy$-plane.
-        \item This is called a \textbf{Hahn Echo experiment}.
+        \item This is called a \textbf{Hahn echo experiment}.
         \begin{itemize}
             \item We also use this technique in pulsed EPR experiments.
         \end{itemize}
@@ -683,6 +683,300 @@
     \begin{itemize}
         \item Wikipedia description of the Hahn Echo experiment (really good).
         \item A bit more on NMR, too, to be wrapped up at the beginning of the lecture.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{NMR Wrap-Up and Examples from the Literature}
+\begin{itemize}
+    \item \marginnote{3/2:}HW extended until Friday at \emph{midnight}.
+    \item Today: Finish up NMR and then some examples. We'll finish about 15 mins early, most likely.
+    \item We begin today by discussing \textbf{spin-spin relaxation}, the time constant of which is denoted by $T_2$.
+    \begin{itemize}
+        \item See Lecture 7.1 on EPR for more.
+    \end{itemize}
+    \item Recall that under the influence of a magnetic field applied along the $z$-axis, the spins align along $H_z$.
+    \item \textbf{$\bm{90^\circ}$ radiofrequency pulse}: A pulse of electromagnetic radiation in the radiofrequency region, the intensity and time of which is calibrated to rotates all Larmor precessions by \ang{90} so as to align them along the $x$-axis.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+            \begin{scope}
+                \draw [-stealth] (0,0,0) -- (1.5,0,0) node[right]{$x$};
+                \draw [-stealth] (0,0,0) -- (0,0,1.5) node[below left]{$y$};
+                \draw [-stealth] (0,0,0) -- (0,1.5,0) node[above]{$z$};
+    
+                \draw [grx,thick,-latex] (0,0,0) -- (0,1.2,0) node[above right,yshift=-2mm]{$B_0$};
+    
+                \draw [blx,very thick,-latex] (0,0,0) -- (0,0.8,0);
+                \draw [bly,dashed] plot[domain=0:360] ({0.8*cos(\x)},0.6,{0.8*sin(\x)});
+                \foreach \x in {-30,-70,-105,-135,-200} {
+                    \draw [bly,semithick,-latex] (0,0,0) -- ({0.8*cos(\x)},0.6,{0.8*sin(\x)});
+                }
+            \end{scope}
+            \draw [ultra thick,-latex] (2.5,0) -- node[above]{\ang{90}} node[below]{RF} ++(1,0);
+            \begin{scope}[xshift=5cm]
+                \draw [-stealth] (0,0,0) -- (1.5,0,0) node[right]{$x$};
+                \draw [-stealth] (0,0,0) -- (0,0,1.5) node[below left]{$y$};
+                \draw [-stealth] (0,0,0) -- (0,1.5,0) node[above]{$z$};
+    
+                \draw [blx,very thick,-latex] (0,0,0) -- (0.8,0,0);
+            \end{scope}
+            \draw [ultra thick,-latex] (7.5,0) -- node[above]{$t$} ++(1,0);
+            \begin{scope}[xshift=10cm]
+                \draw [-stealth] (0,0,0) -- (1.5,0,0) node[right]{$x$};
+                \draw [-stealth] (0,0,0) -- (0,0,1.5) node[below left]{$y$};
+                \draw [-stealth] (0,0,0) -- (0,1.5,0) node[above]{$z$};
+    
+                \draw [blx,very thick,-latex] (0,0,0) -- (0.5,0,0);
+                \draw [bly,dashed] plot[domain=0:360] ({0.8*cos(\x)},0.0,{0.8*sin(\x)});
+                \foreach \x in {65,40,-40,-85} {
+                    \draw [bly,semithick,-latex] (0,0,0) -- ({0.8*cos(\x)},0,{0.8*sin(\x)});
+                }
+            \end{scope}
+        \end{tikzpicture}
+        \caption{A \ang{90} pulse.}
+        \label{fig:90Pulse}
+    \end{figure}
+    \begin{itemize}
+        \item Once there, the precessions continue about the applied magnetic field and return to $z$-equilibrium.
+        \item Decoherence occurs because the spins that are offset in phase spread out.
+        \begin{itemize}
+            \item We can watch the frequency of this with respect to time to learn the precession frequencies for each proton.
+        \end{itemize}
+        \item At $5T_2$'s, we'll have about 99.3\% decay.
+        \begin{itemize}
+            \item $T_2$ is on the order of seconds.
+        \end{itemize}
+        \item See \textcite{bib:CHEM26700Notes} for more.
+    \end{itemize}
+    \item \textbf{Hahn echo experiment}: A \ang{90} pulse, followed by decoherence, followed by a \ang{180} pulse, followed by recoherence. \emph{Also known as} \textbf{HE}, \textbf{spin echo experiment}.
+    \begin{itemize}
+        \item The echo: After the \ang{180} pulse, things feel the opposite field, so the ones that are slow speed up and the ones that are fast slow down. This is what results in decoherence.
+        \item See the GIF on Wikipedia (\href{https://en.wikipedia.org/wiki/Spin_echo}{link}).
+        \item We can measure the decoherence time using such an experiment.
+        \begin{itemize}
+            \item In particular, the intensity of the echo relative to the initial signal is proportional to
+            \begin{equation*}
+                \e[-2t/T_2]
+            \end{equation*}
+            \item Rigorously, we derive the above result from the rate law.
+            \begin{align*}
+                \dv{M_y'}{t} &= -\frac{M_y'}{T_2}\\
+                M_y' &= M_0\e[-t/T_2]
+            \end{align*}
+            \item $T_2$ is equal to half the time until the echo. $T_1$ is related to the magnitude of the echo because that will tell us what proportion of the magnetization has gone back to the $z$-axis??
+        \end{itemize}
+    \end{itemize}
+    \item The other decay is \textbf{spin-lattice} ($T_1$).
+    \begin{itemize}
+        \item We put the spin on the $y$-axis, making the $z$-component zero.
+        \item Then it slowly grows back.
+        \item Rate law.
+        \begin{align*}
+            \dv{M_0-M_z}{t} &= \frac{M_0-M_z}{T_1}\\
+            M_z &= M_0[1-\e[-t/T_1]]
+        \end{align*}
+    \end{itemize}
+    \item Both $T_1$ and $T_2$ happen simultaneously, but $T_1>T_2$.
+    \item Signal-to-noise ($S/N$) ratio:
+    \begin{equation*}
+        S/N \propto \sqrt{n}
+    \end{equation*}
+    \begin{itemize}
+        \item $n$ is the number of scans.
+        \item The moral of the story is make your samples concentrated so you can use fewer scans.
+    \end{itemize}
+    \item Nuclear Overhauser Effect (NOE): Decoupling.
+    \begin{equation*}
+        \eta_{\ce{A}(X)} = \frac{I_{\ce{A}}\mu_{a\ce{X}}-I_{\ce{X}}}{I_{\ce{X}}} = \frac{\gamma_{\ce{X}}}{2\gamma_{\ce{A}}}
+    \end{equation*}
+    \begin{itemize}
+        \item Basic idea behind decoupling/the NOE: Blasting your sample with magnetism in the $x$-direction to constantly flip the spins and saturate them. Essentially, we saturate a given frequency or transition with rf radiation.
+        \begin{itemize}
+            \item Do I have this right??
+        \end{itemize}
+        \item Decoupling can increase or decrease the intensity of a given nuclear signal.
+        \item By the above equation, the NOE depends on the sign and the magnitude of the gyromagnetic ratios of the two elements, where we are taking the spectrum of \ce{A} with \ce{X} decoupled.
+        \item We sum this over all different nuclei that are contributing.
+        \item We denote a spectrum that's been proton-decoupled with squiggly brackets, e.g., \ce{{}^13C}\{\ce{{}^1H}\} denotes a proton-decoupled \ce{{}^13C} NMR experiment.
+        \item Dipole relaxation.
+        \begin{equation*}
+            R_{1DDA(X)} \propto r_{\ce{AX}}^6
+        \end{equation*}
+        \begin{itemize}
+            \item We expect a large NOE when \ce{A} and \ce{X} are close, and \ce{A} relaxes primarily by dipole-dipole (DD) from \ce{X}.
+        \end{itemize}
+        \item Example: Consider the following olefin.
+        \begin{figure}[H]
+            \centering
+            \footnotesize
+            \begin{subfigure}[b]{0.3\linewidth}
+                \centering
+                \chemfig{HO_2C-[:30](-[:-30]CH_3)=[2](-[:150]HO_2C)(-[:30]H)}
+                \caption{\emph{cis} protons.}
+                \label{fig:NOEcisTransa}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\linewidth}
+                \centering
+                \chemfig{H_3C-[:30](-[:-30]CO_2H)=[2](-[:150]HO_2C)(-[:30]H)}
+                \caption{\emph{trans} protons.}
+                \label{fig:NOEcisTransb}
+            \end{subfigure}
+            \caption{Determining olefin stereochemistry with the Nuclear Overhauser Effect.}
+            \label{fig:NOEcisTrans}
+        \end{figure}
+        \begin{itemize}
+            \item The resultant NOEs are
+            \begin{align*}
+                \eta_\textit{cis} &= 0.29&
+                \eta_\textit{trans} &= 0.06
+            \end{align*}
+            \item If the methyl protons and lone proton are \emph{cis} to each other, we'll see a large NOE.
+            \item Barely any NOE for the \emph{trans} case.
+        \end{itemize}
+        \item This is a good NOESY way to determine if a compound is \emph{cis} vs \emph{trans}.
+        \begin{itemize}
+            \item Technically, this is a simplistic treatment and we would need to consider all relaxation pathways in reality.
+            \item NOE only measures the contribution from DD relaxation.
+            \item What does the acronym NOESY mean??
+        \end{itemize}
+    \end{itemize}
+    \item Aside: Acronyms in NMR.
+    \begin{itemize}
+        \item Only works for diamagnetic compounds, but it's ok.
+        \item There's a lot of nasty acronyms in NMR (that's just a thing), but if we ever want to do any of them, Josh in the NMR facility knows how they're preprogrammed into our spectrometers.
+    \end{itemize}
+    \item Last kind of experiment we're interested in: DEPT.
+    \item Distortionless enhancement by polarization transfer (DEPT).
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+            \draw [grx,thick] (0,1.5) node[left]{\ce{{}^1H}}
+                -- ++(2,0)
+                -- ++(0,0.5)
+                -- node[below]{\ang{90}} ++(0.6,0)
+                -- ++(0,-0.5)
+                -- node[above]{$\frac{1}{2}J$} ++(2,0)
+                -- ++(0,0.5)
+                -- node[below]{\ang{180}} ++(1.2,0)
+                -- ++(0,-0.5)
+                -- node[above]{$\frac{1}{2}J$} ++(2,0)
+                -- ++(0,0.5)
+                -- node[below]{$\theta\pm y$} ++(1,0)
+                -- ++(0,-0.5)
+                -- node[above]{$\frac{1}{2}J$} ++(2,0)
+                -- ++(0,0.5)
+                -- node[below]{\{\ce{{}^1H}\}} ++(1,0)
+                -- ++(0,-0.5)
+            ;
+            \draw [grx,thick] (0,0) node[left]{\ce{{}^13C}}
+                -- ++(5.2,0)
+                -- ++(0,0.5)
+                -- node[below]{\ang{90}} ++(0.6,0)
+                -- ++(0,-0.5)
+                -- node[above]{$\frac{1}{2}J$} ++(2,0)
+                -- ++(0,0.5)
+                -- node[below]{\ang{180}} ++(1.2,0)
+                -- ++(0,-0.5)
+                -- node[above]{$\frac{1}{2}J$} ++(2,0)
+                -- node[right]{Acquisition} ++(0,0.5)
+            ;
+    
+            \draw [decorate,decoration=brace] (2,2.5) -- node[above=1mm]{\ce{H} spin echo} ++(5.8,0);
+            \draw [decorate,decoration={brace,mirror}] (5.2,-0.5) -- node[below=1mm]{\ce{C} spin echo} ++(5.8,0);
+        \end{tikzpicture}
+        \caption{Pulse sequence in a DEPT experiment.}
+        \label{fig:DEPTpulses}
+    \end{figure}
+    \begin{itemize}
+        \item This method allows for information on the multiplicity, e.g., of hydrogens on carbons.
+        \item This is between a proton and another nucleus, unlike NOESY which was between two protons.
+        \item Notes on the method.
+        \begin{itemize}
+            \item We do a Hahn echo for both the proton and carbon.
+            \item We'll end up with positive and negative peaks corresponding to the number of attached methyls.
+            \item The last thing for carbon is acquisition. We measure by varying $y$.
+        \end{itemize}
+    \end{itemize}
+    \item This concludes NMR.
+    \begin{itemize}
+        \item Do we need to know anything about the rest of the experiments in the notes??
+    \end{itemize}
+    \item We now look through some literature examples.
+    \item \textcite{bib:MossbauerSpectrum}.
+    \begin{itemize}
+        \item First example: A beautiful Mossbauer spectrum.
+    \end{itemize}
+    \item \textcite{bib:RittleP450}.
+    \begin{itemize}
+        \item P450 is kind of the blow-torch of the cell; breaks things down.
+        \item Jon Rittle is now a professor at Berkeley, but he was an undergrad at Penn State when he published this pretty seminal paper.
+        \item Anderson worked with Rittle in a glovebox for many years, which is why he knows so much of this story.
+        \item First up: UV-Vis. One of the hallmarks is green color, and Rittle found this and was very excited.
+        \item Mossbauer: At \SI{4}{\kelvin}, you get magnetic splitting.
+        \item EPR: Gives more info on where an electron is in an enzymatic environment.
+    \end{itemize}
+    \item \textcite{bib:Coord7EXAFS}.
+    \begin{itemize}
+        \item They do a lot of EXAFS fitting, and eventually find that the best fit is a sevenfold coordination model.
+    \end{itemize}
+    \item \textcite{bib:AndersonPhD}.
+    \begin{itemize}
+        \item Anderson's PhD work.
+        \item Used a whole bunch of techniques to pin down the identity of their compound.
+    \end{itemize}
+    \item \textcite{bib:EDelocal}.
+    \begin{itemize}
+        \item Electron is fully delocalized.
+    \end{itemize}
+    \item That's it.
+    \item Do we have to know anything about the examples for the final, or was that just for our own enrichment?
+    \item PSet 2 questions.
+    \item Question 1: Did you mean to put the \ce{N-H} stretching frequencies in the 3000's?
+    \begin{itemize}
+        \item These are likely bending modes.
+        \item \ce{NH2} can have a symmetric and asymmetric bending mode.
+    \end{itemize}
+    \item Question 2.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \chemfig{-?[1]-[:60]O-Cu?[2]-O-[:-60](-)-[:-120]O-[4]Cu?[2,,dashed]-[4]O?[1]}
+        \caption{Copper (II) acetate structure.}
+        \label{fig:CuOAcStruct}
+    \end{figure}
+    \begin{itemize}
+        \item We \emph{could} draw out the whole splitting of one copper followed by splitting of another copper, but it will be easier if we just add the contributions of the two coppers and split once.
+        \item Essentially, we use the $2nI+1$ rule to get 7 lines. Then we sum the $M_I$'s of the two copper nuclei and split over $-3,-2,\dots,3$ for our fine splitting after we've originally Zeeman split the electron spin. This gives us the number of lines. For intensity, think about how many \emph{microstates} can add to $-3$, $-2$, etc.
+        \item This intensity rule is allowed. That's what our EPR spectrum is telling us, that it's ok to sum the contributions of the nuclei.
+        \item Our electron is kind of equally coupled to both copper nuclei. That's also what our spectrum is telling us. It may well be in one MO over the two of them. This also makes sense because of the paddle-wheel structure of copper (ii) acetate.
+        \item The compound is a ground state triplet; the $1/2$ spin of both copper centers sum to 1 if we are to see any EPR (i.e., have unpaired electrons). We could also get a singlet, but this would not be particularly helpful. We assume that there is no zero field splitting.
+        \item Summing the spins of these electrons gives our electron coupling splitting.
+        \item So EPR looks at the spins of \emph{both} unpaired electrons orbiting the copper centers. They Zeeman split into three states giving two equal allowed transitions (from $M_S=-1$ to $M_S=0$ and from $M_S=0$ to $M_S=1$; our selection rule states that $M_S=-1$ to $M_S=1$ [$\Delta M_S=2$] is forbidden, and this is actually pretty forbidden; we won't see this happening).
+        \item Each of these triplet energy levels will then split into seven hyperfine levels, leading to seven pairs of identical transitions. In each allowable transition, we excite an electron from the Boltzmann population in the $M_S=-1$ or $M_S=0$ level up a level. Example Boltzmann populations may be 50, 30, 20.
+        \item Question: Why does whether the negative value is higher or lower energy flip in Figure \ref{fig:hyperfineSplitting}?
+        \begin{itemize}
+            \item Electrons are negative vs. protons; so an electron aligned \emph{with} the magnetic field is higher in energy than one aligned against??
+            \item External nuclei increase or decrease the local magnetic field. So if a $M_S=+1/2$ electron (already high in energy) experiences an augmented field, it will split even more (go higher). On the other hand, if a $M_S=-1/2$ electron (already low in energy) experiences an augmented field, it will go even lower in energy.
+        \end{itemize}
+        \item How can a $M_S=0$ state split??
+        \item If we draw out the nuclear splittings sequentially, remember that they are to the same magnitude, so we get overlap that implies intensity like Pascal's triangle a bit.
+    \end{itemize}
+    \item Question 3.
+    \begin{itemize}
+        \item Chemical shift is backwards; it should be \num{e6} in the numerator.
+    \end{itemize}
+    \item Question 4.
+    \begin{itemize}
+        \item Order of importance in determining splitting: Row (second-third has strong preference for LS), then geometry dominates (tetrahedral has a strong preference for high spin), then oxidation state but this isn't really even a factor.
+        \item So just check (1) what row the element is in and if first-row, (2) continue on to check whether tetrahedral or octahedral.
     \end{itemize}
 \end{itemize}
 
