@@ -5,11 +5,13 @@
 \usepackage{enumitem}
 \usepackage{siunitx}
 \usepackage{xr}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
 \usepackage[style=chem-acs]{biblatex}
 \usepackage{graphicx,tikz,pgf-pie}
 \usepackage{subcaption,float}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{physics,bm,mathtools}
+\usepackage{physics,bm,mathtools,empheq}
 \usepackage{mhchem}
 \usepackage{chemfig}
 \usepackage[hidelinks]{hyperref}
@@ -44,6 +46,9 @@
 \DeclareSIUnit{\gauss}{G}
 \DeclareSIUnit{\electromagneticunit}{emu}
 \DeclareSIUnit{\ppm}{ppm}
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
 \addbibresource{\subfix{../main.bib}}
 \DefineBibliographyStrings{english}{bibliography={References}}

@@ -220,7 +220,7 @@
             \centering
             \begin{tikzpicture}
                 \small
-                \draw (0,3) -- node[left]{Abs} (0,0) -- node[below]{$H$} (5,0);
+                \draw (0,3) -- (0,0) -- node[below]{$H$} (5,0);
     
                 \draw [rex,thick] plot[domain=-4:4,smooth,samples=100] ({5*(\x+4)/8},{(0.5-2*(\x+1.8)*e^(-5*(\x+1.8)^2))+(0.5-3*\x*e^(-(\x)^2))+(0.5-2*(\x-1.8)*e^(-5*(\x-1.8)^2))});
 
@@ -324,7 +324,7 @@
         \item We first have our electron splitting.
         \item Then if we turn on nuclear splitting, that happens next, yielding four distinct states.
     \end{itemize}
-    \item Hyperfine election rules.
+    \item Hyperfine selection rules.
     \begin{itemize}
         \item Thus far, we have implicitly used $\Delta M_s=\pm 1$.
         \item We must have $\Delta M_I=0$ as well! We can have an electron spin flip, but we can't do a nuclear spin flip at the same time, which may make some intuitive sense as well since the probability that these two unlikely events would happen simultaneously is very low.
@@ -481,7 +481,7 @@
             \footnotesize
             \draw (1.5,0.1) -- ++(0,-0.2) node[below]{EPR};
             \draw (2.75,0.1) -- ++(0,-0.2) node[below]{NMR};
-            \draw (4,0.1) -- ++(0,-0.2) node[below]{HF};
+            \draw (4.2,0.1) -- ++(0,-0.2) node[below]{HF};
     
             \draw [blx,ultra thick]
                 (0,1.5) -- ++(0.5,0)
@@ -538,7 +538,7 @@
         \item ENDOR transitions (which we're turning on in this experiment) are $2\to 3$ and $1\to 4$.
         \item ENDOR spectra tend to look like look like a big messy hunk corresponding to the nucleus, and then distinct ones further out which correspond to the NMR transitions.
     \end{itemize}
-    \item Possibly a bit more ENDOR on Friday.
+    \item Possibly a bit more ENDOR on Thursday.
     \item We now move on to ESEEM.
     \begin{itemize}
         \item Do we need to know this??
