@@ -9,7 +9,7 @@
 
 
 
-\section{Magnetism and More Spectroscopy}
+\section{Molecular Spectroscopy}
 \begin{enumerate}
     \item \marginnote{3/3:}You propose that you have made a terminal amide (\ce{NH2}) complex. You observe two stretching frequencies in the IR spectrum at \SI{2400}{\per\centi\meter} and \SI{2330}{\per\centi\meter}.
     \begin{enumerate}
@@ -97,9 +97,9 @@
         \end{tabular}
     \end{center}
     \begin{proof}[Answer]
-        Confirm chemical shift formula: Times \num{e6}, not divided by??
+        % Confirm chemical shift formula: Times \num{e6}, not divided by??
 
-        Coupling constant: So for adjacent nuclei, subtract the frequencies and then convert to chemical shift??
+        % Coupling constant: So for adjacent nuclei, subtract the frequencies and then convert to chemical shift??
 
 
         To convert to chemical shift (\si{\ppm}), use the formula
@@ -187,7 +187,7 @@
         \end{proof}
         \item Square planar \ce{Pt(II)}.
         \begin{proof}[Answer]
-            As a square planar complex, \ce{Pt(II)} will be \fbox{low spin.} It follows that as a $d^8$ metal center with $D_{4h}$ geometry, \ce{Pt(II)} will have 0 unpaired electron. Thus,
+            As a third-row transition metal, \ce{Pt(II)} will be \fbox{low spin.} It follows that as a $d^8$ metal center with $D_{4h}$ geometry, \ce{Pt(II)} will have 0 unpaired electron. Thus,
             \begin{align*}
                 \mu_\text{eff} &= \sqrt{4\left( \frac{0}{2}\left( \frac{0}{2}+1 \right) \right)}&
                     \chi T &= \frac{1}{2}\left( \frac{0}{2}\left( \frac{0}{2}+1 \right) \right)\\
@@ -264,7 +264,7 @@
     \item If you were handed two vials, one with ferrocene and one with ferrocenium, how could you use XAS and Mossbauer to determine which was which?
     \begin{proof}[Answer]
         In XAS, varying oxidation states shift the $K$-edge. In particular, since ferrocenium has a more highly oxidized iron atom, \ce{Fe} will hold onto its electrons more tightly, shifting its $K$-edge higher.\par
-        In Mossbauer, a higher oxidation states mean less electron density at the nucleus. Thus, the isomer shift will be affected in a predictable way.
+        In Mossbauer, a higher oxidation states mean less electron density at the nucleus. Thus, the $\gamma$ ray would not need to be as high intensity to pierce through the surrounding electron cloud, meaning that the the isomer shift will be lower for ferrocenium.
     \end{proof}
     \item 
     \begin{enumerate}
@@ -279,7 +279,7 @@
             % Low spin vs. high spin?? What's going on here?
             % \ce{Fe^{III}} varies from 0.0 to 0.6 based on quadrupole splitting.
 
-            Differences in isomer shifts for iron compounds usually correlate with with differing oxidation states. Additionally, spin state and anisotropy in the $d$-orbital splitting diagram usually correlate with quadrupole splitting. Thus, it is possible that there are certain instance of the complex with different electronic structures. Alternatively, there may be some splitting occurring due to an applied magnetic field.
+            You could have two different isomers, one square pyramidal and one trigonal bipyramidal.
         \end{proof}
     \end{enumerate}
     \item Draw a clearly labeled diagram representing the expected EPR spectrum of an aqueous \ce{{}^63Cu^2+} ion ($I=3/2$) at room temperature. Clearly indicate the position of the isotropic $g$-value.
@@ -296,11 +296,21 @@
     \begin{enumerate}
         \item Compute the value of $g_\parallel$;
         \begin{proof}[Answer]
-            We know that $g=h\nu/\beta H_r$. Do we just plug in $\nu$ as the spectrometer frequency and $H_r$ as the magnetic field?? Do we average somehow?
+            As stated in the question, the $g_\parallel$ component of the EPR spectrum appears in a quartet with center minimum at \SI{2810}{\gauss}. Thus,
+            \begin{align*}
+                g &= \frac{h\nu}{\beta H_r}\\
+                &= \frac{(\SI{6.626e-34}{\joule\second})(\SI{9.12e9}{\per\second})}{(\SI{9.3e-24}{\joule\per\tesla})(\SI{0.281}{\tesla})}\\
+                \Aboxed{g &= 2.32}
+            \end{align*}
         \end{proof}
         \item Compute the hyperfine coupling constant.
         \begin{proof}[Answer]
-            How do you calculate the hyperfine coupling constant $a$?? Perhaps use $a=g\beta A$ where $A$ is one of the peak splittings?
+            We have that
+            \begin{align*}
+                a &= g\beta A\\
+                &= (2.32)(\SI{9.3e-24}{\joule\per\tesla})(\SI{0.009}{\tesla})\\
+                &= \SI{1}{\joule}
+            \end{align*}
         \end{proof}
     \end{enumerate}
     \item The structure of the active site of carbon monoxide dehydrogenase was determined from XAS data to be

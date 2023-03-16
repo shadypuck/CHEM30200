@@ -90,7 +90,7 @@
             \centering
             \begin{tikzpicture}
                 \small
-                \draw (0,3) -- node[left]{Abs} (0,0) -- node[below]{$H$} (5,0);
+                \draw (0,3) -- (0,0) -- node[below]{$H$} (5,0);
     
                 \draw [rex,thick] plot[domain=-4:4,smooth,samples=100] ({5*(\x+4)/8},{1.5-3*\x*e^(-\x*\x)});
             \end{tikzpicture}
@@ -637,7 +637,7 @@
     \end{itemize}
     \item Frozen solutions with an X-ray-transparent window: Collect in fluorescence mode.
     \item To freeze: Submerge in a liquid nitrogen or isopropanol bath.
-    \item K-Edge spectra.
+    \item $K$-Edge spectra.
     \begin{itemize}
         \item Two main regions: XANES (X-ray absorption near edge structure) which includes the pre-edge (symmetry information) and the $K$-edge (oxidation state info).
         \item The $K$-edge is the energy at which you actually eject the electron into the continuum.

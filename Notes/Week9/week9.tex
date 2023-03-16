@@ -86,7 +86,7 @@
         \item Also why you need really big magnets for NMR.
         \item Additional limitation: The signal increases by the square of the applied field strength.
         \begin{itemize}
-            \item How is this limiting??
+            \item Limiting by the signal-to-noise ratio; see next lecture.
         \end{itemize}
     \end{itemize}
     \item Aside: Hyperpolarization for NMR.
@@ -945,7 +945,7 @@
         \item \ce{NH2} can have a symmetric and asymmetric bending mode.
     \end{itemize}
     \item Question 2.
-    \begin{figure}[h!]
+    \begin{figure}[H]
         \centering
         \footnotesize
         \chemfig{-?[1]-[:60]O-Cu?[2]-O-[:-60](-)-[:-120]O-[4]Cu?[2,,dashed]-[4]O?[1]}
@@ -967,6 +967,10 @@
             \item External nuclei increase or decrease the local magnetic field. So if a $M_S=+1/2$ electron (already high in energy) experiences an augmented field, it will split even more (go higher). On the other hand, if a $M_S=-1/2$ electron (already low in energy) experiences an augmented field, it will go even lower in energy.
         \end{itemize}
         \item How can a $M_S=0$ state split??
+        \begin{itemize}
+            \item It seems like any changes in the two electrons would cancel each other out overall.
+            \item Ask in OH.
+        \end{itemize}
         \item If we draw out the nuclear splittings sequentially, remember that they are to the same magnitude, so we get overlap that implies intensity like Pascal's triangle a bit.
     \end{itemize}
     \item Question 3.
@@ -978,6 +982,204 @@
         \item Order of importance in determining splitting: Row (second-third has strong preference for LS), then geometry dominates (tetrahedral has a strong preference for high spin), then oxidation state but this isn't really even a factor.
         \item So just check (1) what row the element is in and if first-row, (2) continue on to check whether tetrahedral or octahedral.
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Office Hours (Anderson)}
+\begin{itemize}
+    \item \marginnote{3/5:}Could you elaborate a bit more on what magnetic induction is? I missed that part of E \& M due to COVID.
+    \begin{itemize}
+        \item More of the physics isn't super relevant to what we're doing.
+        \item Magnetic susceptibility is how much magnetization you get per unit magnetic field.
+        \item The physics definitions should be the same.
+        \item Units to be aware of when I look into this more in the future: Gauss and Oersted are the same unit, but from different perspectives.
+        \item Magnetization (technical definition): The vector field that expresses the density of permanent or induced dipole moments in a magnetic field.
+    \end{itemize}
+    \item What do you want us to get out of $B=F/Qv$ and $\vec{f}=\vec{M}\dv*{H}{z}$?
+    \item Constitutive corrections in \textcite{bib:BerryDiamagnetism}?
+    \begin{itemize}
+        \item I should go back and reread the paper.
+    \end{itemize}
+    \item Curie constant in hertz?
+    \begin{itemize}
+        \item Use the value $\kB=\SI{2.084e10}{\hertz\per\kelvin}$.
+        \item Recall that by quantum theory, energy can equally well be measured in units of hertz via the correspondence $E=h\nu$. Thus, to get the above value of $\kB$, we evaluate $\kB/h$ (where this $\kB$ is the standard one in units of \si{\joule\per\kelvin}).
+    \end{itemize}
+    \item How do all of the constants relate in the definitions of $\mu_\text{eff}$ and $\chi T$?
+    \begin{itemize}
+        \item Recall that $\mu_\text{eff}$ values are often stated in units of $\mB$, even though they're technically unitless.
+        \item We use CGS --- centimeter-gram-second --- and Gaussian units to obtain the desired value, as follows.
+        \begin{align*}
+            \frac{\NA\mB^2}{3\kB} &= \frac{(\num{6.02e23})(\SI{9.3e-24}{\joule\per\tesla})}{3(\SI{1.381e-23}{\joule\per\kelvin})^2}\\
+            &= \frac{(\num{6.02e23})(\SI[per-mode=fraction]{9.3e-24}{\kilo\gram\meter\squared\per\second\squared\per\tesla})^2}{3(\SI[per-mode=fraction]{1.381e-23}{\kilo\gram\meter\squared\per\second\squared\per\kelvin})}\\
+            &= \frac{(\num{6.02e23})(\SI[per-mode=fraction]{9.3e-21}{\gram\centi\meter\squared\per\second\squared\per\gauss})^2}{3(\SI[per-mode=fraction]{1.381e-16}{\gram\centi\meter\squared\per\second\squared\per\kelvin})}\\
+            &= 0.12567 \approx \frac{1}{8}
+        \end{align*}
+    \end{itemize}
+    \item How do ferromagnetic, antiferromagnetic, and uncoupled spin center magnetic moment calculations work?
+    \begin{itemize}
+        \item This is a fun calc and one of the reasons why $\chi T$ is a bit more tractable than $\mu_\text{eff}$.
+        \item Best way to determine magnetism is with a variable temperature measurement. However, this is costly, so we often just want to use room temperature measurements.
+        \item Example: Suppose you have two $S=1/2$ spin centers.
+        \begin{itemize}
+            \item If AF, $S=0$. You expect $\chi T\to 0$ as $T\to 0$. Calculation-wise, we take
+            \begin{align*}
+                \mu_\text{eff} &= \sqrt{4(0(0+1))} = 0&
+                \chi T &= \frac{1}{2}(0(0+1)) = 0
+            \end{align*}
+            \item If FM, $S=1$. You expect $\chi T$ to increase as $T\to 0$. Calculation-wise, we take
+            \begin{align*}
+                \mu_\text{eff} &= \sqrt{4(1(1+1))} = 2.828&
+                \chi T &= \frac{1}{2}(1(1+1)) = 1
+            \end{align*}
+            \item If uncoupled, we don't have a single-well defined spin. You expect $\chi T$ to stay relatively constant as $T\to 0$, before dropping off as you get really close to absolute 0. Calculation-wise, you can sum the individual spin-center results for $\chi T$, and you can add under the radical for $\mu_\text{eff}$. We add in both cases because of normalization; essentially, we're doubling the spin for the same amount of mass; recall that we're using $\chi$ but normalized by both the density and molecular weight. Mathematically, we write
+            \begin{align*}
+                \mu_\text{eff} &= \sqrt{4\left( \frac{1}{2}\left( \frac{1}{2}+1 \right) \right)+4\left( \frac{1}{2}\left( \frac{1}{2}+1 \right) \right)} = \sqrt{6} = 2.449\\
+                \chi T &= \frac{1}{2}\left( \frac{1}{2}\left( \frac{1}{2}+1 \right) \right)+\frac{1}{2}\left( \frac{1}{2}\left( \frac{1}{2}+1 \right) \right) = 0.75
+            \end{align*}
+        \end{itemize}
+        \item \emph{A priori}, assume high spin for magnetic calculations.
+    \end{itemize}
+    \item Temperature-independent paramagnetism?
+    \item SOC Hamiltonians?
+    \item What kinds of systems can we model with the Bleaney-Bowers equation?
+    \item What is the correct functional form of the Bleaney-Bowers equation? 2 in the numerator and negative sign in the exponent in the denominator?
+    \item What is $K$ in the definition of $J_\text{tot}$?
+    \begin{itemize}
+        \item It's just a catch-all constant to encapsulate the idea that two spins, as they get infinitely close together, will want to couple parallel.
+        \item Picture a $d^2$ \ce{V(III)} ion.
+    \end{itemize}
+    \item How do short distance and no overlap make sense?
+    \begin{itemize}
+        \item To a first approximation, long distance and big overlap doesn't work!
+        \item Suppose you wanted to make a porous magnet to selectively adsorb oxygen.
+        \item Molecular design principles to mediate coupling over long distances, especially long chains with a single delocalized radical.
+    \end{itemize}
+    \item $d_{xy}$ copper orbitals?
+    \begin{itemize}
+        \item You usually align axes along bonds, and you'd need MOs to do this rigorously.
+    \end{itemize}
+    \item Superexchange, direct exchange, and double exchange? What actually are the Goodenough-Kanamori rules?
+    \begin{itemize}
+        \item They generally predict Table \ref{tab:magOrbInteract}.
+        \item For a given $d$-electron count in oxides, and other ones nearby, it helps you predict what kind of coupling will be present.
+    \end{itemize}
+    \item Orthogonality.
+    \begin{itemize}
+        \item It's about symmetry and MO theory.
+        \item When the two spin-centers mix in a Prussian-blue analog (see Figure \ref{fig:PrussianBlue} and the associated discussion), the $t_{2g}$ set has different symmetry from the $e_g$ set, so they cannot mix. Thus, when the $e_g$'s mix to form a hybrid molecular orbital for the \emph{whole molecule} instead of just one individual metal center (think MO diagrams by molecular fragments), the final orbital will have two unpaired spins. Same story with the $t_{2g}$'s, except 3 unpaired spins. Thus, we get 5 unpaired spins in the molecule overall.
+        \item In the limit that distance is so short that we can think of this as one spin center, we have that $S=5/2$. Mixing in the final MOs would imply pairing.
+    \end{itemize}
+    \item Do we have to know the stuff at the end of the magnetism notes on exotic materials, ferrimagnetism, and commercial magnets?
+    \begin{itemize}
+        \item Not really, but for example, ferrimagnetism is pretty darn simple.
+        \item The exact same case as AF except that spins might be different.
+        \item For example, consider \ce{Cu^{II}-X-Ni^{II}}. We have $S=1/2$ for \ce{Cu} and $S=1$ for \ce{Ni}, leading to $S=1/2$ and $S=3/2$ for AF and FM, respectively, overall.
+    \end{itemize}
+    \item What do we need to know about secular, dynamic, static, and lifetime broadening; doesn't really seem like there are any relevant formulas except for FWHM in lifetime, but we never went over a quantitative example?
+    \item Formulas for spin-lattice and spin-spin relaxation?
+    \begin{itemize}
+        \item Not for the exams.
+        \item Electron spins can be rotated and swing out just the same; it's almost entirely analogous.
+    \end{itemize}
+    \item How exactly are $g$-values like a chemical shift in EPR? How does $g$ relate to $H$?
+    \begin{itemize}
+        \item Because $g=h\nu/\beta H_r$ has the effects of spectrometer frequency and applied magnetic field cancel!
+    \end{itemize}
+    \item $g_\parallel$ vs. $g_\perp$? Calculations for them as in the PSet?
+    \item EPR splitting of $M_S=0$ state?
+    \item What are the perks of ENDOR?
+    \begin{itemize}
+        \item The solution to taking NMR of a paramagnetic compound.
+        \item EPR is hard to give info.
+        \item ENDOR gives you direct information about the spin-density on the nuclei of interest. It can also tell you about spin-spin and dipole-diple coupling. Think about it like the 2D NMR experiments; saturate one NMR signal and look at the relaxation of an adjacent or nearby nuclear spin. Here, we saturate an electron spin and see how it affects the relaxation of an adjacent nuclear spin.
+        \item Google HYSCORE.
+        \item ENDOR HW: Essentially, we need to take an NMR (to get protonation) of a paramagnetic compound, but we can't. Thus, we take ENDOR and can withdraw the coupling constant/needed data from it, but only after we return it to being paramagnetic with oxidation or reduction.
+    \end{itemize}
+    \item What do we need to know about ESEEM?
+    \item Are the different energy levels in EPR orbitals?
+    \item Information you can pull out of EXAFS, as on the PSet?
+    \item How is isomer shift measured?
+    \item What is quadrupole splitting?
+    \begin{itemize}
+        \item You can have different quadrupolar levels split out, just like in other splittings.
+    \end{itemize}
+    \item More on differential pulse voltammetry?
+    \item Anything else I missed in EChem?
+    \item What is the dipolar coupling equation?
+    \item Dipolar coupling equation $r_{\ce{AX}}$ exponent?
+    \item $\alpha$- and $\beta$-manifolds?
+    \item Can you or can you not measure $J$ in an NMR experiment?
+    \item Everything on the NOE?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{NOESY.png}
+        \caption{Example NOESY spectrum.}
+        \label{fig:NOESY}
+    \end{figure}
+    \begin{itemize}
+        \item This is a 2D experiment.
+        \item We have two identical \ce{{}^1H} NMR experiments on the top and left sides of Figure \ref{fig:NOESY}. All of the peaks are labeled by the hydrogen(s) to which they correspond.
+        \item The diagonal peaks occur at the intersection of identical peaks from the two constitutent proton NMR spectra.
+        \item The 2D part comes from the off-diagonal dots. These appear at the intersection of peaks corresponding to hydrogens that couple. For example, the green interaction connects the green and orange protons, and the orange point in the plot indicates that the green and orange protons couple semi-strongly.
+    \end{itemize}
+    \item DEPT?
+    \begin{itemize}
+        \item Takeaway for DEPT: We can do 2D NMR experiments where we manipulate two spins at the same time and pull out data on both.
+    \end{itemize}
+    \item What do I need to know about the literature examples for the final?
+    \item Question 2.1: How does an amide have $C_{2v}$ symmetry, not $C_s$ symmetry?
+    \item Question 2.2.
+    \begin{itemize}
+        \item There are two states to consider: The ground state, which is a singlet and thus EPR silent, and the excited state, which is a triplet and thus EPR active.
+    \end{itemize}
+    \item Question 2.3.
+    \begin{itemize}
+        \item We have two main signals: A triplet of doublets centered at $-1444.85$, and a triplet of quartets centered at $1505.7$. How is this possible?
+        \item Calculating nuclear spin? How would we know that \ce{Pt} has an $I=1/2$ nucleus with 33\% abundance? We can google this stuff for the pset; we won't have to just know this stuff for the test.
+        \item We can ask questions about specific nuclei during the exam, but the data should be stated in the question.
+        \item How do we know when \ce{P-Pt} and \ce{P-P} coupling are present?
+        \item Largest magnitude coupling is usually the shortest coupling.
+        \item We split based on percent abundance. Even in carbon, where you have 1\% abundance of \ce{{}^13C}, that gives rise to tiny splittings off the main peak.
+        \item Essentially, here, we have an $I=0$ \ce{Pt} nucleus in 66\% abundance and an $I=1/2$ \ce{Pt} nucleus in 33\% abundance. Thus, for every phosphorous, the primary splitting modality will be to form a singlet overlaid with a doublet. Twice as many molecules will have an $I=0$ nucleus as otherwise, so this accounts for the large central peaks. Additionally, $I=1/2$ will split the doublet to $1/4$ the height of the $I=0$ peak. Then, secondary splitting occurs from the neighboring phosphorus spin centers, which are $I=1/2$ nuclei, themselves.
+    \end{itemize}
+    \item Question 2.4?
+    \begin{itemize}
+        \item Isn't square planar always low spin?
+        \item It's almost exclusively low spin; you can have some weird constrained cases, though.
+        \item Anderson showed the high-spin case purely for completeness and because he would have accepted the answer, but a sole low-spin answer is perfectly acceptable.
+    \end{itemize}
+    \item Question 2.7?
+    \begin{itemize}
+        \item How would isomers affect the Mossbauer spectrum?
+    \end{itemize}
+    \item Question 2.8?
+    \begin{itemize}
+        \item What is the significance of the mass number and change on \ce{{}^63Cu^2+}? Just gives you nice data.
+        \item Why is $g$ isotropic in the center? Just because this is peak splitting? And isn't it isotropic anyway since it's in solution?
+    \end{itemize}
+    \item Question 2.9b?
+    \begin{itemize}
+        \item How do we get the final number?
+        \item Convert the Bohr magneton to hertz; any such values will be given on the test.
+        \item $\beta=\SI{1.4e10}{\per\second\per\tesla}$. Again, take $\beta/h$.
+    \end{itemize}
+    \item Question 2.10a?
+    \begin{itemize}
+        \item Could you not look for the presence of all three $K$-edges? Is it better to look at one $K$-edge and fit scatterers?
+    \end{itemize}
+    \item Question 2.10b?
+    \begin{itemize}
+        \item Generally very confused.
+    \end{itemize}
+    \item Question 11?
+    \begin{itemize}
+        \item Walk me through this.
+        \item Orthogonality in all its shapes --- be it of orbital fillings, literal orbital configuration and molecular structure, bond angles, etc. --- favors FM interactions.
+        \item When it goes away, AF dominates. But where is the antiparallel AF interaction with high overlap in the second case?
+    \end{itemize}
+    \item How will the final relate to the pset?
 \end{itemize}
 
 

@@ -58,7 +58,7 @@
         \item Everything with electrons has \emph{some} degree of a response to a magnetic field.
         \item Depends on the strength of the field in which the material is placed.
     \end{itemize}
-    \item \textbf{Magnetic induction}: The density of magnetic field lines within a substance. \emph{Denoted by} $\bm{B}$. \emph{Units} Teslas or Gauss. \emph{Given by}
+    \item \textbf{Magnetic induction}: The density of magnetic field lines within a substance. \emph{Denoted by} $\bm{B}$. \emph{Units} Teslas or Gauss.
     \begin{itemize}
         \item $\SI{1}{\tesla}=\SI{10000}{\gauss}$.
         \item The scale of these units.
@@ -83,16 +83,16 @@
     \begin{equation*}
         \vec{f} = \vec{M}\cdot\dv{H}{z}
     \end{equation*}
-    \item \textbf{Magnetic susceptibility}. \emph{Denoted by} $\bm{\chi}$. \emph{Given by}
-    \begin{equation*}
-        \chi = \frac{\vec{M}}{\vec{H}}
-    \end{equation*}
+    \item \textbf{Magnetic susceptibility}. \emph{Denoted by} $\bm{\chi}$.
     \begin{itemize}
         \item A tensor of rank 2.
-        \item It follows that $\vec{M}=\vec{\chi}\vec{H}$.
+        \item We have that $\vec{M}=\vec{\chi}\vec{H}$.
     \end{itemize}
     \item There are different types of $\chi$.
-    \item \textbf{Volume susceptibility}: \emph{Denoted by} $\bm{\chi_V}$. \emph{Units} \si{\electromagneticunit\per\cubic\centi\meter}.
+    \item \textbf{Volume susceptibility}: \emph{Denoted by} $\bm{\chi_V}$. \emph{Units} \si{\electromagneticunit\per\cubic\centi\meter}. \emph{Given by}
+    \begin{equation*}
+        \chi_V = \chi = \frac{\vec{M}}{\vec{H}}
+    \end{equation*}
     \begin{itemize}
         \item This is a dimensionless quantity, but we still use the units listed above.
         \item Note that an emu is an "electromagnetic unit."
@@ -105,7 +105,7 @@
     \begin{equation*}
         \chi_m = \chi_g\cdot\text{MW}
     \end{equation*}
-    \item The sign of $\chi$ ($+/-$) depends on the presence of absence of unpaired electrons. In particular\dots
+    \item The sign of $\chi$ ($+/-$) depends on the presence or absence of unpaired electrons. In particular\dots
     \begin{itemize}
         \item $\chi>0$ indicates unpaired electrons.
         \item $\chi<0$ indicates paired electrons.
@@ -185,7 +185,7 @@
     \end{itemize}
     \item \textbf{Curie constant}: The following constant. \emph{Denoted by} $\bm{C}$. \emph{Given by}
     \begin{equation*}
-        C = \frac{\NA g^2\mB(S(S+1))}{3\kB (in hertz??)}
+        C = \frac{\NA g^2\mB^2(S(S+1))}{3\kB}
     \end{equation*}
     \begin{itemize}
         \item $g$ is the \textbf{gyromagnetic ratio}.
@@ -208,12 +208,12 @@
     \end{equation*}
     \item From the written notes: We have that
     \begin{equation*}
-        \mB = \frac{e\hbar}{2m_e} = \SI{9.3e-24}{\joule\per\kelvin}
+        \mB = \frac{e\hbar}{2m_e} = \SI{9.3e-24}{\joule\per\tesla}
     \end{equation*}
     \item We want to take the picture provided by Curie's law and simplify it down now.
     \item For the spin-only case (this restriction is very important), we can define the effective magnetic moment
     \begin{equation*}
-        \mu_\text{eff} = \sqrt{\frac{\kB}{\NA\mB^2}}\sqrt{\chi T}
+        \mu_\text{eff} = \sqrt{\frac{3\kB}{\NA\mB^2}}\sqrt{\chi T}
         = 2.828\sqrt{\chi T}
         = \sqrt{g^2(S(S+1))}
     \end{equation*}
@@ -222,7 +222,7 @@
     \end{itemize}
     \item We also frequently write
     \begin{equation*}
-        \chi T = \frac{\NA g^2\mB}{3\kB}(S(S+1))
+        \chi T = \frac{\NA g^2\mB^2}{3\kB}(S(S+1))
         = \frac{g^2}{8}(S(S+1))
     \end{equation*}
     \item Magnetochemists almost exclusively use $\chi T$, but $\mu_\text{eff}$ is oft reported for room temp characterizations.
@@ -271,7 +271,7 @@
     \item Spin-orbit coupling: $g>0$ for a more-than-half-filled shell; $g<0$ for a less-than-half-filled shell.
     \item Consider a generic metal \ce{M} with $S=1/2$ and another with $S=1/2$ and a bridging ligand \ce{L} between them.
     \begin{itemize}
-        \item Three possibilities to determine magnetism: The spins can be coupled antiferromagnetically (opposite directions) so $S=0$, coupled feromagnetically so $S=1$, or uncoupled so both behave as their own spin center but are chemically/mechanically linked within the molecule.
+        \item Three possibilities to determine magnetism: The spins can be coupled antiferromagnetically (opposite directions) so $S=0$, coupled ferromagnetically so $S=1$, or uncoupled so both behave as their own spin center but are chemically/mechanically linked within the molecule.
     \end{itemize}
     \item Now for a specific example of metal centers with different spins: Consider \ce{Cu-L-Mn}, which has $S=1/2$ and $S=5/2$. Then
     \begin{equation*}
@@ -328,7 +328,7 @@
         H = \hat{H}_0+\hat{H}_\text{elec}+\hat{H}_\text{SO}
     \end{equation*}
     \begin{itemize}
-        \item SO denotes spin-orbit
+        \item SO denotes spin-orbit.
         \item We have that
         \begin{equation*}
             \hat{H}_\text{SO} = \lambda\hat{L}\cdot\hat{S}+\beta(\hat{L}+g_e\hat{S})-H
@@ -752,7 +752,7 @@
     \end{figure}
     \begin{itemize}
         \item Recall that each copper center will have the orbital structure depicted in Figure \ref{fig:dicopperOrbitalsa} due to the extreme Jahn-Teller distortions associated with the square planar geometry.
-        \item The $d_{x^2+y^2}$ orbitals are singly occupied. Thus, they couple and split.
+        \item The $d_{x^2-y^2}$ orbitals are singly occupied. Thus, they couple and split.
         \begin{itemize}
             \item The magnitude of the splitting is that of your AF coupling.
             \item Are you sure you don't mean the $d_{xy}$ orbitals?? That's what it looks like you've drawn.
@@ -762,7 +762,7 @@
         \item As we linearize, $b_{1g}$ will be stabilized (better overlap) and $b_{1u}$ will be destabilized (less overlap).
         \begin{itemize}
             \item This increases splitting and favors a lower spin state.
-            \item Thus, as we linearize, eventually the electrons (which have been coupled ferromagnetically in different orbitals) will pair (antiferromagnetically) in the same orbital. This is also the point at which the data anderson presents flips signs from positive $J_\text{tot}$ (FM dominates) to negative $J_\text{tot}$ (AF dominates).
+            \item Thus, as we linearize, eventually the electrons (which have been coupled ferromagnetically in different orbitals) will pair (antiferromagnetically) in the same orbital. This is also the point at which the data Anderson presents flips signs from positive $J_\text{tot}$ (FM dominates) to negative $J_\text{tot}$ (AF dominates).
         \end{itemize}
         \item Three open-shell states corresponding to $M_s$ values all get rolled into one closed shell state??
     \end{itemize}

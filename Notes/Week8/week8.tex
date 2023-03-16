@@ -41,7 +41,7 @@
     \begin{itemize}
         \item 90\% or more of Mossbauer is done with \ce{{}^57Fe}.
         \begin{itemize}
-            \item At \SI{14.4}{\kilo\electronvolt}, it's a pretty hot but not super hot $\gamma$ ray.
+            \item At \SI{14.4}{\kilo\electronvolt}, it's a pretty hot but not super hot gamma ray.
             \item The cobalt precursor nucleus comes from Russia, so a lot of Mossbauer spectroscopists are probably looking at very lean times right now.
         \end{itemize}
         \item \ce{{}^119Sn} is also pretty common.
@@ -61,7 +61,7 @@
             \item If you lose too much energy to recoil KE, your gamma rays may not match the target source.
             \item Thus, you try to hold your atoms very stable, usually by embedding them in a solid lattice.
         \end{itemize}
-        \item $D$ is the doppler energy.
+        \item $D$ is the Doppler energy.
         \begin{itemize}
             \item A Doppler shift is relevant to the experimental setup of Mossbauer.
             \item Essentially, you literally hook up your emitter to a speaker and vibrate it at a hertz frequency to add or subtract a tiny bit of energy to/from the gamma rays.
@@ -332,9 +332,11 @@
     \item \textbf{Electrochemical double layer}: The complex, multilayered structure that forms near the surface of an electrode under an applied potential.
     \begin{figure}[h!]
         \centering
-        \begin{tikzpicture}
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
             \small
-            \draw (-2,-1) -- (-2,0) -- node[below=3mm]{Electrode} (2,0) -- (2,-1);
+            \filldraw [draw=ylx,fill=ylz,thick] (-2,-1) -- (-2,0) -- node[below=3mm]{Electrode} (2,0) -- (2,-1);
     
             \footnotesize
             \foreach \x in {-1.8,-1.5,...,2} {
@@ -342,7 +344,7 @@
             }
             %
             \foreach \x in {-1.9,-1.7,...,2} {
-                \draw (\x,0)
+                \draw [rex,semithick] (\x,0)
                     to[out=45,in=-45] ++({0.02*rand},{0.1+0.02*rand})
                     to[out=135,in=-135] ++({0.02*rand},{0.1+0.02*rand})
                 ;
